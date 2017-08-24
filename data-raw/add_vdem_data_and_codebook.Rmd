@@ -1,0 +1,341 @@
+---
+title: "Add VDem Data and Codebook"
+author: "Xavier Marquez"
+date: "24 August 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      cache = TRUE,
+                      cache.rebuild = FALSE)
+
+library(tidyverse)
+library(haven)
+
+getwd()
+path <- "../../../Data/Country_Year_V-Dem_other_STATA_v7.1/Country_Year_V-Dem_other_STATA_v7.1/"
+```
+
+
+First we read the VDem data, version 7, plus the external variables.
+
+```{r reading_data}
+
+VDem_plus <- haven::read_dta(paste0(path, "V-Dem-DS-CY+Others-v7.1.dta")) %>%
+  as_tibble()
+
+VDem_plus <- VDem_plus %>%
+  mutate(country_name = if_else(country_id == 196, "Sao Tome and Principe", country_name)) %>%
+  CountryYear::country_year_coder(country_name, year, COWcode, code_type ="cow")
+
+mlr::summarizeColumns(VDem_plus) 
+
+VDem_plus <- VDem_plus %>%
+  select(country_name:year, GW_country_name, GWn, everything()) %>%
+  rename(vdem_country_name = country_name,
+         vdem_country_id = country_id,
+         vdem_country_text_id = country_text_id,
+         vdem_cown = COWcode,
+         GW_startdate = startdate,
+         GW_enddate = enddate)
+
+devtools::use_data(VDem_plus, overwrite = TRUE)
+
+```
+
+Then we read the codebook and process it:
+
+```{r loading}
+
+library(pdftools)
+library(stringr)
+
+vdem_codebook_raw <- pdf_text(paste0(path,"Codebook_v7.1.pdf"))
+
+
+```
+
+## Extracting main bits from TOC
+
+```{r}
+
+toc <- vdem_codebook_raw[5:27]
+
+headers_from_toc <-  toc %>%
+  str_extract_all(regex("[0-9]+(\\.)[0-9]+(\\.)?[0-9]*[ ]?.+(\\([A-Z\\*\\(\\)]{1,2}\\))( )?(\\([A-Z\\*]{1,2}\\))?( )?(\\([A-Z\\*]{1,2}\\))?[\\s\\r\\n]*\\([\\w\\*, \\r\\n/]{2,}\\)", multiline = TRUE)) %>%
+  unlist() %>%
+  str_trim() %>%
+  str_replace_all("\\r\\n","") %>%
+  str_replace_all("[ ]{2,}"," ") %>%
+  str_replace("\\(A\\(C\\)\\)", "(A)(C)")
+
+headers_from_toc
+```
+
+```{r}
+number <- str_extract(headers_from_toc, "^[0-9]+(\\.)[0-9]+(\\.)?[0-9]*") 
+
+# Tests
+
+check_headers <- readxl::read_excel("vdem_headers.xlsx", col_names = FALSE)
+
+check_number <- str_extract(check_headers$X__1, "^[0-9]+(\\.)[0-9]+(\\.)?[0-9]*") 
+
+check_number[!(check_number %in% number)]
+
+number[!(number %in% check_number)]
+
+```
+
+
+Now we extract main bits:
+
+```{r}
+type_var <- str_extract(headers_from_toc, "(\\([A-Z\\*]{1,2}\\))( )?(\\([A-Z\\*]{1,2}\\))?( )?(\\([A-Z\\*]{1,2}\\))?") %>%
+  str_trim()
+
+which(is.na(type_var))
+
+headers_from_toc <- headers_from_toc[which(!is.na(type_var))]
+
+type_var <- na.omit(type_var)
+
+labels <- str_replace(headers_from_toc, "^[0-9]+(\\.)[0-9]+(\\.)?[0-9]*", "") %>% 
+  str_extract("[[:print:]-[\\(\\)] ]+(?=\\()") %>%
+  str_trim
+
+which(is.na(labels) | labels == "")
+
+var_names <- str_extract(headers_from_toc,"\\([\\w\\*/, ]+\\)$") %>%
+  str_replace_all("\\(", "") %>%
+  str_replace_all("\\)", "") %>%
+  str_replace_all("([\\w]+)(,)?( )?\\*_osp", "\\1, \\1_osp") %>%
+  str_replace_all("([\\w]+)_osp, \\*_ord", "\\1_osp, \\1_ord") %>%
+  str_replace_all("([\\w]+)_3C /_4C", "\\1_3C, \\1_4C") %>%
+  str_replace_all("([\\w]+)_4C /_5C", "\\1_4C, \\1_5C")
+
+## Get rid of page prematter and page numbers
+
+vdem_codebook_raw <- vdem_codebook_raw[which(grepl("This section groups together macro-level indices that describe features of democracy",
+                                                   vdem_codebook_raw)):length(vdem_codebook_raw)]
+
+vdem_codebook_raw <- vdem_codebook_raw %>% str_replace(paste0("\\b",as.character(1:length(vdem_codebook_raw) + 48), "$"), "")
+
+
+knitr::kable(vdem_codebook_raw[22])
+
+
+```
+
+```{r}
+
+split_vdem <- str_split_fixed(paste(vdem_codebook_raw, collapse = "\r\n"), regex(paste0("\\r\\n",number,"[ ]+")), 2)[ ,2] 
+
+split_vdem <- str_split_fixed(split_vdem, regex(paste0("\\r\\n", c(number[2:length(number)], "References"),"[ ]+")), n = 2)[ , 1] 
+
+split_vdem[820] <- split_vdem[820] %>%
+  qdapRegex::rm_non_ascii() %>%
+  str_replace("\\r\\n","") %>%
+  str_replace("References Aboubarb[[:print:][:cntrl:]\u00a8]+","")
+
+project_managers <- split_vdem %>% 
+  str_replace_all("\\r\\n"," ") %>%
+  str_extract("Project manager(s)?:[\\s\\w\\d[:punct:]]+") %>%
+  str_replace("Project manager(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace("(\\.)?Compiler.+|(\\.)?Question.+|(\\.)?Clarification.+|(\\.)?Scale.+|(\\.)?Subset.+|This section.+|The following.+|This set of questions.+|In this section.+|A .+|Two types of media.+|Among national.+","\\.") %>%
+  str_replace(" \\.","")
+
+# test
+project_managers[ !is.na(project_managers) & str_length(project_managers) > 20] %>% unique()
+```
+
+```{r}
+compilers <- split_vdem %>% 
+  str_replace_all("\\r\\n"," ") %>%
+  str_extract("Compiler(s)?:[\\s\\w\\d[:punct:]]+") %>%
+  str_replace("Compiler(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace("(\\.)?Project manager.+|(\\.)?Compiler.+|(\\.)?Question.+|(\\.)?Clarification.+|(\\.)?Scale.+|(\\.)?Subset.+|This section.+|The following.+|This set of questions.+|In this section.+|A .+|Two types of media.+|Among national.+","\\.") %>%
+  str_replace(" \\.","")
+
+unique(compilers)
+compilers[compilers == "."] <- NA
+
+```
+
+```{r}
+
+extraction_pattern <- "Question(s)?:.+|Clarification(s)?:.+|Aggregation(s)?:.+|Response(s)?:.+|Source(s)?:.+|Scale(s)?:.+|Note(s)?:.+|Answer type(s)?:.+|Data release(s)?:.+|Citation(s)?:.+|(CCP )?[O|o]rdering(s)?:.+|Cross-coder aggregation(s)?:.+|Coverage:.+"
+
+questions <- split_vdem %>% 
+  str_replace_all("\\r\\n"," ") %>%
+  str_extract(regex("Question(s)?:[\\s\\w\\d[:punct:]]+", multiline= TRUE)) %>%
+  str_replace("Question(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace(extraction_pattern,"") %>%
+  str_trim()
+
+clarifications <- split_vdem %>% 
+  str_replace_all("\\r\\n"," ") %>%
+  str_extract(regex("Clarification(s)?:[\\s\\w\\d[:punct:]]+", multiline= TRUE)) %>%
+  str_replace("Clarification(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace(extraction_pattern,"\\.") %>%
+  str_trim()
+
+aggregation <-  split_vdem %>% str_replace_all("\\r\\n"," ") %>% 
+  str_extract("Aggregation(s)?:[\\s\\w\\d[:punct:]=+\\(\\)\\*/\\^]+") %>%
+  str_replace("Aggregation(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace(extraction_pattern,"") %>%
+  str_trim()
+
+responses <- split_vdem %>% 
+  str_replace_all("\\r\\n"," ") %>% 
+  str_extract("Response(s)?:[\\s\\w\\d[:punct:]=+\\(\\)\\*/]+") %>%
+  str_replace("Response(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace(extraction_pattern,"") %>%
+  str_trim()
+
+responses[ !is.na(responses) & str_length(responses) > 50] %>% unique()
+
+notes <- split_vdem %>% str_replace_all("\\r\\n"," ") %>% 
+  str_extract("Note(s)?:[\\s\\w\\d[:punct:]=+\\(\\)\\*/]+") %>%
+  str_replace("Note(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace(extraction_pattern,"") %>%
+  str_trim()
+
+sources <- split_vdem %>% str_replace_all("\\r\\n"," ") %>% 
+  str_extract("Source(s)?:[\\s\\w\\d[:punct:]=+\\(\\)\\*/]+") %>%
+  str_replace("Source(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace(extraction_pattern,"") %>%
+  str_trim()
+
+sources[ !is.na(sources) & str_length(sources) > 50] %>% unique()
+
+scale <- split_vdem %>% str_replace_all("\\r\\n"," ") %>% 
+  str_extract("Scale(s)?:[\\s\\w\\d[:punct:]=+\\(\\)\\*/]+") %>%
+  str_replace("Scale(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace(extraction_pattern,"") %>%
+  str_trim()
+
+scale[ !is.na(scale) & str_length(scale) > 20] %>% unique()
+
+answer_type <- split_vdem %>% str_replace_all("\\r\\n"," ") %>% 
+  str_extract("Answer type(s)?:[\\s\\w\\d[:punct:]=+\\(\\)\\*/]+") %>%
+  str_replace("Answer type(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace(extraction_pattern,"") %>%
+  str_trim()
+
+answer_type[ !is.na(answer_type)] %>% unique()
+
+data_release <- split_vdem %>% str_replace_all("\\r\\n"," ") %>% 
+  str_extract("Data release(s)?:[\\s\\w\\d[:punct:]=+\\(\\)\\*/]+") %>%
+  str_replace("Data release(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace(paste0(extraction_pattern,"|Citation:"),"") %>%
+  str_trim()
+
+data_release[ !is.na(data_release) ] %>% unique()
+
+citation <- split_vdem %>% str_replace_all("\\r\\n"," ") %>% 
+  str_extract("Citation(s)?:[\\s\\w\\d[:punct:]=+\\(\\)\\*/]+") %>%
+  str_replace("Citation(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace(paste0(extraction_pattern,"|[0-9]+(\\.)[0-9]+(\\.)?[0-9]*.+|2 Mid-Level Democracy.+|V\\-Dem Indicators 3 Elections.+|[0-9][0-9]? [A-Z].+|Part III.+"),"") %>%
+  str_trim()
+
+citation[ !is.na(citation) ] %>% unique()
+
+ordering <- split_vdem %>% str_replace_all("\\r\\n"," ") %>% 
+  str_extract("[O|o]rdering(s)?:[\\s\\w\\d[:punct:]=+\\(\\)\\*/]+") %>%
+  str_replace("Ordering(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace(extraction_pattern,"") %>%
+  str_trim()
+
+ordering[ !is.na(ordering) ] %>% unique()
+
+ordering[ordering == ""] <- NA
+
+cross_coder <- split_vdem %>% str_replace_all("\\r\\n"," ") %>% 
+  str_extract("Cross-coder aggregation(s)?:[\\s\\w\\d[:punct:]=+\\(\\)\\*/]+") %>%
+  str_replace("Cross-coder aggregation(s)?:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace(extraction_pattern,"") %>%
+  str_trim()
+
+cross_coder[ !is.na(cross_coder) ] %>% unique()
+
+coverage <- split_vdem %>% str_replace_all("\\r\\n"," ") %>% 
+  str_extract("Coverage:[\\s\\w\\d[:punct:]=+\\(\\)\\*/]+") %>%
+  str_replace("Coverage:( )?", "") %>%
+  str_replace_all("[ ]{2,}", " ") %>%
+  str_replace(extraction_pattern,"") %>%
+  str_trim()
+
+coverage[ !is.na(coverage) ] %>% unique()
+
+vdem_codebook <- data_frame(number = number, name = var_names, label = labels, type = type_var,
+                            project_manager = project_managers, compiler = compilers, question = questions, 
+                            clarification = clarifications, responses = responses, scale =scale, aggregation = aggregation,
+                            note = notes, ordering = ordering, cross_coder = cross_coder, source = sources, data_release = data_release,
+                            citation = citation)
+
+
+
+# Manual fixes
+ 
+vdem_codebook <- vdem_codebook %>% 
+  mutate(responses = plyr::mapvalues(responses, 
+                                     "-1: if no legislature. 0: if none (including cases where parties are o",
+                                     "-1: if no legislature. 0: if none (including cases where parties are officially banned). 1: if one (including cases where other parties are officially banned). 2: if more."),
+         scale = str_replace_all(scale, "\\.$", ""),
+         data_release = str_replace_all(data_release, "\\.$", ""), 
+         type = str_replace_all(type, " ", ""),
+         name = str_replace_all(name, "_ ","_"),
+         type = str_replace_all(type, "\\)\\(","),("),
+         label = ifelse(type == "(CJ)", "Chief justice (CJ) highest ordinary court", label),
+         type = plyr::mapvalues(type, from = "(CJ)", to = "(E)"),
+         cross_coder = plyr::mapvalues(cross_coder, from = c("Bayesian item response theory measurement model (see V- Dem Methodology",
+                                                             "Bayesian item response theory measurement model (see V- Dem Methodology).",
+                                                             "Bayesian item response theory measurement model (see V- Dem Methodology, posted at V-Dem.net).",
+                                                             "Bayesian item response theory measurement model (see V- Dem Methodology,)."),
+                                       to = rep("Bayesian item response theory measurement model (see V- Dem Methodology)",4)),
+         name = str_trim(name, "left"))
+
+vdem_codebook <-  vdem_codebook %>% unnest(name = strsplit(name, ","))
+
+vdem_codebook <- vdem_codebook %>% select(number, name, label, everything())
+
+vdem_codebook$name <- str_trim(vdem_codebook$name, "left")
+
+vdem_codebook <- vdem_codebook %>%
+  mutate(section = str_extract(number, "^[0-9]+") %>%
+           str_replace("\\.","") %>%
+           as.integer()) %>%
+  select(section, everything())
+  
+Hmisc::describe(vdem_codebook)
+
+devtools::use_data(vdem_codebook, overwrite = TRUE)
+
+```
+```{r test}
+
+
+vdem_codebook$name[ vdem_codebook$name %in%  names(VDem_plus) ]
+
+vdem_codebook$name[ !vdem_codebook$name %in%  names(VDem_plus) ]
+
+names(VDem_plus)[ !names(VDem_plus) %in% vdem_codebook$name  ]
+
+```
+
