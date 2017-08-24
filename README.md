@@ -327,7 +327,7 @@ ggplot(data) +
   geom_vline(xintercept = c(1914, 1918, 1939, 1945, 1989), linetype = 3) +
   geom_hline(yintercept = 0.5, color = "red") +
   coord_cartesian(xlim = c(1900, 2030)) +
-  facet_wrap(~vdem_country_name, nrow = 2)
+  facet_wrap(~vdem_country_name, ncol = 1)
 ```
 
 ![](README-unnamed-chunk-8-1.png)
