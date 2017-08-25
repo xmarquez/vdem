@@ -291,11 +291,15 @@ collect_vars <- function(vars,
     vars <- c(vars,
               paste0(vars, "_codelow"),
               paste0(vars, "_codehigh"))
+  } else {
+    vars <- vars[ !grepl("_code(high|low)", vars) ]
   }
 
   if(include_sd) {
     vars <- c(vars,
               paste0(vars, "_sd"))
+  } else {
+    vars <- vars[ !grepl("_sd", vars) ]
   }
 
   if(include_nr) {
