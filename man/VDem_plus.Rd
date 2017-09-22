@@ -4,15 +4,15 @@
 \name{VDem_plus}
 \alias{VDem_plus}
 \title{V-Dem dataset (version 7.1)}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 17604 rows and 3614 columns.}
+\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 17604 rows and 3615 columns.}
 \source{
-Coppedge, Michael, John Gerring, Staffan I. Lindberg, Svend-Erik Skaaning,
-Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn,
-Allen Hicken, Carl Henrik Knutsen, Joshua Krusell, Anna Luhrmann, Kyle L.
-Marquardt, Kelly McMann, Valeriya Mechkova, Moa Olin, Pamela Paxton, Daniel
-Pemstein, Josefine Pernes, Constanza Sanhueza Petrarca, Johannes von Romer,
-Laura Saxer, Brigitte Seim, Rachel Sigman, Jeffrey Staton, Natalia Stepanova,
-and Steven Wilson. 2017. "V-Dem
+Coppedge, Michael, John Gerring, Staffan I. Lindberg, Svend-Erik
+Skaaning, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam
+Glynn, Allen Hicken, Carl Henrik Knutsen, Joshua Krusell, Anna Luhrmann,
+Kyle L. Marquardt, Kelly McMann, Valeriya Mechkova, Moa Olin, Pamela
+Paxton, Daniel Pemstein, Josefine Pernes, Constanza Sanhueza Petrarca,
+Johannes von Romer, Laura Saxer, Brigitte Seim, Rachel Sigman, Jeffrey
+Staton, Natalia Stepanova, and Steven Wilson. 2017. "V-Dem
 \href{https://www.v-dem.net/en/data/data-version-7-1/}{Country-Year/Country-Date}
 Dataset v7.1" Varieties of Democracy (V-Dem) Project.  Available at
 \url{https://www.v-dem.net/en/data/data-version-7-1/}
@@ -21,8 +21,9 @@ Dataset v7.1" Varieties of Democracy (V-Dem) Project.  Available at
 VDem_plus
 }
 \description{
-The V-Dem dataset (version 7.1), including external variables. This documentation only provides variable
-names and labels for the country-year identifiers included. The rest of the codebook is available at
+The V-Dem dataset (version 7.1), including external variables. This
+documentation only provides variable names and labels for the country-year
+identifiers included. The rest of the codebook is available at
 \url{https://www.v-dem.net/en/data/data-version-7-1/},
 and in this package as \link{vdem_codebook}.
 }
@@ -42,12 +43,12 @@ functional and/or formal sovereignty."}
 
 \item{year}{Year, from 1900-2016.}
 
-\item{GW_country_name}{The standard country according to the \href{http://privatewww.essex.ac.uk/~ksg/statelist.html}{Gleditsch and Ward system of states} (Gleditsch and Ward 1999).
-Note that Somaliland and Somalia are separate country units in
-\code{vdem_country_name} but both map to "Somalia" in this variable; similarly,
-British Palestine, West Bank, and Gaza are three separate coding units in
-\code{vdem_country_name} but all map to "Palestinian Authority" here. Column
-added by Xavier Marquez to the original V-Dem dataset.}
+\item{extended_country_name}{The standard country according to the
+\href{http://privatewww.essex.ac.uk/~ksg/statelist.html}{Gleditsch and Ward system ofstates} (Gleditsch and
+Ward 1999), or a standardized country name. Note that West Bank, and Gaza
+are two separate coding units in \code{vdem_country_name} but all map to
+"Palestine, State of" here. Column added by Xavier Marquez to the original
+V-Dem dataset.}
 
 \item{GWn}{Gleditsch and Ward's numeric country code, from the Gleditsch
 and Ward list of independent states. This differs from the V-Dem COW code
@@ -84,6 +85,13 @@ detailed information , please see VDem Country Coding Units."}
 \item{vdem_cown}{The Correlates of War numeric country code. Note that this
 differs from Gleditsch and Ward's numeric country code in a few cases.}
 
+\item{cown}{The Correlates of War numeric country code (from the 2016
+version of the COW state list). Note that this differs from Gleditsch and
+Ward's numeric country code in a few cases; it also differs from
+\code{vdem_cown} in one case (Germany 1949-1989), where \code{vdem_cown} incorrectly
+has 255 (it should be 260). Column added by Xavier Marquez to the original
+V-Dem dataset. }
+
 \item{GWc}{Gleditsch and Ward's alphabetic country code, from the Gleditsch
 and Ward list of independent states. For details, see Gleditsch and Ward
 1999. The list can be found at
@@ -115,8 +123,8 @@ Xavier Marquez to the original V-Dem dataset.}
 \item{lat}{The rough latitude of the state. Column added by Xavier Marquez
 to the original V-Dem dataset.}
 
-\item{lon}{The rough longitude
-of the state. Column added by Xavier Marquez to the original V-Dem dataset.}
+\item{lon}{The rough longitude of the state. Column added by Xavier Marquez
+to the original V-Dem dataset.}
 
 \item{in_GW_system}{Whether the state is "in system" (that is, is
 independent and sovereign), according to Gleditsch and Ward, for this
@@ -128,12 +136,12 @@ the original V-Dem dataset.}
 }
 
 \references{
-Coppedge, Michael, John Gerring, Staffan I. Lindberg, Svend-Erik
-Skaaning, Jan Teorell, David Altman, Frida Andersson, Michael Bernhard, M.
-Steven Fish, Adam Glynn, Allen Hicken, Carl Henrik Knutsen, Kyle L.
-Marquardt, Kelly McMann, Valeriya Mechkova, Pamela Paxton, Daniel Pemstein,
-Laura Saxer, Brigitte Seim, Rachel Sigman and Jeffrey Staton. 2017. "V-Dem
-Codebook v7.1" Varieties of Democracy (V-Dem) Project. Available at
+Coppedge, Michael, John Gerring, Staffan I. Lindberg, Svend-Erik Skaaning,
+Jan Teorell, David Altman, Frida Andersson, Michael Bernhard, M. Steven Fish,
+Adam Glynn, Allen Hicken, Carl Henrik Knutsen, Kyle L. Marquardt, Kelly
+McMann, Valeriya Mechkova, Pamela Paxton, Daniel Pemstein, Laura Saxer,
+Brigitte Seim, Rachel Sigman and Jeffrey Staton. 2017. "V-Dem Codebook v7.1"
+Varieties of Democracy (V-Dem) Project. Available at
 \url{https://www.v-dem.net/en/data/data-version-7-1/}
 
 Gleditsch, Kristian S. & Michael D. Ward. 1999. "Interstate System
