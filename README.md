@@ -1,3 +1,4 @@
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 [![Travis-CI Build Status](https://travis-ci.org/xmarquez/vdem.svg?branch=master)](https://travis-ci.org/xmarquez/vdem)
 
@@ -13,9 +14,15 @@ This package is only available on Github for now. Install as follows:
 
     devtools::install_github("xmarquez/vdem")
 
+Accessing the VDem dataset
+--------------------------
+
 You can access the entire V-Dem dataset by typing `VDem_plus`. (Access documentation on the dataset by typing `?VDem_plus`, or typing `vdem_codebook` to access the codebook as a data frame.).
 
-The V-Dem dataset is pretty big; including external variables and identifiers, it has `17604` rows and `3614` columns, which takes up a lot of memory and can be confusing to work with. This package thus makes available the function `extract_vdem`, which allows you to extract a subset of these variables meeting specific criteria. For example, you can just extract the main democracy indices (described in section 1 of the codebook) as follows:
+Extracting specific variables by label, section number, etc.
+------------------------------------------------------------
+
+The V-Dem dataset is pretty big; including external variables and identifiers, it has `17604` rows and `3615` columns, which takes up a lot of memory and can be confusing to work with. This package thus makes available the function `extract_vdem`, which allows you to extract a subset of these variables meeting specific criteria. For example, you can just extract the main democracy indices (described in section 1 of the codebook) as follows:
 
 ``` r
 library(vdem)
@@ -36,26 +43,26 @@ main_indices
 #>  8       Afghanistan              36                  AFG  1907
 #>  9       Afghanistan              36                  AFG  1908
 #> 10       Afghanistan              36                  AFG  1909
-#> # ... with 17,594 more rows, and 50 more variables: GW_country_name <chr>,
-#> #   GWn <dbl>, historical_date <date>, codingstart <date>,
-#> #   gapstart <date>, gapend <date>, codingend <date>, vdem_cown <dbl>,
-#> #   v2x_polyarchy <dbl>, v2x_api <dbl>, v2x_mpi <dbl>, v2x_libdem <dbl>,
-#> #   v2x_liberal <dbl>, v2x_partipdem <dbl>, v2x_partip <dbl>,
-#> #   v2x_delibdem <dbl>, v2xdl_delib <dbl>, v2x_egaldem <dbl>,
-#> #   v2x_egal <dbl>, v2x_polyarchy_codelow <dbl>, v2x_api_codelow <dbl>,
-#> #   v2x_mpi_codelow <dbl>, v2x_libdem_codelow <dbl>,
-#> #   v2x_liberal_codelow <dbl>, v2x_partipdem_codelow <dbl>,
-#> #   v2x_partip_codelow <dbl>, v2x_delibdem_codelow <dbl>,
-#> #   v2xdl_delib_codelow <dbl>, v2x_egaldem_codelow <dbl>,
-#> #   v2x_egal_codelow <dbl>, v2x_polyarchy_codehigh <dbl>,
-#> #   v2x_api_codehigh <dbl>, v2x_mpi_codehigh <dbl>,
-#> #   v2x_libdem_codehigh <dbl>, v2x_liberal_codehigh <dbl>,
-#> #   v2x_partipdem_codehigh <dbl>, v2x_partip_codehigh <dbl>,
-#> #   v2x_delibdem_codehigh <dbl>, v2xdl_delib_codehigh <dbl>,
-#> #   v2x_egaldem_codehigh <dbl>, v2x_egal_codehigh <dbl>,
-#> #   GW_startdate <date>, GW_enddate <date>, GWc <chr>, region <chr>,
-#> #   continent <chr>, lon <dbl>, lat <dbl>, microstate <lgl>,
-#> #   in_GW_system <lgl>
+#> # ... with 17,594 more rows, and 50 more variables:
+#> #   extended_country_name <chr>, GWn <dbl>, historical_date <date>,
+#> #   codingstart <date>, gapstart <date>, gapend <date>, codingend <date>,
+#> #   vdem_cown <dbl>, v2x_polyarchy <dbl>, v2x_api <dbl>, v2x_mpi <dbl>,
+#> #   v2x_libdem <dbl>, v2x_liberal <dbl>, v2x_partipdem <dbl>,
+#> #   v2x_partip <dbl>, v2x_delibdem <dbl>, v2xdl_delib <dbl>,
+#> #   v2x_egaldem <dbl>, v2x_egal <dbl>, v2x_polyarchy_codelow <dbl>,
+#> #   v2x_api_codelow <dbl>, v2x_mpi_codelow <dbl>,
+#> #   v2x_libdem_codelow <dbl>, v2x_liberal_codelow <dbl>,
+#> #   v2x_partipdem_codelow <dbl>, v2x_partip_codelow <dbl>,
+#> #   v2x_delibdem_codelow <dbl>, v2xdl_delib_codelow <dbl>,
+#> #   v2x_egaldem_codelow <dbl>, v2x_egal_codelow <dbl>,
+#> #   v2x_polyarchy_codehigh <dbl>, v2x_api_codehigh <dbl>,
+#> #   v2x_mpi_codehigh <dbl>, v2x_libdem_codehigh <dbl>,
+#> #   v2x_liberal_codehigh <dbl>, v2x_partipdem_codehigh <dbl>,
+#> #   v2x_partip_codehigh <dbl>, v2x_delibdem_codehigh <dbl>,
+#> #   v2xdl_delib_codehigh <dbl>, v2x_egaldem_codehigh <dbl>,
+#> #   v2x_egal_codehigh <dbl>, GW_startdate <date>, GW_enddate <date>,
+#> #   GWc <chr>, extended_region <chr>, extended_continent <chr>,
+#> #   microstate <lgl>, lat <dbl>, lon <dbl>, in_GW_system <lgl>
 ```
 
 The function `extract_vdem` always returns a `tibble` with all the identifiers in the dataset (country name, id, year, COW code, etc.) plus the requested variables. (You will note that this table includes a couple of identifiers I added, providing information about the membership of the country-year in the [Gleditsch-Ward](http://privatewww.essex.ac.uk/~ksg/statelist.html) state system membership list). You can also specify whether you want the measures of uncertainty included in the dataset (`_codehigh` and `_codelow` confidence interval extremes) returned, or whether certain variable types (e.g., ordinal-scale variables) should be excluded.
@@ -79,12 +86,12 @@ corruption_vars
 #>  8       Afghanistan              36                  AFG  1907
 #>  9       Afghanistan              36                  AFG  1908
 #> 10       Afghanistan              36                  AFG  1909
-#> # ... with 17,594 more rows, and 41 more variables: GW_country_name <chr>,
-#> #   GWn <dbl>, historical_date <date>, codingstart <date>,
-#> #   gapstart <date>, gapend <date>, codingend <date>, vdem_cown <dbl>,
-#> #   v2x_corr <dbl>, v2x_pubcorr <dbl>, v2x_execorr <dbl>, v2exbribe <dbl>,
-#> #   v2excrptps <dbl>, v2lgcrrpt <dbl>, v2jucorrdc <dbl>, v2mecorrpt <dbl>,
-#> #   v2x_corr_codelow <dbl>, v2x_pubcorr_codelow <dbl>,
+#> # ... with 17,594 more rows, and 41 more variables:
+#> #   extended_country_name <chr>, GWn <dbl>, historical_date <date>,
+#> #   codingstart <date>, gapstart <date>, gapend <date>, codingend <date>,
+#> #   vdem_cown <dbl>, v2x_corr <dbl>, v2x_pubcorr <dbl>, v2x_execorr <dbl>,
+#> #   v2exbribe <dbl>, v2excrptps <dbl>, v2lgcrrpt <dbl>, v2jucorrdc <dbl>,
+#> #   v2mecorrpt <dbl>, v2x_corr_codelow <dbl>, v2x_pubcorr_codelow <dbl>,
 #> #   v2x_execorr_codelow <dbl>, v2exbribe_codelow <dbl>,
 #> #   v2excrptps_codelow <dbl>, v2lgcrrpt_codelow <dbl>,
 #> #   v2jucorrdc_codelow <dbl>, v2mecorrpt_codelow <dbl>,
@@ -92,9 +99,9 @@ corruption_vars
 #> #   v2x_execorr_codehigh <dbl>, v2exbribe_codehigh <dbl>,
 #> #   v2excrptps_codehigh <dbl>, v2lgcrrpt_codehigh <dbl>,
 #> #   v2jucorrdc_codehigh <dbl>, v2mecorrpt_codehigh <dbl>,
-#> #   GW_startdate <date>, GW_enddate <date>, GWc <chr>, region <chr>,
-#> #   continent <chr>, lon <dbl>, lat <dbl>, microstate <lgl>,
-#> #   in_GW_system <lgl>
+#> #   GW_startdate <date>, GW_enddate <date>, GWc <chr>,
+#> #   extended_region <chr>, extended_continent <chr>, microstate <lgl>,
+#> #   lat <dbl>, lon <dbl>, in_GW_system <lgl>
 ```
 
 And here we extract variables that refer to civil society, including "external" ones bundled with the dataset but not produced by the V-Dem project itself:
@@ -117,7 +124,7 @@ civil_society
 #>  9       Afghanistan              36                  AFG  1908
 #> 10       Afghanistan              36                  AFG  1909
 #> # ... with 17,594 more rows, and 139 more variables:
-#> #   GW_country_name <chr>, GWn <dbl>, historical_date <date>,
+#> #   extended_country_name <chr>, GWn <dbl>, historical_date <date>,
 #> #   codingstart <date>, gapstart <date>, gapend <date>, codingend <date>,
 #> #   vdem_cown <dbl>, v2clacfree <dbl>, v2clrelig <dbl>, v2cltort <dbl>,
 #> #   v2clkill <dbl>, v2cltrnslw <dbl>, v2clrspct <dbl>, v2clfmove <dbl>,
@@ -197,21 +204,21 @@ extract_vdem_filter(section == 1, !grepl("component index", label))
 #>  8       Afghanistan              36                  AFG  1907
 #>  9       Afghanistan              36                  AFG  1908
 #> 10       Afghanistan              36                  AFG  1909
-#> # ... with 17,594 more rows, and 38 more variables: GW_country_name <chr>,
-#> #   GWn <dbl>, historical_date <date>, codingstart <date>,
-#> #   gapstart <date>, gapend <date>, codingend <date>, vdem_cown <dbl>,
-#> #   v2x_polyarchy <dbl>, v2x_api <dbl>, v2x_mpi <dbl>, v2x_libdem <dbl>,
-#> #   v2x_partipdem <dbl>, v2x_delibdem <dbl>, v2x_egaldem <dbl>,
-#> #   v2x_polyarchy_codelow <dbl>, v2x_api_codelow <dbl>,
+#> # ... with 17,594 more rows, and 38 more variables:
+#> #   extended_country_name <chr>, GWn <dbl>, historical_date <date>,
+#> #   codingstart <date>, gapstart <date>, gapend <date>, codingend <date>,
+#> #   vdem_cown <dbl>, v2x_polyarchy <dbl>, v2x_api <dbl>, v2x_mpi <dbl>,
+#> #   v2x_libdem <dbl>, v2x_partipdem <dbl>, v2x_delibdem <dbl>,
+#> #   v2x_egaldem <dbl>, v2x_polyarchy_codelow <dbl>, v2x_api_codelow <dbl>,
 #> #   v2x_mpi_codelow <dbl>, v2x_libdem_codelow <dbl>,
 #> #   v2x_partipdem_codelow <dbl>, v2x_delibdem_codelow <dbl>,
 #> #   v2x_egaldem_codelow <dbl>, v2x_polyarchy_codehigh <dbl>,
 #> #   v2x_api_codehigh <dbl>, v2x_mpi_codehigh <dbl>,
 #> #   v2x_libdem_codehigh <dbl>, v2x_partipdem_codehigh <dbl>,
 #> #   v2x_delibdem_codehigh <dbl>, v2x_egaldem_codehigh <dbl>,
-#> #   GW_startdate <date>, GW_enddate <date>, GWc <chr>, region <chr>,
-#> #   continent <chr>, lon <dbl>, lat <dbl>, microstate <lgl>,
-#> #   in_GW_system <lgl>
+#> #   GW_startdate <date>, GW_enddate <date>, GWc <chr>,
+#> #   extended_region <chr>, extended_continent <chr>, microstate <lgl>,
+#> #   lat <dbl>, lon <dbl>, in_GW_system <lgl>
 ```
 
 And then you can easily use the data for your analyses or to make pretty pictures:

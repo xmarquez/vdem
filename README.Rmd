@@ -1,7 +1,5 @@
 ---
-output:
-  md_document:
-    variant: markdown_github
+output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -33,7 +31,11 @@ devtools::install_github("xmarquez/vdem")
 library(vdem)
 ```
 
+## Accessing the VDem dataset
+
 You can access the entire V-Dem dataset by typing `VDem_plus`. (Access documentation on the dataset by typing `?VDem_plus`, or typing `vdem_codebook` to access the codebook as a data frame.). 
+
+## Extracting specific variables by label, section number, etc.
 
 The V-Dem dataset is pretty big; including external variables and identifiers, it has ```r nrow(VDem_plus)``` rows and ```r length(names(VDem_plus))``` columns, which takes up a lot of memory and can be confusing to work with. This package thus makes available the function `extract_vdem`, which allows you to extract a subset of these variables meeting specific criteria. For example, you can just extract the main democracy indices (described in section 1 of the codebook) as follows:
 
@@ -45,9 +47,11 @@ main_indices <- extract_vdem(section_number = 1)
 main_indices
 ```
 
+
 The function `extract_vdem` always returns a `tibble` with all the identifiers in the dataset (country name, id, year, COW code, etc.) plus the requested variables. (You will note that this table includes a couple of identifiers I added, providing information about the membership of the country-year in the [Gleditsch-Ward](http://privatewww.essex.ac.uk/~ksg/statelist.html) state system membership list). You can also specify whether you want the measures of uncertainty included in the dataset (`_codehigh` and `_codelow` confidence interval extremes) returned, or whether certain variable types (e.g., ordinal-scale variables) should be excluded.
 
 It is possible to extract variables whose labels mention certain words. For example, you can extract all the variables that mention "corruption" in the codebook labels:
+
 
 ```{r}
 corruption_vars <- extract_vdem(label_pattern = "corrupt")

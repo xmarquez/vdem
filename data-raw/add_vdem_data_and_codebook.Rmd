@@ -20,25 +20,54 @@ path <- "../../../Data/Country_Year_V-Dem_other_STATA_v7.1/Country_Year_V-Dem_ot
 
 First we read the VDem data, version 7, plus the external variables.
 
-```{r reading_data}
+```{r reading_data, results = 'asis'}
 
 VDem_plus <- haven::read_dta(paste0(path, "V-Dem-DS-CY+Others-v7.1.dta")) %>%
   as_tibble()
 
 VDem_plus <- VDem_plus %>%
   mutate(country_name = if_else(country_id == 196, "Sao Tome and Principe", country_name)) %>%
-  CountryYear::country_year_coder(country_name, year, COWcode, code_type ="cow")
+  democracyData::country_year_coder(country_name, 
+                                    year,
+                                    include_in_output = c("extended_country_name", "GWn", "cown", 
+                                                        "GW_startdate", "GW_enddate", "GWc", 
+                                                        "extended_region","extended_continent", 
+                                                        "microstate", "lat", "lon", "in_GW_system"),
+                                    match_type = "country")
+```
 
+```{r}
 mlr::summarizeColumns(VDem_plus) 
 
+library(printr)
+
 VDem_plus <- VDem_plus %>%
-  select(country_name:year, GW_country_name, GWn, everything()) %>%
+  select(country_name:year, extended_country_name, GWn, everything()) %>%
   rename(vdem_country_name = country_name,
          vdem_country_id = country_id,
          vdem_country_text_id = country_text_id,
-         vdem_cown = COWcode,
-         GW_startdate = startdate,
-         GW_enddate = enddate)
+         vdem_cown = COWcode)
+
+VDem_plus %>% 
+  filter(cown %in% c(255, 260, 265) | vdem_cown %in% c(255, 260, 265) ) %>% 
+  group_by(vdem_country_name, GWn, cown, vdem_cown) %>% 
+  summarise(min(year), max(year))
+
+VDem_plus %>% 
+  filter(cown %in% 815:818 | vdem_cown %in% 815:818 ) %>% 
+  group_by(vdem_country_name, GWn, cown, vdem_cown, extended_country_name) %>% 
+  summarise(min(year), max(year))
+
+VDem_plus %>% 
+  filter(cown %in% 342:347 | vdem_cown %in% 342:347 ) %>% 
+  group_by(vdem_country_name, GWn, cown, vdem_cown, extended_country_name) %>% 
+  summarise(min(year), max(year))
+
+VDem_plus %>% 
+  group_by(vdem_country_name, GWn, cown, vdem_cown, extended_country_name) %>% 
+  summarise(min(year), max(year)) %>%
+  group_by(GWn) %>%
+  filter(n() > 1)
 
 devtools::use_data(VDem_plus, overwrite = TRUE)
 
