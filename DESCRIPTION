@@ -1,7 +1,7 @@
 Package: vdem
 Type: Package
 Title: Contains the Varieties of Democracy (V-Dem) Dataset v. 7.1
-Version: 0.1.0
+Version: 0.1.1
 Description: Contains the Varieties of Democracy (V-Dem) Dataset v. 7.1 plus external variables, 
   the codebook in data frame format, and some functions to ease the extraction of vdem data.
 Authors@R: person("Xavier", "Marquez", role=c("aut", "cre"),

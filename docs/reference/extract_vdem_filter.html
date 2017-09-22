@@ -143,7 +143,7 @@ identifiers, plus the desired variables.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># All in section 1 of the codebook except component indexes</span>
-<span class='fu'>extract_vdem_filter</span>(<span class='no'>section</span> <span class='kw'>==</span> <span class='fl'>1</span>, !<span class='fu'>grepl</span>(<span class='st'>"component index"</span>, <span class='no'>label</span>))</div><div class='output co'>#&gt; # A tibble: 17,604 x 42
+<span class='fu'>extract_vdem_filter</span>(<span class='no'>section</span> <span class='kw'>==</span> <span class='fl'>1</span>, !<span class='fu'>grepl</span>(<span class='st'>"component index"</span>, <span class='no'>label</span>))</div><div class='output co'>#&gt; # A tibble: 17,604 x 43
 #&gt;    vdem_country_name vdem_country_id vdem_country_text_id  year
 #&gt;                &lt;chr&gt;           &lt;dbl&gt;                &lt;chr&gt; &lt;dbl&gt;
 #&gt;  1       Afghanistan              36                  AFG  1900
@@ -156,11 +156,11 @@ identifiers, plus the desired variables.</p>
 #&gt;  8       Afghanistan              36                  AFG  1907
 #&gt;  9       Afghanistan              36                  AFG  1908
 #&gt; 10       Afghanistan              36                  AFG  1909
-#&gt; # ... with 17,594 more rows, and 38 more variables:
+#&gt; # ... with 17,594 more rows, and 39 more variables:
 #&gt; #   extended_country_name &lt;chr&gt;, GWn &lt;dbl&gt;, historical_date &lt;date&gt;,
 #&gt; #   codingstart &lt;date&gt;, gapstart &lt;date&gt;, gapend &lt;date&gt;, codingend &lt;date&gt;,
-#&gt; #   vdem_cown &lt;dbl&gt;, v2x_polyarchy &lt;dbl&gt;, v2x_api &lt;dbl&gt;, v2x_mpi &lt;dbl&gt;,
-#&gt; #   v2x_libdem &lt;dbl&gt;, v2x_partipdem &lt;dbl&gt;, v2x_delibdem &lt;dbl&gt;,
+#&gt; #   vdem_cown &lt;dbl&gt;, cown &lt;int&gt;, v2x_polyarchy &lt;dbl&gt;, v2x_api &lt;dbl&gt;,
+#&gt; #   v2x_mpi &lt;dbl&gt;, v2x_libdem &lt;dbl&gt;, v2x_partipdem &lt;dbl&gt;, v2x_delibdem &lt;dbl&gt;,
 #&gt; #   v2x_egaldem &lt;dbl&gt;, v2x_polyarchy_codelow &lt;dbl&gt;, v2x_api_codelow &lt;dbl&gt;,
 #&gt; #   v2x_mpi_codelow &lt;dbl&gt;, v2x_libdem_codelow &lt;dbl&gt;,
 #&gt; #   v2x_partipdem_codelow &lt;dbl&gt;, v2x_delibdem_codelow &lt;dbl&gt;,
@@ -170,7 +170,7 @@ identifiers, plus the desired variables.</p>
 #&gt; #   v2x_egaldem_codehigh &lt;dbl&gt;, GW_startdate &lt;date&gt;, GW_enddate &lt;date&gt;,
 #&gt; #   GWc &lt;chr&gt;, extended_region &lt;chr&gt;, extended_continent &lt;chr&gt;,
 #&gt; #   microstate &lt;lgl&gt;, lat &lt;dbl&gt;, lon &lt;dbl&gt;, in_GW_system &lt;lgl&gt;</div><div class='input'><span class='co'># All variables inclued in release 2 of the dataset</span>
-<span class='fu'>extract_vdem_filter</span>(<span class='fu'>grepl</span>(<span class='st'>"2(,|$)"</span>, <span class='no'>data_release</span>))</div><div class='output co'>#&gt; # A tibble: 17,604 x 793
+<span class='fu'>extract_vdem_filter</span>(<span class='fu'>grepl</span>(<span class='st'>"2(,|$)"</span>, <span class='no'>data_release</span>))</div><div class='output co'>#&gt; # A tibble: 17,604 x 794
 #&gt;    vdem_country_name vdem_country_id vdem_country_text_id  year
 #&gt;                &lt;chr&gt;           &lt;dbl&gt;                &lt;chr&gt; &lt;dbl&gt;
 #&gt;  1       Afghanistan              36                  AFG  1900
@@ -183,12 +183,12 @@ identifiers, plus the desired variables.</p>
 #&gt;  8       Afghanistan              36                  AFG  1907
 #&gt;  9       Afghanistan              36                  AFG  1908
 #&gt; 10       Afghanistan              36                  AFG  1909
-#&gt; # ... with 17,594 more rows, and 789 more variables:
+#&gt; # ... with 17,594 more rows, and 790 more variables:
 #&gt; #   extended_country_name &lt;chr&gt;, GWn &lt;dbl&gt;, historical_date &lt;date&gt;,
 #&gt; #   codingstart &lt;date&gt;, gapstart &lt;date&gt;, gapend &lt;date&gt;, codingend &lt;date&gt;,
-#&gt; #   vdem_cown &lt;dbl&gt;, v2x_polyarchy &lt;dbl&gt;, v2x_libdem &lt;dbl&gt;, v2x_liberal &lt;dbl&gt;,
-#&gt; #   v2x_partipdem &lt;dbl&gt;, v2x_partip &lt;dbl&gt;, v2x_delibdem &lt;dbl&gt;,
-#&gt; #   v2xdl_delib &lt;dbl&gt;, v2x_egaldem &lt;dbl&gt;, v2x_egal &lt;dbl&gt;,
+#&gt; #   vdem_cown &lt;dbl&gt;, cown &lt;int&gt;, v2x_polyarchy &lt;dbl&gt;, v2x_libdem &lt;dbl&gt;,
+#&gt; #   v2x_liberal &lt;dbl&gt;, v2x_partipdem &lt;dbl&gt;, v2x_partip &lt;dbl&gt;,
+#&gt; #   v2x_delibdem &lt;dbl&gt;, v2xdl_delib &lt;dbl&gt;, v2x_egaldem &lt;dbl&gt;, v2x_egal &lt;dbl&gt;,
 #&gt; #   v2x_frassoc_thick &lt;dbl&gt;, v2x_freexp &lt;dbl&gt;, v2xme_altinf &lt;dbl&gt;,
 #&gt; #   v2x_suffr &lt;dbl&gt;, v2xel_frefair &lt;dbl&gt;, v2x_elecoff &lt;dbl&gt;, v2xcl_rol &lt;dbl&gt;,
 #&gt; #   v2x_jucon &lt;dbl&gt;, v2xlg_legcon &lt;dbl&gt;, v2x_cspart &lt;dbl&gt;, v2xdd_dd &lt;dbl&gt;,
@@ -210,7 +210,7 @@ identifiers, plus the desired variables.</p>
 #&gt; #   v2psbars &lt;dbl&gt;, v2psoppaut &lt;dbl&gt;, v2psorgs &lt;dbl&gt;, v2psprbrch &lt;dbl&gt;,
 #&gt; #   v2psprlnks &lt;dbl&gt;, v2psplats &lt;dbl&gt;, v2pscnslnl &lt;dbl&gt;, v2pscohesv &lt;dbl&gt;,
 #&gt; #   v2pscomprg &lt;dbl&gt;, v2psnatpar &lt;dbl&gt;, v2pssunpar &lt;dbl&gt;, v2ddlexpl &lt;dbl&gt;,
-#&gt; #   v2ddlevpl &lt;dbl+lbl&gt;, v2ddpartpl &lt;dbl&gt;, v2ddapprpl &lt;dbl&gt;, ...</div></pre>
+#&gt; #   v2ddlevpl &lt;dbl+lbl&gt;, v2ddpartpl &lt;dbl&gt;, ...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -68,12 +68,12 @@ in the 12-31 date."}
 country first was formally sovereign (according to international law). For
 detailed information, please see to VDem Country Coding Units."}
 
-\item{gapstart}{"Time periods when a country does not fulfill V-Dem’s
+\item{gapstart}{"Time periods when a country does not fulfill V-Dem's
 coding period criteria are not coded. The date that indicates the gap start
 is the last date coded before the gap. For more details about V-Dem country
 coding periods, please see to V-Dem Country Coding Units."}
 
-\item{gapend}{"The periods of when a country does not fulfill V-Dem’s
+\item{gapend}{"The periods of when a country does not fulfill V-Dem's
 coding period criteria are not coded. The date that indicates the gap end
 is the first date coded after the gap. For more details about V-Dem country
 coding periods, please see to V-Dem Country Coding Units."}
@@ -88,9 +88,12 @@ differs from Gleditsch and Ward's numeric country code in a few cases.}
 \item{cown}{The Correlates of War numeric country code (from the 2016
 version of the COW state list). Note that this differs from Gleditsch and
 Ward's numeric country code in a few cases; it also differs from
-\code{vdem_cown} in one case (Germany 1949-1989), where \code{vdem_cown} incorrectly
-has 255 (it should be 260). Column added by Xavier Marquez to the original
-V-Dem dataset. }
+\code{vdem_cown} in a couple of cases: Germany 1949-1989, where \code{vdem_cown}
+incorrectly has 255 (it should be 260), Czech Republic 1918-1992 (coded as
+Czechoslovakia, 315 in \code{cown}, 316 in \code{vdem_cown}), South Korea 1900-1908
+(coded as Korea, 730, where \code{vdem_cown} has 732), and Yemen 1918-1989
+(coded as 678, where \code{vdem_cown} has 679). Column added by Xavier Marquez
+to the original V-Dem dataset.}
 
 \item{GWc}{Gleditsch and Ward's alphabetic country code, from the Gleditsch
 and Ward list of independent states. For details, see Gleditsch and Ward
@@ -98,10 +101,10 @@ and Ward list of independent states. For details, see Gleditsch and Ward
 \url{http://privatewww.essex.ac.uk/~ksg/statelist.html}. Column added by
 Xavier Marquez to the original V-Dem dataset.}
 
-\item{region}{Region. Column added by Xavier Marquez to the original V-Dem
+\item{extended_region}{Region. Column added by Xavier Marquez to the original V-Dem
 dataset.}
 
-\item{continent}{Continent. Column added by Xavier Marquez to the original
+\item{extended_continent}{Continent. Column added by Xavier Marquez to the original
 V-Dem dataset.}
 
 \item{GW_startdate}{The entry date of the state into the international

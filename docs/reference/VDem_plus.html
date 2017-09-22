@@ -137,11 +137,11 @@ in the 12-31 date."</p></dd>
     <dt>codingstart</dt><dd><p>"V-Dem country coding starts in 1900, or from when a
 country first was formally sovereign (according to international law). For
 detailed information, please see to VDem Country Coding Units."</p></dd>
-    <dt>gapstart</dt><dd><p>"Time periods when a country does not fulfill V-Dem’s
+    <dt>gapstart</dt><dd><p>"Time periods when a country does not fulfill V-Dem's
 coding period criteria are not coded. The date that indicates the gap start
 is the last date coded before the gap. For more details about V-Dem country
 coding periods, please see to V-Dem Country Coding Units."</p></dd>
-    <dt>gapend</dt><dd><p>"The periods of when a country does not fulfill V-Dem’s
+    <dt>gapend</dt><dd><p>"The periods of when a country does not fulfill V-Dem's
 coding period criteria are not coded. The date that indicates the gap end
 is the first date coded after the gap. For more details about V-Dem country
 coding periods, please see to V-Dem Country Coding Units."</p></dd>
@@ -153,17 +153,20 @@ differs from Gleditsch and Ward's numeric country code in a few cases.</p></dd>
     <dt>cown</dt><dd><p>The Correlates of War numeric country code (from the 2016
 version of the COW state list). Note that this differs from Gleditsch and
 Ward's numeric country code in a few cases; it also differs from
-<code>vdem_cown</code> in one case (Germany 1949-1989), where <code>vdem_cown</code> incorrectly
-has 255 (it should be 260). Column added by Xavier Marquez to the original
-V-Dem dataset.</p></dd>
+<code>vdem_cown</code> in a couple of cases: Germany 1949-1989, where <code>vdem_cown</code>
+incorrectly has 255 (it should be 260), Czech Republic 1918-1992 (coded as
+Czechoslovakia, 315 in <code>cown</code>, 316 in <code>vdem_cown</code>), South Korea 1900-1908
+(coded as Korea, 730, where <code>vdem_cown</code> has 732), and Yemen 1918-1989
+(coded as 678, where <code>vdem_cown</code> has 679). Column added by Xavier Marquez
+to the original V-Dem dataset.</p></dd>
     <dt>GWc</dt><dd><p>Gleditsch and Ward's alphabetic country code, from the Gleditsch
 and Ward list of independent states. For details, see Gleditsch and Ward
 1999. The list can be found at
 <a href='http://privatewww.essex.ac.uk/~ksg/statelist.html'>http://privatewww.essex.ac.uk/~ksg/statelist.html</a>. Column added by
 Xavier Marquez to the original V-Dem dataset.</p></dd>
-    <dt>region</dt><dd><p>Region. Column added by Xavier Marquez to the original V-Dem
+    <dt>extended_region</dt><dd><p>Region. Column added by Xavier Marquez to the original V-Dem
 dataset.</p></dd>
-    <dt>continent</dt><dd><p>Continent. Column added by Xavier Marquez to the original
+    <dt>extended_continent</dt><dd><p>Continent. Column added by Xavier Marquez to the original
 V-Dem dataset.</p></dd>
     <dt>GW_startdate</dt><dd><p>The entry date of the state into the international
 system (usually the date of independence, though there can be more than

@@ -81,7 +81,7 @@
 main_indices &lt;-<span class="st"> </span><span class="kw"><a href="reference/extract_vdem.html">extract_vdem</a></span>(<span class="dt">section_number =</span> <span class="dv">1</span>)
 
 main_indices
-<span class="co">#&gt; # A tibble: 17,604 x 54</span>
+<span class="co">#&gt; # A tibble: 17,604 x 55</span>
 <span class="co">#&gt;    vdem_country_name vdem_country_id vdem_country_text_id  year</span>
 <span class="co">#&gt;                &lt;chr&gt;           &lt;dbl&gt;                &lt;chr&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt;  1       Afghanistan              36                  AFG  1900</span>
@@ -94,32 +94,33 @@ main_indices
 <span class="co">#&gt;  8       Afghanistan              36                  AFG  1907</span>
 <span class="co">#&gt;  9       Afghanistan              36                  AFG  1908</span>
 <span class="co">#&gt; 10       Afghanistan              36                  AFG  1909</span>
-<span class="co">#&gt; # ... with 17,594 more rows, and 50 more variables:</span>
+<span class="co">#&gt; # ... with 17,594 more rows, and 51 more variables:</span>
 <span class="co">#&gt; #   extended_country_name &lt;chr&gt;, GWn &lt;dbl&gt;, historical_date &lt;date&gt;,</span>
 <span class="co">#&gt; #   codingstart &lt;date&gt;, gapstart &lt;date&gt;, gapend &lt;date&gt;, codingend &lt;date&gt;,</span>
-<span class="co">#&gt; #   vdem_cown &lt;dbl&gt;, v2x_polyarchy &lt;dbl&gt;, v2x_api &lt;dbl&gt;, v2x_mpi &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_libdem &lt;dbl&gt;, v2x_liberal &lt;dbl&gt;, v2x_partipdem &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_partip &lt;dbl&gt;, v2x_delibdem &lt;dbl&gt;, v2xdl_delib &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_egaldem &lt;dbl&gt;, v2x_egal &lt;dbl&gt;, v2x_polyarchy_codelow &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_api_codelow &lt;dbl&gt;, v2x_mpi_codelow &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_libdem_codelow &lt;dbl&gt;, v2x_liberal_codelow &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_partipdem_codelow &lt;dbl&gt;, v2x_partip_codelow &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_delibdem_codelow &lt;dbl&gt;, v2xdl_delib_codelow &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_egaldem_codelow &lt;dbl&gt;, v2x_egal_codelow &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_polyarchy_codehigh &lt;dbl&gt;, v2x_api_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_mpi_codehigh &lt;dbl&gt;, v2x_libdem_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_liberal_codehigh &lt;dbl&gt;, v2x_partipdem_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_partip_codehigh &lt;dbl&gt;, v2x_delibdem_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2xdl_delib_codehigh &lt;dbl&gt;, v2x_egaldem_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_egal_codehigh &lt;dbl&gt;, GW_startdate &lt;date&gt;, GW_enddate &lt;date&gt;,</span>
-<span class="co">#&gt; #   GWc &lt;chr&gt;, extended_region &lt;chr&gt;, extended_continent &lt;chr&gt;,</span>
-<span class="co">#&gt; #   microstate &lt;lgl&gt;, lat &lt;dbl&gt;, lon &lt;dbl&gt;, in_GW_system &lt;lgl&gt;</span></code></pre></div>
+<span class="co">#&gt; #   vdem_cown &lt;dbl&gt;, cown &lt;int&gt;, v2x_polyarchy &lt;dbl&gt;, v2x_api &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_mpi &lt;dbl&gt;, v2x_libdem &lt;dbl&gt;, v2x_liberal &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_partipdem &lt;dbl&gt;, v2x_partip &lt;dbl&gt;, v2x_delibdem &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2xdl_delib &lt;dbl&gt;, v2x_egaldem &lt;dbl&gt;, v2x_egal &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_polyarchy_codelow &lt;dbl&gt;, v2x_api_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_mpi_codelow &lt;dbl&gt;, v2x_libdem_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_liberal_codelow &lt;dbl&gt;, v2x_partipdem_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_partip_codelow &lt;dbl&gt;, v2x_delibdem_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2xdl_delib_codelow &lt;dbl&gt;, v2x_egaldem_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_egal_codelow &lt;dbl&gt;, v2x_polyarchy_codehigh &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_api_codehigh &lt;dbl&gt;, v2x_mpi_codehigh &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_libdem_codehigh &lt;dbl&gt;, v2x_liberal_codehigh &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_partipdem_codehigh &lt;dbl&gt;, v2x_partip_codehigh &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_delibdem_codehigh &lt;dbl&gt;, v2xdl_delib_codehigh &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_egaldem_codehigh &lt;dbl&gt;, v2x_egal_codehigh &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   GW_startdate &lt;date&gt;, GW_enddate &lt;date&gt;, GWc &lt;chr&gt;,</span>
+<span class="co">#&gt; #   extended_region &lt;chr&gt;, extended_continent &lt;chr&gt;, microstate &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   lat &lt;dbl&gt;, lon &lt;dbl&gt;, in_GW_system &lt;lgl&gt;</span></code></pre></div>
 <p>The function <code>extract_vdem</code> always returns a <code>tibble</code> with all the identifiers in the dataset (country name, id, year, COW code, etc.) plus the requested variables. (You will note that this table includes a couple of identifiers I added, providing information about the membership of the country-year in the <a href="http://privatewww.essex.ac.uk/~ksg/statelist.html">Gleditsch-Ward</a> state system membership list). You can also specify whether you want the measures of uncertainty included in the dataset (<code>_codehigh</code> and <code>_codelow</code> confidence interval extremes) returned, or whether certain variable types (e.g., ordinal-scale variables) should be excluded.</p>
 <p>It is possible to extract variables whose labels mention certain words. For example, you can extract all the variables that mention “corruption” in the codebook labels:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">corruption_vars &lt;-<span class="st"> </span><span class="kw"><a href="reference/extract_vdem.html">extract_vdem</a></span>(<span class="dt">label_pattern =</span> <span class="st">"corrupt"</span>)
 
 corruption_vars
-<span class="co">#&gt; # A tibble: 17,604 x 45</span>
+<span class="co">#&gt; # A tibble: 17,604 x 46</span>
 <span class="co">#&gt;    vdem_country_name vdem_country_id vdem_country_text_id  year</span>
 <span class="co">#&gt;                &lt;chr&gt;           &lt;dbl&gt;                &lt;chr&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt;  1       Afghanistan              36                  AFG  1900</span>
@@ -132,27 +133,27 @@ corruption_vars
 <span class="co">#&gt;  8       Afghanistan              36                  AFG  1907</span>
 <span class="co">#&gt;  9       Afghanistan              36                  AFG  1908</span>
 <span class="co">#&gt; 10       Afghanistan              36                  AFG  1909</span>
-<span class="co">#&gt; # ... with 17,594 more rows, and 41 more variables:</span>
+<span class="co">#&gt; # ... with 17,594 more rows, and 42 more variables:</span>
 <span class="co">#&gt; #   extended_country_name &lt;chr&gt;, GWn &lt;dbl&gt;, historical_date &lt;date&gt;,</span>
 <span class="co">#&gt; #   codingstart &lt;date&gt;, gapstart &lt;date&gt;, gapend &lt;date&gt;, codingend &lt;date&gt;,</span>
-<span class="co">#&gt; #   vdem_cown &lt;dbl&gt;, v2x_corr &lt;dbl&gt;, v2x_pubcorr &lt;dbl&gt;, v2x_execorr &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2exbribe &lt;dbl&gt;, v2excrptps &lt;dbl&gt;, v2lgcrrpt &lt;dbl&gt;, v2jucorrdc &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2mecorrpt &lt;dbl&gt;, v2x_corr_codelow &lt;dbl&gt;, v2x_pubcorr_codelow &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_execorr_codelow &lt;dbl&gt;, v2exbribe_codelow &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2excrptps_codelow &lt;dbl&gt;, v2lgcrrpt_codelow &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2jucorrdc_codelow &lt;dbl&gt;, v2mecorrpt_codelow &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_corr_codehigh &lt;dbl&gt;, v2x_pubcorr_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_execorr_codehigh &lt;dbl&gt;, v2exbribe_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2excrptps_codehigh &lt;dbl&gt;, v2lgcrrpt_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2jucorrdc_codehigh &lt;dbl&gt;, v2mecorrpt_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   GW_startdate &lt;date&gt;, GW_enddate &lt;date&gt;, GWc &lt;chr&gt;,</span>
-<span class="co">#&gt; #   extended_region &lt;chr&gt;, extended_continent &lt;chr&gt;, microstate &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   lat &lt;dbl&gt;, lon &lt;dbl&gt;, in_GW_system &lt;lgl&gt;</span></code></pre></div>
+<span class="co">#&gt; #   vdem_cown &lt;dbl&gt;, cown &lt;int&gt;, v2x_corr &lt;dbl&gt;, v2x_pubcorr &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_execorr &lt;dbl&gt;, v2exbribe &lt;dbl&gt;, v2excrptps &lt;dbl&gt;, v2lgcrrpt &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2jucorrdc &lt;dbl&gt;, v2mecorrpt &lt;dbl&gt;, v2x_corr_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_pubcorr_codelow &lt;dbl&gt;, v2x_execorr_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2exbribe_codelow &lt;dbl&gt;, v2excrptps_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2lgcrrpt_codelow &lt;dbl&gt;, v2jucorrdc_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2mecorrpt_codelow &lt;dbl&gt;, v2x_corr_codehigh &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_pubcorr_codehigh &lt;dbl&gt;, v2x_execorr_codehigh &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2exbribe_codehigh &lt;dbl&gt;, v2excrptps_codehigh &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2lgcrrpt_codehigh &lt;dbl&gt;, v2jucorrdc_codehigh &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2mecorrpt_codehigh &lt;dbl&gt;, GW_startdate &lt;date&gt;, GW_enddate &lt;date&gt;,</span>
+<span class="co">#&gt; #   GWc &lt;chr&gt;, extended_region &lt;chr&gt;, extended_continent &lt;chr&gt;,</span>
+<span class="co">#&gt; #   microstate &lt;lgl&gt;, lat &lt;dbl&gt;, lon &lt;dbl&gt;, in_GW_system &lt;lgl&gt;</span></code></pre></div>
 <p>And here we extract variables that refer to civil society, including “external” ones bundled with the dataset but not produced by the V-Dem project itself:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">civil_society &lt;-<span class="st"> </span><span class="kw"><a href="reference/extract_vdem.html">extract_vdem</a></span>(<span class="dt">name_pattern =</span> <span class="st">"^v2cl"</span>, <span class="dt">label_pattern =</span> <span class="st">"civil society"</span>, <span class="dt">include_external =</span> <span class="ot">TRUE</span>)
 
 civil_society
-<span class="co">#&gt; # A tibble: 17,604 x 143</span>
+<span class="co">#&gt; # A tibble: 17,604 x 144</span>
 <span class="co">#&gt;    vdem_country_name vdem_country_id vdem_country_text_id  year</span>
 <span class="co">#&gt;                &lt;chr&gt;           &lt;dbl&gt;                &lt;chr&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt;  1       Afghanistan              36                  AFG  1900</span>
@@ -165,31 +166,31 @@ civil_society
 <span class="co">#&gt;  8       Afghanistan              36                  AFG  1907</span>
 <span class="co">#&gt;  9       Afghanistan              36                  AFG  1908</span>
 <span class="co">#&gt; 10       Afghanistan              36                  AFG  1909</span>
-<span class="co">#&gt; # ... with 17,594 more rows, and 139 more variables:</span>
+<span class="co">#&gt; # ... with 17,594 more rows, and 140 more variables:</span>
 <span class="co">#&gt; #   extended_country_name &lt;chr&gt;, GWn &lt;dbl&gt;, historical_date &lt;date&gt;,</span>
 <span class="co">#&gt; #   codingstart &lt;date&gt;, gapstart &lt;date&gt;, gapend &lt;date&gt;, codingend &lt;date&gt;,</span>
-<span class="co">#&gt; #   vdem_cown &lt;dbl&gt;, v2clacfree &lt;dbl&gt;, v2clrelig &lt;dbl&gt;, v2cltort &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clkill &lt;dbl&gt;, v2cltrnslw &lt;dbl&gt;, v2clrspct &lt;dbl&gt;, v2clfmove &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2cldmovem &lt;dbl&gt;, v2cldmovew &lt;dbl&gt;, v2cldiscm &lt;dbl&gt;, v2cldiscw &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clslavem &lt;dbl&gt;, v2clslavef &lt;dbl&gt;, v2clstown &lt;dbl&gt;, v2clprptym &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clprptyw &lt;dbl&gt;, v2clacjstm &lt;dbl&gt;, v2clacjstw &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clacjust &lt;dbl&gt;, v2clsocgrp &lt;dbl&gt;, v2clrgunev &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clsnlpct &lt;dbl&gt;, v2clrgstch_0 &lt;dbl&gt;, v2clrgstch_1 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgstch_10 &lt;dbl&gt;, v2clrgstch_11 &lt;dbl&gt;, v2clrgstch_12 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgstch_13 &lt;dbl&gt;, v2clrgstch_14 &lt;dbl&gt;, v2clrgstch_15 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgstch_16 &lt;dbl&gt;, v2clrgstch_17 &lt;dbl&gt;, v2clrgstch_18 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgstch_19 &lt;dbl&gt;, v2clrgstch_2 &lt;dbl&gt;, v2clrgstch_20 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgstch_21 &lt;dbl&gt;, v2clrgstch_3 &lt;dbl&gt;, v2clrgstch_4 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgstch_5 &lt;dbl&gt;, v2clrgstch_6 &lt;dbl&gt;, v2clrgstch_7 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgstch_8 &lt;dbl&gt;, v2clrgstch_9 &lt;dbl&gt;, v2clrgwkch_0 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgwkch_1 &lt;dbl&gt;, v2clrgwkch_10 &lt;dbl&gt;, v2clrgwkch_11 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgwkch_12 &lt;dbl&gt;, v2clrgwkch_13 &lt;dbl&gt;, v2clrgwkch_14 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgwkch_15 &lt;dbl&gt;, v2clrgwkch_16 &lt;dbl&gt;, v2clrgwkch_17 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgwkch_18 &lt;dbl&gt;, v2clrgwkch_19 &lt;dbl&gt;, v2clrgwkch_2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgwkch_20 &lt;dbl&gt;, v2clrgwkch_21 &lt;dbl&gt;, v2clrgwkch_3 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgwkch_4 &lt;dbl&gt;, v2clrgwkch_5 &lt;dbl&gt;, v2clrgwkch_6 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clrgwkch_7 &lt;dbl&gt;, v2clrgwkch_8 &lt;dbl&gt;, v2clrgwkch_9 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2clacfree_codelow &lt;dbl&gt;, v2clrelig_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   vdem_cown &lt;dbl&gt;, cown &lt;int&gt;, v2clacfree &lt;dbl&gt;, v2clrelig &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2cltort &lt;dbl&gt;, v2clkill &lt;dbl&gt;, v2cltrnslw &lt;dbl&gt;, v2clrspct &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clfmove &lt;dbl&gt;, v2cldmovem &lt;dbl&gt;, v2cldmovew &lt;dbl&gt;, v2cldiscm &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2cldiscw &lt;dbl&gt;, v2clslavem &lt;dbl&gt;, v2clslavef &lt;dbl&gt;, v2clstown &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clprptym &lt;dbl&gt;, v2clprptyw &lt;dbl&gt;, v2clacjstm &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clacjstw &lt;dbl&gt;, v2clacjust &lt;dbl&gt;, v2clsocgrp &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgunev &lt;dbl&gt;, v2clsnlpct &lt;dbl&gt;, v2clrgstch_0 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgstch_1 &lt;dbl&gt;, v2clrgstch_10 &lt;dbl&gt;, v2clrgstch_11 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgstch_12 &lt;dbl&gt;, v2clrgstch_13 &lt;dbl&gt;, v2clrgstch_14 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgstch_15 &lt;dbl&gt;, v2clrgstch_16 &lt;dbl&gt;, v2clrgstch_17 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgstch_18 &lt;dbl&gt;, v2clrgstch_19 &lt;dbl&gt;, v2clrgstch_2 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgstch_20 &lt;dbl&gt;, v2clrgstch_21 &lt;dbl&gt;, v2clrgstch_3 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgstch_4 &lt;dbl&gt;, v2clrgstch_5 &lt;dbl&gt;, v2clrgstch_6 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgstch_7 &lt;dbl&gt;, v2clrgstch_8 &lt;dbl&gt;, v2clrgstch_9 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgwkch_0 &lt;dbl&gt;, v2clrgwkch_1 &lt;dbl&gt;, v2clrgwkch_10 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgwkch_11 &lt;dbl&gt;, v2clrgwkch_12 &lt;dbl&gt;, v2clrgwkch_13 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgwkch_14 &lt;dbl&gt;, v2clrgwkch_15 &lt;dbl&gt;, v2clrgwkch_16 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgwkch_17 &lt;dbl&gt;, v2clrgwkch_18 &lt;dbl&gt;, v2clrgwkch_19 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgwkch_2 &lt;dbl&gt;, v2clrgwkch_20 &lt;dbl&gt;, v2clrgwkch_21 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgwkch_3 &lt;dbl&gt;, v2clrgwkch_4 &lt;dbl&gt;, v2clrgwkch_5 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgwkch_6 &lt;dbl&gt;, v2clrgwkch_7 &lt;dbl&gt;, v2clrgwkch_8 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2clrgwkch_9 &lt;dbl&gt;, v2clacfree_codelow &lt;dbl&gt;, v2clrelig_codelow &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   v2cltort_codelow &lt;dbl&gt;, v2clkill_codelow &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   v2cltrnslw_codelow &lt;dbl&gt;, v2clrspct_codelow &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   v2clfmove_codelow &lt;dbl&gt;, v2cldmovem_codelow &lt;dbl&gt;,</span>
@@ -201,7 +202,7 @@ civil_society
 <span class="co">#&gt; #   v2clacjust_codelow &lt;dbl&gt;, v2clsocgrp_codelow &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   v2clrgunev_codelow &lt;dbl&gt;, v2clsnlpct_codelow &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   v2clacfree_codehigh &lt;dbl&gt;, v2clrelig_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2cltort_codehigh &lt;dbl&gt;, v2clkill_codehigh &lt;dbl&gt;, ...</span></code></pre></div>
+<span class="co">#&gt; #   v2cltort_codehigh &lt;dbl&gt;, ...</span></code></pre></div>
 <p>You can use any regular expression you like to search over the variable names or label names. See <code><a href="reference/extract_vdem.html">?extract_vdem</a></code> for all options.</p>
 <p>If you need more control over the variables extracted, or need to learn more about them, you can use the codebook:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vdem_codebook
@@ -224,7 +225,7 @@ civil_society
 <span class="co">#&gt; #   cross_coder &lt;chr&gt;, source &lt;chr&gt;, data_release &lt;chr&gt;, citation &lt;chr&gt;</span></code></pre></div>
 <p>You can use the function <code>extract_vdem_filter</code> to exercise finer control over the extraction process. For example, here we extract all variables listed in section 1 of the codebook except component indices:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/extract_vdem_filter.html">extract_vdem_filter</a></span>(section ==<span class="st"> </span><span class="dv">1</span>, !<span class="kw">grepl</span>(<span class="st">"component index"</span>, label))
-<span class="co">#&gt; # A tibble: 17,604 x 42</span>
+<span class="co">#&gt; # A tibble: 17,604 x 43</span>
 <span class="co">#&gt;    vdem_country_name vdem_country_id vdem_country_text_id  year</span>
 <span class="co">#&gt;                &lt;chr&gt;           &lt;dbl&gt;                &lt;chr&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt;  1       Afghanistan              36                  AFG  1900</span>
@@ -237,21 +238,21 @@ civil_society
 <span class="co">#&gt;  8       Afghanistan              36                  AFG  1907</span>
 <span class="co">#&gt;  9       Afghanistan              36                  AFG  1908</span>
 <span class="co">#&gt; 10       Afghanistan              36                  AFG  1909</span>
-<span class="co">#&gt; # ... with 17,594 more rows, and 38 more variables:</span>
+<span class="co">#&gt; # ... with 17,594 more rows, and 39 more variables:</span>
 <span class="co">#&gt; #   extended_country_name &lt;chr&gt;, GWn &lt;dbl&gt;, historical_date &lt;date&gt;,</span>
 <span class="co">#&gt; #   codingstart &lt;date&gt;, gapstart &lt;date&gt;, gapend &lt;date&gt;, codingend &lt;date&gt;,</span>
-<span class="co">#&gt; #   vdem_cown &lt;dbl&gt;, v2x_polyarchy &lt;dbl&gt;, v2x_api &lt;dbl&gt;, v2x_mpi &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_libdem &lt;dbl&gt;, v2x_partipdem &lt;dbl&gt;, v2x_delibdem &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_egaldem &lt;dbl&gt;, v2x_polyarchy_codelow &lt;dbl&gt;, v2x_api_codelow &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_mpi_codelow &lt;dbl&gt;, v2x_libdem_codelow &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_partipdem_codelow &lt;dbl&gt;, v2x_delibdem_codelow &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_egaldem_codelow &lt;dbl&gt;, v2x_polyarchy_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_api_codehigh &lt;dbl&gt;, v2x_mpi_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_libdem_codehigh &lt;dbl&gt;, v2x_partipdem_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   v2x_delibdem_codehigh &lt;dbl&gt;, v2x_egaldem_codehigh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   GW_startdate &lt;date&gt;, GW_enddate &lt;date&gt;, GWc &lt;chr&gt;,</span>
-<span class="co">#&gt; #   extended_region &lt;chr&gt;, extended_continent &lt;chr&gt;, microstate &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   lat &lt;dbl&gt;, lon &lt;dbl&gt;, in_GW_system &lt;lgl&gt;</span></code></pre></div>
+<span class="co">#&gt; #   vdem_cown &lt;dbl&gt;, cown &lt;int&gt;, v2x_polyarchy &lt;dbl&gt;, v2x_api &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_mpi &lt;dbl&gt;, v2x_libdem &lt;dbl&gt;, v2x_partipdem &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_delibdem &lt;dbl&gt;, v2x_egaldem &lt;dbl&gt;, v2x_polyarchy_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_api_codelow &lt;dbl&gt;, v2x_mpi_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_libdem_codelow &lt;dbl&gt;, v2x_partipdem_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_delibdem_codelow &lt;dbl&gt;, v2x_egaldem_codelow &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_polyarchy_codehigh &lt;dbl&gt;, v2x_api_codehigh &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_mpi_codehigh &lt;dbl&gt;, v2x_libdem_codehigh &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_partipdem_codehigh &lt;dbl&gt;, v2x_delibdem_codehigh &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   v2x_egaldem_codehigh &lt;dbl&gt;, GW_startdate &lt;date&gt;, GW_enddate &lt;date&gt;,</span>
+<span class="co">#&gt; #   GWc &lt;chr&gt;, extended_region &lt;chr&gt;, extended_continent &lt;chr&gt;,</span>
+<span class="co">#&gt; #   microstate &lt;lgl&gt;, lat &lt;dbl&gt;, lon &lt;dbl&gt;, in_GW_system &lt;lgl&gt;</span></code></pre></div>
 <p>And then you can easily use the data for your analyses or to make pretty pictures:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 <span class="co">#&gt; Loading tidyverse: ggplot2</span>

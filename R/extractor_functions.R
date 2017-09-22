@@ -61,7 +61,21 @@ extract_vdem <- function(section_number = NULL,
                          include_external = FALSE) {
 
   vars_section <- vars_name <- vars_label <- NULL
-  vdem_country_name <- vdem_cown <- GW_startdate <- in_GW_system <- NULL
+  identifiers <- c("vdem_country_name", "vdem_country_id",
+                   "vdem_country_text_id", "year",
+                   "extended_country_name",
+                   "GWn", "historical_date",
+                   "codingstart", "gapstart",
+                   "gapend", "codingend",
+                   "vdem_cown", "cown")
+
+  additional_vars <- c("GW_startdate",
+                       "GW_enddate", "GWc",
+                       "extended_region",
+                       "extended_continent",
+                       "microstate",
+                       "lat" , "lon",
+                       "in_GW_system")
 
 
 
@@ -103,7 +117,7 @@ extract_vdem <- function(section_number = NULL,
   vars <- unique(c(vars_section, vars_name, vars_label))
 
   vdem::VDem_plus %>%
-    select(vdem_country_name:vdem_cown, vars, GW_startdate:in_GW_system)
+    select(identifiers, vars, additional_vars)
 
 }
 
@@ -154,13 +168,28 @@ extract_vdem_filter <- function(...,
                          include_nr = FALSE,
                          include_external = FALSE) {
 
-  vdem_country_name <- vdem_cown <- GW_startdate <- in_GW_system <- name <- NULL
+  identifiers <- c("vdem_country_name", "vdem_country_id",
+                   "vdem_country_text_id", "year",
+                   "extended_country_name",
+                   "GWn", "historical_date",
+                   "codingstart", "gapstart",
+                   "gapend", "codingend",
+                   "vdem_cown", "cown")
+
+  additional_vars <- c("GW_startdate",
+                       "GW_enddate", "GWc",
+                       "extended_region",
+                       "extended_continent",
+                       "microstate",
+                       "lat" , "lon",
+                       "in_GW_system")
+
 
   filters <- quos(...)
 
   vars <- vdem::vdem_codebook %>%
     filter(UQS(filters)) %>%
-    pull(name)
+    pull("name")
 
   vars <- collect_vars(vars,
                        include_uncertainty,
@@ -171,7 +200,7 @@ extract_vdem_filter <- function(...,
                        include_external)
 
   vdem::VDem_plus %>%
-    select(vdem_country_name:vdem_cown, vars, GW_startdate:in_GW_system)
+    select(identifiers, vars, additional_vars)
 
 
 }
@@ -185,12 +214,11 @@ extract_by_section <- function(section_number,
                                include_nr,
                                include_external) {
 
-  name <- NULL
   section <- NULL
 
   vars <- vdem::vdem_codebook %>%
     filter(section %in% section_number) %>%
-    pull(name)
+    pull("name")
 
 
   collect_vars(vars,
@@ -215,7 +243,7 @@ extract_by_name <- function(name_pattern,
 
   vars <- vdem::vdem_codebook %>%
     filter(stringr::str_detect(name, name_pattern)) %>%
-    pull(name)
+    pull("name")
 
 
   collect_vars(vars,
@@ -236,12 +264,11 @@ extract_by_label <- function(label_pattern,
                             include_nr,
                             include_external) {
 
-  name <- NULL
   label <- NULL
 
   vars <- vdem::vdem_codebook %>%
     filter(stringr::str_detect(label, label_pattern)) %>%
-    pull(name)
+    pull("name")
 
 
   collect_vars(vars,

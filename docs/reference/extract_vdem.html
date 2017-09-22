@@ -156,7 +156,7 @@ identifiers, plus the desired variables.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Main democracy indexes</span>
-<span class='fu'>extract_vdem</span>(<span class='kw'>section_number</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; # A tibble: 17,604 x 54
+<span class='fu'>extract_vdem</span>(<span class='kw'>section_number</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; # A tibble: 17,604 x 55
 #&gt;    vdem_country_name vdem_country_id vdem_country_text_id  year
 #&gt;                &lt;chr&gt;           &lt;dbl&gt;                &lt;chr&gt; &lt;dbl&gt;
 #&gt;  1       Afghanistan              36                  AFG  1900
@@ -169,14 +169,14 @@ identifiers, plus the desired variables.</p>
 #&gt;  8       Afghanistan              36                  AFG  1907
 #&gt;  9       Afghanistan              36                  AFG  1908
 #&gt; 10       Afghanistan              36                  AFG  1909
-#&gt; # ... with 17,594 more rows, and 50 more variables:
+#&gt; # ... with 17,594 more rows, and 51 more variables:
 #&gt; #   extended_country_name &lt;chr&gt;, GWn &lt;dbl&gt;, historical_date &lt;date&gt;,
 #&gt; #   codingstart &lt;date&gt;, gapstart &lt;date&gt;, gapend &lt;date&gt;, codingend &lt;date&gt;,
-#&gt; #   vdem_cown &lt;dbl&gt;, v2x_polyarchy &lt;dbl&gt;, v2x_api &lt;dbl&gt;, v2x_mpi &lt;dbl&gt;,
-#&gt; #   v2x_libdem &lt;dbl&gt;, v2x_liberal &lt;dbl&gt;, v2x_partipdem &lt;dbl&gt;, v2x_partip &lt;dbl&gt;,
-#&gt; #   v2x_delibdem &lt;dbl&gt;, v2xdl_delib &lt;dbl&gt;, v2x_egaldem &lt;dbl&gt;, v2x_egal &lt;dbl&gt;,
-#&gt; #   v2x_polyarchy_codelow &lt;dbl&gt;, v2x_api_codelow &lt;dbl&gt;, v2x_mpi_codelow &lt;dbl&gt;,
-#&gt; #   v2x_libdem_codelow &lt;dbl&gt;, v2x_liberal_codelow &lt;dbl&gt;,
+#&gt; #   vdem_cown &lt;dbl&gt;, cown &lt;int&gt;, v2x_polyarchy &lt;dbl&gt;, v2x_api &lt;dbl&gt;,
+#&gt; #   v2x_mpi &lt;dbl&gt;, v2x_libdem &lt;dbl&gt;, v2x_liberal &lt;dbl&gt;, v2x_partipdem &lt;dbl&gt;,
+#&gt; #   v2x_partip &lt;dbl&gt;, v2x_delibdem &lt;dbl&gt;, v2xdl_delib &lt;dbl&gt;, v2x_egaldem &lt;dbl&gt;,
+#&gt; #   v2x_egal &lt;dbl&gt;, v2x_polyarchy_codelow &lt;dbl&gt;, v2x_api_codelow &lt;dbl&gt;,
+#&gt; #   v2x_mpi_codelow &lt;dbl&gt;, v2x_libdem_codelow &lt;dbl&gt;, v2x_liberal_codelow &lt;dbl&gt;,
 #&gt; #   v2x_partipdem_codelow &lt;dbl&gt;, v2x_partip_codelow &lt;dbl&gt;,
 #&gt; #   v2x_delibdem_codelow &lt;dbl&gt;, v2xdl_delib_codelow &lt;dbl&gt;,
 #&gt; #   v2x_egaldem_codelow &lt;dbl&gt;, v2x_egal_codelow &lt;dbl&gt;,
@@ -188,7 +188,7 @@ identifiers, plus the desired variables.</p>
 #&gt; #   v2x_egal_codehigh &lt;dbl&gt;, GW_startdate &lt;date&gt;, GW_enddate &lt;date&gt;, GWc &lt;chr&gt;,
 #&gt; #   extended_region &lt;chr&gt;, extended_continent &lt;chr&gt;, microstate &lt;lgl&gt;,
 #&gt; #   lat &lt;dbl&gt;, lon &lt;dbl&gt;, in_GW_system &lt;lgl&gt;</div><div class='input'><span class='co'># Mid-level indexes, no measures of uncertainty</span>
-<span class='fu'>extract_vdem</span>(<span class='kw'>section_number</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>include_uncertainty</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; # A tibble: 17,604 x 67
+<span class='fu'>extract_vdem</span>(<span class='kw'>section_number</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>include_uncertainty</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; # A tibble: 17,604 x 68
 #&gt;    vdem_country_name vdem_country_id vdem_country_text_id  year
 #&gt;                &lt;chr&gt;           &lt;dbl&gt;                &lt;chr&gt; &lt;dbl&gt;
 #&gt;  1       Afghanistan              36                  AFG  1900
@@ -201,17 +201,18 @@ identifiers, plus the desired variables.</p>
 #&gt;  8       Afghanistan              36                  AFG  1907
 #&gt;  9       Afghanistan              36                  AFG  1908
 #&gt; 10       Afghanistan              36                  AFG  1909
-#&gt; # ... with 17,594 more rows, and 63 more variables:
+#&gt; # ... with 17,594 more rows, and 64 more variables:
 #&gt; #   extended_country_name &lt;chr&gt;, GWn &lt;dbl&gt;, historical_date &lt;date&gt;,
 #&gt; #   codingstart &lt;date&gt;, gapstart &lt;date&gt;, gapend &lt;date&gt;, codingend &lt;date&gt;,
-#&gt; #   vdem_cown &lt;dbl&gt;, v2x_EDcomp_thick &lt;dbl&gt;, v2x_frassoc_thick &lt;dbl&gt;,
-#&gt; #   v2x_freexp_thick &lt;dbl&gt;, v2x_freexp &lt;dbl&gt;, v2xme_altinf &lt;dbl&gt;,
-#&gt; #   v2x_suffr &lt;dbl&gt;, v2xel_frefair &lt;dbl&gt;, v2x_elecoff &lt;dbl&gt;, v2xcl_rol &lt;dbl&gt;,
-#&gt; #   v2x_jucon &lt;dbl&gt;, v2xlg_legcon &lt;dbl&gt;, v2x_cspart &lt;dbl&gt;, v2xdd_dd &lt;dbl&gt;,
-#&gt; #   v2xdd_cic &lt;dbl&gt;, v2xdd_toc &lt;dbl&gt;, v2xel_locelec &lt;dbl&gt;, v2xel_regelec &lt;dbl&gt;,
-#&gt; #   v2xeg_eqprotec &lt;dbl&gt;, v2xeg_eqaccess &lt;dbl&gt;, v2xeg_eqdr &lt;dbl&gt;,
-#&gt; #   v2xcs_ccsi &lt;dbl&gt;, v2xps_party &lt;dbl&gt;, v2x_gender &lt;dbl&gt;, v2x_gencl &lt;dbl&gt;,
-#&gt; #   v2x_gencs &lt;dbl&gt;, v2x_genpp &lt;dbl&gt;, v2x_elecreg &lt;dbl&gt;, v2xex_elecreg &lt;dbl&gt;,
+#&gt; #   vdem_cown &lt;dbl&gt;, cown &lt;int&gt;, v2x_EDcomp_thick &lt;dbl&gt;,
+#&gt; #   v2x_frassoc_thick &lt;dbl&gt;, v2x_freexp_thick &lt;dbl&gt;, v2x_freexp &lt;dbl&gt;,
+#&gt; #   v2xme_altinf &lt;dbl&gt;, v2x_suffr &lt;dbl&gt;, v2xel_frefair &lt;dbl&gt;,
+#&gt; #   v2x_elecoff &lt;dbl&gt;, v2xcl_rol &lt;dbl&gt;, v2x_jucon &lt;dbl&gt;, v2xlg_legcon &lt;dbl&gt;,
+#&gt; #   v2x_cspart &lt;dbl&gt;, v2xdd_dd &lt;dbl&gt;, v2xdd_cic &lt;dbl&gt;, v2xdd_toc &lt;dbl&gt;,
+#&gt; #   v2xel_locelec &lt;dbl&gt;, v2xel_regelec &lt;dbl&gt;, v2xeg_eqprotec &lt;dbl&gt;,
+#&gt; #   v2xeg_eqaccess &lt;dbl&gt;, v2xeg_eqdr &lt;dbl&gt;, v2xcs_ccsi &lt;dbl&gt;,
+#&gt; #   v2xps_party &lt;dbl&gt;, v2x_gender &lt;dbl&gt;, v2x_gencl &lt;dbl&gt;, v2x_gencs &lt;dbl&gt;,
+#&gt; #   v2x_genpp &lt;dbl&gt;, v2x_elecreg &lt;dbl&gt;, v2xex_elecreg &lt;dbl&gt;,
 #&gt; #   v2xlg_elecreg &lt;dbl&gt;, v2xel_elecparl &lt;dbl&gt;, v2xlg_leginter &lt;dbl&gt;,
 #&gt; #   v2xel_elecpres &lt;dbl&gt;, v2x_hosinter &lt;dbl&gt;, v2x_corr &lt;dbl&gt;,
 #&gt; #   v2x_pubcorr &lt;dbl&gt;, v2x_execorr &lt;dbl&gt;, v2x_divparctrl &lt;dbl&gt;,
@@ -221,7 +222,7 @@ identifiers, plus the desired variables.</p>
 #&gt; #   GW_enddate &lt;date&gt;, GWc &lt;chr&gt;, extended_region &lt;chr&gt;,
 #&gt; #   extended_continent &lt;chr&gt;, microstate &lt;lgl&gt;, lat &lt;dbl&gt;, lon &lt;dbl&gt;,
 #&gt; #   in_GW_system &lt;lgl&gt;</div><div class='input'><span class='co'># All indexes about corruption</span>
-<span class='fu'>extract_vdem</span>(<span class='kw'>label_pattern</span> <span class='kw'>=</span> <span class='st'>"corrupt"</span>)</div><div class='output co'>#&gt; # A tibble: 17,604 x 45
+<span class='fu'>extract_vdem</span>(<span class='kw'>label_pattern</span> <span class='kw'>=</span> <span class='st'>"corrupt"</span>)</div><div class='output co'>#&gt; # A tibble: 17,604 x 46
 #&gt;    vdem_country_name vdem_country_id vdem_country_text_id  year
 #&gt;                &lt;chr&gt;           &lt;dbl&gt;                &lt;chr&gt; &lt;dbl&gt;
 #&gt;  1       Afghanistan              36                  AFG  1900
@@ -234,14 +235,14 @@ identifiers, plus the desired variables.</p>
 #&gt;  8       Afghanistan              36                  AFG  1907
 #&gt;  9       Afghanistan              36                  AFG  1908
 #&gt; 10       Afghanistan              36                  AFG  1909
-#&gt; # ... with 17,594 more rows, and 41 more variables:
+#&gt; # ... with 17,594 more rows, and 42 more variables:
 #&gt; #   extended_country_name &lt;chr&gt;, GWn &lt;dbl&gt;, historical_date &lt;date&gt;,
 #&gt; #   codingstart &lt;date&gt;, gapstart &lt;date&gt;, gapend &lt;date&gt;, codingend &lt;date&gt;,
-#&gt; #   vdem_cown &lt;dbl&gt;, v2x_corr &lt;dbl&gt;, v2x_pubcorr &lt;dbl&gt;, v2x_execorr &lt;dbl&gt;,
-#&gt; #   v2exbribe &lt;dbl&gt;, v2excrptps &lt;dbl&gt;, v2lgcrrpt &lt;dbl&gt;, v2jucorrdc &lt;dbl&gt;,
-#&gt; #   v2mecorrpt &lt;dbl&gt;, v2x_corr_codelow &lt;dbl&gt;, v2x_pubcorr_codelow &lt;dbl&gt;,
-#&gt; #   v2x_execorr_codelow &lt;dbl&gt;, v2exbribe_codelow &lt;dbl&gt;,
-#&gt; #   v2excrptps_codelow &lt;dbl&gt;, v2lgcrrpt_codelow &lt;dbl&gt;,
+#&gt; #   vdem_cown &lt;dbl&gt;, cown &lt;int&gt;, v2x_corr &lt;dbl&gt;, v2x_pubcorr &lt;dbl&gt;,
+#&gt; #   v2x_execorr &lt;dbl&gt;, v2exbribe &lt;dbl&gt;, v2excrptps &lt;dbl&gt;, v2lgcrrpt &lt;dbl&gt;,
+#&gt; #   v2jucorrdc &lt;dbl&gt;, v2mecorrpt &lt;dbl&gt;, v2x_corr_codelow &lt;dbl&gt;,
+#&gt; #   v2x_pubcorr_codelow &lt;dbl&gt;, v2x_execorr_codelow &lt;dbl&gt;,
+#&gt; #   v2exbribe_codelow &lt;dbl&gt;, v2excrptps_codelow &lt;dbl&gt;, v2lgcrrpt_codelow &lt;dbl&gt;,
 #&gt; #   v2jucorrdc_codelow &lt;dbl&gt;, v2mecorrpt_codelow &lt;dbl&gt;,
 #&gt; #   v2x_corr_codehigh &lt;dbl&gt;, v2x_pubcorr_codehigh &lt;dbl&gt;,
 #&gt; #   v2x_execorr_codehigh &lt;dbl&gt;, v2exbribe_codehigh &lt;dbl&gt;,
@@ -250,7 +251,7 @@ identifiers, plus the desired variables.</p>
 #&gt; #   GW_enddate &lt;date&gt;, GWc &lt;chr&gt;, extended_region &lt;chr&gt;,
 #&gt; #   extended_continent &lt;chr&gt;, microstate &lt;lgl&gt;, lat &lt;dbl&gt;, lon &lt;dbl&gt;,
 #&gt; #   in_GW_system &lt;lgl&gt;</div><div class='input'><span class='co'># All indexes about elections, include external indexes</span>
-<span class='fu'>extract_vdem</span>(<span class='kw'>label_pattern</span> <span class='kw'>=</span> <span class='st'>"elect"</span>, <span class='kw'>include_external</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 17,604 x 180
+<span class='fu'>extract_vdem</span>(<span class='kw'>label_pattern</span> <span class='kw'>=</span> <span class='st'>"elect"</span>, <span class='kw'>include_external</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 17,604 x 181
 #&gt;    vdem_country_name vdem_country_id vdem_country_text_id  year
 #&gt;                &lt;chr&gt;           &lt;dbl&gt;                &lt;chr&gt; &lt;dbl&gt;
 #&gt;  1       Afghanistan              36                  AFG  1900
@@ -263,10 +264,10 @@ identifiers, plus the desired variables.</p>
 #&gt;  8       Afghanistan              36                  AFG  1907
 #&gt;  9       Afghanistan              36                  AFG  1908
 #&gt; 10       Afghanistan              36                  AFG  1909
-#&gt; # ... with 17,594 more rows, and 176 more variables:
+#&gt; # ... with 17,594 more rows, and 177 more variables:
 #&gt; #   extended_country_name &lt;chr&gt;, GWn &lt;dbl&gt;, historical_date &lt;date&gt;,
 #&gt; #   codingstart &lt;date&gt;, gapstart &lt;date&gt;, gapend &lt;date&gt;, codingend &lt;date&gt;,
-#&gt; #   vdem_cown &lt;dbl&gt;, v2xel_frefair &lt;dbl&gt;, v2xex_elecreg &lt;dbl&gt;,
+#&gt; #   vdem_cown &lt;dbl&gt;, cown &lt;int&gt;, v2xel_frefair &lt;dbl&gt;, v2xex_elecreg &lt;dbl&gt;,
 #&gt; #   v2xlg_elecreg &lt;dbl&gt;, v2xel_elecparl &lt;dbl&gt;, v2xel_elecpres &lt;dbl&gt;,
 #&gt; #   v2x_hosinter &lt;dbl&gt;, v2x_hosabort &lt;dbl&gt;, v2x_legabort &lt;dbl&gt;,
 #&gt; #   v2elmulpar_ex &lt;dbl&gt;, v2elmulpar_leg &lt;dbl&gt;, v2elrgstry_ex &lt;dbl&gt;,
@@ -294,8 +295,8 @@ identifiers, plus the desired variables.</p>
 #&gt; #   e_v2xel_frefair_5C &lt;dbl&gt;, e_electedper &lt;dbl&gt;, e_SR11CHEAT &lt;dbl&gt;,
 #&gt; #   e_SR13VIOL &lt;dbl&gt;, e_SR12CAP &lt;dbl&gt;, e_competition &lt;dbl&gt;,
 #&gt; #   e_multiparty_elections &lt;dbl&gt;, e_exselec &lt;dbl&gt;, e_legselec &lt;dbl&gt;,
-#&gt; #   e_ellonmpe &lt;dbl&gt;, v2elsnlfc_0 &lt;dbl&gt;, ...</div><div class='input'><span class='co'># All civil liberties indexes, include original scale prediction</span>
-<span class='fu'>extract_vdem</span>(<span class='kw'>name_pattern</span> <span class='kw'>=</span> <span class='st'>"^v2cl"</span>, <span class='kw'>include_osp</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 17,604 x 194
+#&gt; #   e_ellonmpe &lt;dbl&gt;, ...</div><div class='input'><span class='co'># All civil liberties indexes, include original scale prediction</span>
+<span class='fu'>extract_vdem</span>(<span class='kw'>name_pattern</span> <span class='kw'>=</span> <span class='st'>"^v2cl"</span>, <span class='kw'>include_osp</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 17,604 x 195
 #&gt;    vdem_country_name vdem_country_id vdem_country_text_id  year
 #&gt;                &lt;chr&gt;           &lt;dbl&gt;                &lt;chr&gt; &lt;dbl&gt;
 #&gt;  1       Afghanistan              36                  AFG  1900
@@ -308,12 +309,12 @@ identifiers, plus the desired variables.</p>
 #&gt;  8       Afghanistan              36                  AFG  1907
 #&gt;  9       Afghanistan              36                  AFG  1908
 #&gt; 10       Afghanistan              36                  AFG  1909
-#&gt; # ... with 17,594 more rows, and 190 more variables:
+#&gt; # ... with 17,594 more rows, and 191 more variables:
 #&gt; #   extended_country_name &lt;chr&gt;, GWn &lt;dbl&gt;, historical_date &lt;date&gt;,
 #&gt; #   codingstart &lt;date&gt;, gapstart &lt;date&gt;, gapend &lt;date&gt;, codingend &lt;date&gt;,
-#&gt; #   vdem_cown &lt;dbl&gt;, v2clacfree &lt;dbl&gt;, v2clacfree_osp &lt;dbl&gt;, v2clrelig &lt;dbl&gt;,
-#&gt; #   v2clrelig_osp &lt;dbl&gt;, v2cltort &lt;dbl&gt;, v2cltort_osp &lt;dbl&gt;, v2clkill &lt;dbl&gt;,
-#&gt; #   v2clkill_osp &lt;dbl&gt;, v2cltrnslw &lt;dbl&gt;, v2cltrnslw_osp &lt;dbl&gt;,
+#&gt; #   vdem_cown &lt;dbl&gt;, cown &lt;int&gt;, v2clacfree &lt;dbl&gt;, v2clacfree_osp &lt;dbl&gt;,
+#&gt; #   v2clrelig &lt;dbl&gt;, v2clrelig_osp &lt;dbl&gt;, v2cltort &lt;dbl&gt;, v2cltort_osp &lt;dbl&gt;,
+#&gt; #   v2clkill &lt;dbl&gt;, v2clkill_osp &lt;dbl&gt;, v2cltrnslw &lt;dbl&gt;, v2cltrnslw_osp &lt;dbl&gt;,
 #&gt; #   v2clrspct &lt;dbl&gt;, v2clrspct_osp &lt;dbl&gt;, v2clfmove &lt;dbl&gt;, v2clfmove_osp &lt;dbl&gt;,
 #&gt; #   v2cldmovem &lt;dbl&gt;, v2cldmovem_osp &lt;dbl&gt;, v2cldmovew &lt;dbl&gt;,
 #&gt; #   v2cldmovew_osp &lt;dbl&gt;, v2cldiscm &lt;dbl&gt;, v2cldiscm_osp &lt;dbl&gt;,
@@ -340,9 +341,8 @@ identifiers, plus the desired variables.</p>
 #&gt; #   v2clrgwkch_3 &lt;dbl&gt;, v2clrgwkch_4 &lt;dbl&gt;, v2clrgwkch_5 &lt;dbl&gt;,
 #&gt; #   v2clrgwkch_6 &lt;dbl&gt;, v2clrgwkch_7 &lt;dbl&gt;, v2clrgwkch_8 &lt;dbl&gt;,
 #&gt; #   v2clrgwkch_9 &lt;dbl&gt;, v2clacfree_codelow &lt;dbl&gt;, v2clacfree_osp_codelow &lt;dbl&gt;,
-#&gt; #   v2clrelig_codelow &lt;dbl&gt;, v2clrelig_osp_codelow &lt;dbl&gt;,
-#&gt; #   v2cltort_codelow &lt;dbl&gt;, ...</div><div class='input'><span class='co'># Combine section and label patterns</span>
-<span class='fu'>extract_vdem</span>(<span class='kw'>section_number</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>label_pattern</span> <span class='kw'>=</span> <span class='st'>"elect"</span>, <span class='kw'>include_external</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 17,604 x 213
+#&gt; #   v2clrelig_codelow &lt;dbl&gt;, v2clrelig_osp_codelow &lt;dbl&gt;, ...</div><div class='input'><span class='co'># Combine section and label patterns</span>
+<span class='fu'>extract_vdem</span>(<span class='kw'>section_number</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>label_pattern</span> <span class='kw'>=</span> <span class='st'>"elect"</span>, <span class='kw'>include_external</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 17,604 x 214
 #&gt;    vdem_country_name vdem_country_id vdem_country_text_id  year
 #&gt;                &lt;chr&gt;           &lt;dbl&gt;                &lt;chr&gt; &lt;dbl&gt;
 #&gt;  1       Afghanistan              36                  AFG  1900
@@ -355,14 +355,14 @@ identifiers, plus the desired variables.</p>
 #&gt;  8       Afghanistan              36                  AFG  1907
 #&gt;  9       Afghanistan              36                  AFG  1908
 #&gt; 10       Afghanistan              36                  AFG  1909
-#&gt; # ... with 17,594 more rows, and 209 more variables:
+#&gt; # ... with 17,594 more rows, and 210 more variables:
 #&gt; #   extended_country_name &lt;chr&gt;, GWn &lt;dbl&gt;, historical_date &lt;date&gt;,
 #&gt; #   codingstart &lt;date&gt;, gapstart &lt;date&gt;, gapend &lt;date&gt;, codingend &lt;date&gt;,
-#&gt; #   vdem_cown &lt;dbl&gt;, v2x_polyarchy &lt;dbl&gt;, v2x_api &lt;dbl&gt;, v2x_mpi &lt;dbl&gt;,
-#&gt; #   v2x_libdem &lt;dbl&gt;, v2x_liberal &lt;dbl&gt;, v2x_partipdem &lt;dbl&gt;, v2x_partip &lt;dbl&gt;,
-#&gt; #   v2x_delibdem &lt;dbl&gt;, v2xdl_delib &lt;dbl&gt;, v2x_egaldem &lt;dbl&gt;, v2x_egal &lt;dbl&gt;,
-#&gt; #   v2x_polyarchy_codelow &lt;dbl&gt;, v2x_api_codelow &lt;dbl&gt;, v2x_mpi_codelow &lt;dbl&gt;,
-#&gt; #   v2x_libdem_codelow &lt;dbl&gt;, v2x_liberal_codelow &lt;dbl&gt;,
+#&gt; #   vdem_cown &lt;dbl&gt;, cown &lt;int&gt;, v2x_polyarchy &lt;dbl&gt;, v2x_api &lt;dbl&gt;,
+#&gt; #   v2x_mpi &lt;dbl&gt;, v2x_libdem &lt;dbl&gt;, v2x_liberal &lt;dbl&gt;, v2x_partipdem &lt;dbl&gt;,
+#&gt; #   v2x_partip &lt;dbl&gt;, v2x_delibdem &lt;dbl&gt;, v2xdl_delib &lt;dbl&gt;, v2x_egaldem &lt;dbl&gt;,
+#&gt; #   v2x_egal &lt;dbl&gt;, v2x_polyarchy_codelow &lt;dbl&gt;, v2x_api_codelow &lt;dbl&gt;,
+#&gt; #   v2x_mpi_codelow &lt;dbl&gt;, v2x_libdem_codelow &lt;dbl&gt;, v2x_liberal_codelow &lt;dbl&gt;,
 #&gt; #   v2x_partipdem_codelow &lt;dbl&gt;, v2x_partip_codelow &lt;dbl&gt;,
 #&gt; #   v2x_delibdem_codelow &lt;dbl&gt;, v2xdl_delib_codelow &lt;dbl&gt;,
 #&gt; #   v2x_egaldem_codelow &lt;dbl&gt;, v2x_egal_codelow &lt;dbl&gt;,
@@ -389,8 +389,7 @@ identifiers, plus the desired variables.</p>
 #&gt; #   v2elaccept_ex &lt;dbl&gt;, v2elaccept_leg &lt;dbl&gt;, v2elasmoff_ex &lt;dbl&gt;,
 #&gt; #   v2elasmoff_leg &lt;dbl&gt;, v2elprescumul &lt;dbl&gt;, v2elprescons &lt;dbl&gt;,
 #&gt; #   v2elvotlrg &lt;dbl&gt;, v2elvotsml &lt;dbl&gt;, v2ellocumul &lt;dbl&gt;, v2ellocons &lt;dbl&gt;,
-#&gt; #   v2elparlel &lt;dbl&gt;, v2elloelsy &lt;dbl&gt;, v2elloeldm &lt;dbl&gt;, v2elthresh &lt;dbl&gt;,
-#&gt; #   v2ellovtlg &lt;dbl&gt;, ...</div></pre>
+#&gt; #   v2elparlel &lt;dbl&gt;, v2elloelsy &lt;dbl&gt;, v2elloeldm &lt;dbl&gt;, v2elthresh &lt;dbl&gt;, ...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

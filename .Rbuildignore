@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 ^data-raw$
 ^README\.Rmd$
+^README\.html$
 ^README-.*\.png$
 ^\.travis\.yml$
-^D:\marquexa\Documents\Dropbox\R packages\vdem\docs$
+^docs$
