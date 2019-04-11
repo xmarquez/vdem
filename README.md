@@ -328,7 +328,7 @@ ggplot(data) +
 #> Warning: Removed 222 rows containing missing values (geom_path).
 ```
 
-![](README-unnamed-chunk-7-1.png)
+![](man/figures/unnamed-chunk-7-1.png)
 
 ``` r
 
@@ -378,4 +378,4 @@ ggplot(data) +
 #> Warning: Removed 222 rows containing missing values (geom_path).
 ```
 
-![](README-unnamed-chunk-8-1.png)
+![](man/figures/unnamed-chunk-8-1.png)
