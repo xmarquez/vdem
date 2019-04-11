@@ -6,8 +6,8 @@ tidyr
 readr
 purrr
 dplyr
-haven
-bindrcpp
-pdftools
 stringr
-printr
+forcats
+bindrcpp
+skimr
+pdftools

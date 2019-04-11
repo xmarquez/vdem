@@ -1,7 +1,7 @@
 #' Extracts parts of the V-Dem dataset by section number, name pattern, or label
 #' pattern
 #'
-#' Extracts variables in the V-Dem dataset (version 7.1), according to the
+#' Extracts variables in the V-Dem dataset (version 9), according to the
 #' section number in the codebook or a regular expression pattern matching the
 #' name or the label.
 #'
@@ -61,13 +61,8 @@ extract_vdem <- function(section_number = NULL,
                          include_external = FALSE) {
 
   vars_section <- vars_name <- vars_label <- NULL
-  identifiers <- c("vdem_country_name", "vdem_country_id",
-                   "vdem_country_text_id", "year",
-                   "extended_country_name",
-                   "GWn", "historical_date",
-                   "codingstart", "gapstart",
-                   "gapend", "codingend",
-                   "vdem_cown", "cown")
+  identifiers <- names(vdem::VDem_plus)[ which(names(vdem::VDem_plus)== "vdem_country_name"):which(names(vdem::VDem_plus)== "vdem_cown") ]
+
 
   additional_vars <- c("GW_startdate",
                        "GW_enddate", "GWc",
@@ -124,7 +119,7 @@ extract_vdem <- function(section_number = NULL,
 #' Extracts parts of the V-Dem dataset by passing a filter expression to
 #' [vdem_codebook]
 #'
-#' Extracts variables in the V-Dem dataset (version 7.1), by using a filter
+#' Extracts variables in the V-Dem dataset (version 9), by using a filter
 #' expression that is used to extract variable names from the V-Dem coddebook
 #' ([vdem_codebook])
 #'
@@ -168,13 +163,7 @@ extract_vdem_filter <- function(...,
                          include_nr = FALSE,
                          include_external = FALSE) {
 
-  identifiers <- c("vdem_country_name", "vdem_country_id",
-                   "vdem_country_text_id", "year",
-                   "extended_country_name",
-                   "GWn", "historical_date",
-                   "codingstart", "gapstart",
-                   "gapend", "codingend",
-                   "vdem_cown", "cown")
+  identifiers <- names(vdem::VDem_plus)[ which(names(vdem::VDem_plus)== "vdem_country_name"):which(names(vdem::VDem_plus)== "vdem_cown") ]
 
   additional_vars <- c("GW_startdate",
                        "GW_enddate", "GWc",

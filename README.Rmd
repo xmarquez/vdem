@@ -10,13 +10,13 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "man/figures/"
 )
 ```
 
 # vdem
 
-This package provides access to the [Varieties of Democracy (V-Dem) dataset, version 7.1](https://www.v-dem.net/en/data/data-version-7-1/). It includes the dataset's codebook as a data frame, which allows one to easily search for variables by label or other descriptors. And it also includes a couple of convenience functions, `extract_vdem` and `extract_vdem_filter`, to extract subsets of the dataset meeting particular criteria. 
+This package provides access to the [Varieties of Democracy (V-Dem) dataset, version 9](https://www.v-dem.net/en/data/data-version-9/). It includes the dataset's codebook as a data frame, which allows one to easily search for variables by label or other descriptors. And it also includes a couple of convenience functions, `extract_vdem` and `extract_vdem_filter`, to extract subsets of the dataset meeting particular criteria. 
 
 ## Installation
 
@@ -37,12 +37,12 @@ You can access the entire V-Dem dataset by typing `VDem_plus`. (Access documenta
 
 ## Extracting specific variables by label, section number, etc.
 
-The V-Dem dataset is pretty big; including external variables and identifiers, it has ```r nrow(VDem_plus)``` rows and ```r length(names(VDem_plus))``` columns, which takes up a lot of memory and can be confusing to work with. This package thus makes available the function `extract_vdem`, which allows you to extract a subset of these variables meeting specific criteria. For example, you can just extract the main democracy indices (described in section 1 of the codebook) as follows:
+The V-Dem dataset is pretty big; including external variables and identifiers, it has ```r nrow(VDem_plus)``` rows and ```r length(names(VDem_plus))``` columns, which takes up a lot of memory and can be confusing to work with. This package thus makes available the function `extract_vdem`, which allows you to extract a subset of these variables meeting specific criteria. For example, you can just extract the main democracy indices (described in section 2 of the codebook) as follows:
 
 ```{r example}
 library(vdem)
 
-main_indices <- extract_vdem(section_number = 1)
+main_indices <- extract_vdem(section_number = 2)
 
 main_indices
 ```
@@ -62,7 +62,9 @@ corruption_vars
 And here we extract variables that refer to civil society, including "external" ones bundled with the dataset but not produced by the V-Dem project itself:
 
 ```{r}
-civil_society <- extract_vdem(name_pattern = "^v2cl", label_pattern = "civil society", include_external = TRUE)
+civil_society <- extract_vdem(name_pattern = "^v2cl", 
+                              label_pattern = "civil society", 
+                              include_external = TRUE)
 
 civil_society
 ```
@@ -75,10 +77,10 @@ If you need more control over the variables extracted, or need to learn more abo
 vdem_codebook
 ```
 
-You can use the function `extract_vdem_filter` to exercise finer control over the extraction process. For example, here we extract all variables listed in section 1 of the codebook except component indices:
+You can use the function `extract_vdem_filter` to exercise finer control over the extraction process. For example, here we extract all variables listed in section 2 of the codebook except component indices:
 
 ```{r}
-extract_vdem_filter(section == 1, !grepl("component index", label))
+extract_vdem_filter(section == 2, !grepl("component index", label))
 ```
 
 And then you can easily use the data for your analyses or to make pretty pictures:
@@ -86,11 +88,11 @@ And then you can easily use the data for your analyses or to make pretty picture
 ```{r}
 library(tidyverse)
 
-data <- extract_vdem_filter(section == 1, !grepl("component index", label),
+data <- extract_vdem_filter(section == 2, !grepl("component index", label),
                             include_uncertainty = FALSE) %>%
   gather(index, index_value, v2x_polyarchy:v2x_egaldem) %>%
   select(vdem_country_name, vdem_country_id, year, index, index_value) %>%
-  left_join(extract_vdem_filter(section == 1, !grepl("component index", label),
+  left_join(extract_vdem_filter(section == 2, !grepl("component index", label),
                             include_uncertainty = FALSE, include_sd = TRUE) %>%
               gather(sd, sd_value, v2x_polyarchy_sd:v2x_egaldem_sd) %>% 
               select(-v2x_polyarchy:-v2x_egaldem) %>%
@@ -108,36 +110,36 @@ data <- extract_vdem_filter(section == 1, !grepl("component index", label),
             label = unique(label))
 
 library(ggrepel)  
-ggplot(data %>% filter(year > 1900)) +
+ggplot(data) +
   geom_line(aes(x = year, y = mean_index, color = label), show.legend = FALSE) +
   geom_ribbon(aes(x = year, ymin = pct_025, ymax = pct_975, group = label), 
               fill = "grey", alpha = 0.2) +
   geom_text_repel(data = data %>% 
-              filter(year == 2016),
+              filter(year == 2018),
             aes(x = year, y = mean_index, label = label, color = label), show.legend = FALSE) +
   theme_bw() +
     labs(y = "Avg. level of democracy\n(according to V-Dem main indices)",
          color = "", x = "",
-         title = "Average level of democracy in the world, 1900-2016",
-         subtitle = "Average over all countries in year for each index.\nEach index ranges from 0 = least democratic to 1 = most democratic.\nDotted lines indicate WWI, WWII, and the end of the Cold War.",
-         caption = "Data from V-Dem dataset, version 7.1") +
+         title = "Average level of democracy in the world, 1789-2018",
+         subtitle = "Average over all countries in year for each index.\nEach index ranges from 0 = least democratic to 1 = most democratic.\nDotted lines indicate WWI, WWII, and the end of the Cold War.\nYears from 1789 to 1900 reflect a smaller sample of countries from the historical V-Dem\nproject.",
+         caption = "Data from V-Dem dataset, version 9") +
   geom_vline(xintercept = c(1914, 1918, 1939, 1945, 1989), linetype = 3) +
-  coord_cartesian(xlim = c(1900, 2030))
+  coord_cartesian(xlim = c(1789, 2030))
 
 ```
 
 ```{r, fig.height=15}
 
-data <- extract_vdem_filter(section == 1, !grepl("component index", label),
+data <- extract_vdem_filter(section == 2, !grepl("component index", label),
                             include_uncertainty = FALSE) %>%
   gather(index, index_value, v2x_polyarchy:v2x_egaldem) %>%
   select(vdem_country_name, vdem_country_id, year, index, index_value) %>%
-  left_join(extract_vdem_filter(section == 1, !grepl("component index", label)) %>%
+  left_join(extract_vdem_filter(section == 2, !grepl("component index", label)) %>%
               gather(codelow, codelow_value, v2x_polyarchy_codelow:v2x_egaldem_codelow) %>% 
               select(-v2x_polyarchy:-v2x_egaldem) %>%
   select(vdem_country_name, vdem_country_id, year, codelow, codelow_value)) %>%
   filter(index == stringr::str_replace(codelow, "_codelow",""))  %>%
-  left_join(extract_vdem_filter(section == 1, !grepl("component index", label)) %>%
+  left_join(extract_vdem_filter(section == 2, !grepl("component index", label)) %>%
               gather(codehigh, codehigh_value, v2x_polyarchy_codehigh:v2x_egaldem_codehigh) %>% 
               select(-v2x_polyarchy:-v2x_egaldem) %>%
   select(vdem_country_name, vdem_country_id, year, codehigh, codehigh_value)) %>%
@@ -147,7 +149,7 @@ data <- extract_vdem_filter(section == 1, !grepl("component index", label),
               rename(index = name)) %>%
   filter(!is.na(index), 
          vdem_country_name %in% c("Venezuela", 
-                                  "United States", 
+                                  "United States of America", 
                                   "Turkey", "Russia"))
 
  
@@ -156,17 +158,17 @@ ggplot(data) +
   geom_ribbon(aes(x = year, ymin = codelow_value, ymax = codehigh_value, group = label), 
               fill = "grey", alpha = 0.2) +
   geom_text_repel(data = data %>% 
-              filter(year == 2016),
+              filter(year == 2018),
             aes(x = year, y = index_value, label = label, color = label), show.legend = FALSE) +
   theme_bw() +
     labs(y = "Avg. level of democracy\n(according to V-Dem main indices)",
          color = "", x = "",
-         title = "Average level of democracy in selected countries, 1900-2016",
+         title = "Average level of democracy in selected countries, 1789-2018",
          subtitle = "Each index ranges from 0 = least democratic to 1 = most democratic.\nDotted lines indicate WWI, WWII, and the end of the Cold War.",
-         caption = "Data from V-Dem dataset, version 7.1") +
+         caption = "Data from V-Dem dataset, version 9") +
   geom_vline(xintercept = c(1914, 1918, 1939, 1945, 1989), linetype = 3) +
   geom_hline(yintercept = 0.5, color = "red") +
-  coord_cartesian(xlim = c(1900, 2030)) +
+  coord_cartesian(xlim = c(1789, 2030)) +
   facet_wrap(~vdem_country_name, ncol = 1)
 ```
 

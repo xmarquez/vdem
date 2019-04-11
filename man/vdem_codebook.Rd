@@ -4,13 +4,14 @@
 \name{vdem_codebook}
 \alias{vdem_codebook}
 \title{V-Dem codebook}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 1216 rows and 18 columns.}
+\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 668 rows and 22 columns.}
 \usage{
 vdem_codebook
 }
 \description{
-The V-Dem codebook (version 7.1) as a \link{tibble} for easier use in R. The original codebook is available
-at \url{https://www.v-dem.net/en/data/data-version-7-1/}
+The V-Dem codebook (version 9) as a \link{tibble} for easier use in R. The
+original codebook is available at
+\url{https://www.v-dem.net/en/data/data-version-9/}
 }
 \section{Variable Descriptions}{
 
@@ -18,8 +19,8 @@ at \url{https://www.v-dem.net/en/data/data-version-7-1/}
 \describe{
 
 \item{section}{The section number in the codebook, as an integer. For
-example, section 1 contains the main indexes of democracy, section 2 the
-mid-level indexes, etc. Note section 28 is dubplicated in the codebook.}
+example, section 2 contains the main indexes of democracy, section 3 the
+mid-level indexes, etc.}
 
 \item{name}{The name of the variable. Does not include suffixes (e.g.,
 \code{_codehigh}, \code{_osp})}
@@ -30,23 +31,19 @@ mid-level indexes, etc. Note section 28 is dubplicated in the codebook.}
 \itemize{
 \item A*: Coding by Research Assistants. This is based on extant sources and is
 factual in nature. Country Experts indicate their confidence for this
-pre-coded data.
-\item A: Coding by Project Managers and Research Assistants.
-This is based on extant sources and is factual in nature.
-\item B: Coding by
+pre-coded data. * A: Coding by Project Managers and Research Assistants.
+This is based on extant sources and is factual in nature. * B: Coding by
 Country Coordinators. This is typically a graduate student or recent
 graduate who is from the country. These questions are also factual in
-nature.
-\item C: Coding by Country Experts. This is typically a scholar or
+nature. * C: Coding by Country Experts. This is typically a scholar or
 professional with deep knowledge of a country and perhaps of a particular
 political institution. Generally, that person is a citizen or resident of
 the country being coded. Multiple experts (usually 5 or more) code each
-variable.
-\item D: Indices, i.e., composite variables composed of type A, B, or
+variable. * D: Indices, i.e., composite variables composed of type A, B, or
 C variables. This may be accomplished by adding a denominator (e.g., per
 capita), by creating a cumulative scale (Total number of ...), or by
-aggregating larger concepts (e.g., components or indices of democracy).
-\item E: Non-V-Dem. If we import a variable from another source without doing any
+aggregating larger concepts (e.g., components or indices of democracy). *
+E: Non-V-Dem. If we import a variable from another source without doing any
 original coding, except for perhaps imputing missing data, it is not
 considered a V-Dem product. Many of these variables are found in the
 section of the Codebook labeled "Background Factors.: If, however, we
@@ -63,46 +60,75 @@ ask users to consult separate codebooks, as listed above.}
 
 \item{project_manager}{The project manager listed in the codebook.}
 
-\item{compiler}{The compiler listed in the codebook.}
+\item{additional_versions}{Indicates if the variable is also available in
+the following versions; _osp, _ord, _codelow, _codehigh, _sd, _mean and/or
+_nr. Detailed information about the different versions can be found in
+section 1.5 of the codebook (Variable Versions and Suffixes).}
 
-\item{question}{If available, the question answered by the coders.}
+\item{available_versions}{Lists the available variable types (Only
+applicable for ordinalized versions of indices).}
+
+\item{question}{If available, the question that the variable attempts to
+measure.}
 
 \item{clarification}{If available, the clarification in the codebook.}
 
 \item{responses}{If available, the possible responses.}
 
-\item{scale}{If available, the scale of the responses (e.g., nominal,
-categorical).}
-
-\item{aggregation}{If available, the type of aggregation for the index
-(e.g., Bayesian factor analysis, average of indicators).}
-
-\item{note}{If available, any notes in the codebook.}
+\item{answer_type}{Multiple-choice: Where a coder can select only one
+answer. This is the usual protocol and is therefore not noted.
+Multiple-selection: Where a coder can select more than one answer. For most
+multiple-selection variables, the dataset contains both the original
+variable as well as a set of dummies for each of the responses.}
 
 \item{ordering}{If available, the order in which the variable is coded
 (e.g., only if previous quesiton is answered).}
 
+\item{aggregation}{If available, the type of aggregation for the index
+(e.g., Bayesian factor analysis, average of indicators). Only applicable to
+indices.}
+
+\item{scale}{If available, the scale of the responses (e.g., nominal,
+categorical).}
+
 \item{cross_coder}{If available, the method for aggregating multiple
-coders' judgments.}
+coders' judgments. Only applicable to C variables.}
 
-\item{source}{If available, the source listed in the codebook.}
+\item{data_release}{If available, the versions of the V-Dem data where the
+variable has been included.}
 
-\item{data_release}{If available, the version of the V-Dem data where the
-variable was included.}
+\item{source}{If available, the source listed in the codebook. Citations
+for type-A* and A variables are listed, wherever possible, with complete
+references in the Bibliography. Note that this coding sometimes rests on
+numerous country-specific sources, in which case it has not been possible
+to include all citations. Composite indices (type-D) build on other
+variables in the V-Dem database, which are therefore listed as the source
+for that index.}
 
-\item{data_release}{If available, the suggested citation listed in the
+\item{cleaning}{Specifies if observations are set to missing based on
+values on other variables.}
+
+\item{citation}{Suggested citation when using the specific variable.}
+
+\item{years}{Available coverage for the respective variable. For more
+information on country-specific year coverage, see the country table in the
 codebook.}
+
+\item{note}{If available, any notes in the codebook with additional info
+about the variable.}
 
 }
 }
 
 \references{
-Coppedge, Michael, John Gerring, Staffan I. Lindberg, Svend-Erik
-Skaaning, Jan Teorell, David Altman, Frida Andersson, Michael Bernhard, M.
-Steven Fish, Adam Glynn, Allen Hicken, Carl Henrik Knutsen, Kyle L.
-Marquardt, Kelly McMann, Valeriya Mechkova, Pamela Paxton, Daniel Pemstein,
-Laura Saxer, Brigitte Seim, Rachel Sigman and Jeffrey Staton. 2017. "V-Dem
-Codebook v7.1" Varieties of Democracy (V-Dem) Project. Available at
-\url{https://www.v-dem.net/en/data/data-version-7-1/}
+Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I.
+Lindberg, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam
+Glynn, Allen Hicken, Anna Lührmann, Kyle L. Marquardt, Kelly McMann, Pamela
+Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning,
+Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Valeriya
+Mechkov, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti,
+Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2019. "V-Dem Codebook v9"
+Varieties of Democracy (V-Dem) Project. Available at
+\url{https://www.v-dem.net/en/data/data-version-9/}
 }
 \keyword{datasets}

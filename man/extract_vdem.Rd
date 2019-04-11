@@ -6,9 +6,9 @@
 pattern}
 \usage{
 extract_vdem(section_number = NULL, name_pattern = NULL,
-  label_pattern = NULL, include_uncertainty = TRUE, include_sd = FALSE,
-  include_osp = FALSE, include_ord = FALSE, include_nr = FALSE,
-  include_external = FALSE)
+  label_pattern = NULL, include_uncertainty = TRUE,
+  include_sd = FALSE, include_osp = FALSE, include_ord = FALSE,
+  include_nr = FALSE, include_external = FALSE)
 }
 \arguments{
 \item{section_number}{A section number (or vector of section numbers) in the
@@ -50,7 +50,7 @@ A \link{tibble} with the V-Dem country identifiers, other state system
 identifiers, plus the desired variables.
 }
 \description{
-Extracts variables in the V-Dem dataset (version 7.1), according to the
+Extracts variables in the V-Dem dataset (version 9), according to the
 section number in the codebook or a regular expression pattern matching the
 name or the label.
 }

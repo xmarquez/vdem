@@ -3,28 +3,27 @@
 \docType{data}
 \name{VDem_plus}
 \alias{VDem_plus}
-\title{V-Dem dataset (version 7.1)}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 17604 rows and 3615 columns.}
+\title{V-Dem dataset (version 9)}
+\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 26884 rows and 3900 columns.}
 \source{
-Coppedge, Michael, John Gerring, Staffan I. Lindberg, Svend-Erik
-Skaaning, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam
-Glynn, Allen Hicken, Carl Henrik Knutsen, Joshua Krusell, Anna Luhrmann,
-Kyle L. Marquardt, Kelly McMann, Valeriya Mechkova, Moa Olin, Pamela
-Paxton, Daniel Pemstein, Josefine Pernes, Constanza Sanhueza Petrarca,
-Johannes von Romer, Laura Saxer, Brigitte Seim, Rachel Sigman, Jeffrey
-Staton, Natalia Stepanova, and Steven Wilson. 2017. "V-Dem
-\href{https://www.v-dem.net/en/data/data-version-7-1/}{Country-Year/Country-Date}
-Dataset v7.1" Varieties of Democracy (V-Dem) Project.  Available at
-\url{https://www.v-dem.net/en/data/data-version-7-1/}
+Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I.
+Lindberg, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam
+Glynn, Allen Hicken, Anna Lührmann, Kyle L. Marquardt, Kelly McMann, Pamela
+Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning,
+Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Valeriya
+Mechkov, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti,
+Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2019. "V-Dem Codebook v9"
+Varieties of Democracy (V-Dem) Project. Available at:
+\url{https://www.v-dem.net/en/data/data-version-9/}
 }
 \usage{
 VDem_plus
 }
 \description{
-The V-Dem dataset (version 7.1), including external variables. This
+The V-Dem dataset (version 9), including external variables. This
 documentation only provides variable names and labels for the country-year
 identifiers included. The rest of the codebook is available at
-\url{https://www.v-dem.net/en/data/data-version-7-1/},
+\url{https://www.v-dem.net/en/data/data-version-9/},
 and in this package as \link{vdem_codebook}.
 }
 \section{Identifiers}{
@@ -33,7 +32,7 @@ and in this package as \link{vdem_codebook}.
 \describe{
 
 \item{vdem_country_name}{The original country name in the dataset. There
-are 178 distinct countries in version 7.1. According to the codebook, "a
+are 178 distinct countries in version 9. According to the codebook, "a
 V-Dem country is a political unit enjoying at least some degree of
 functional and/or formal sovereignty."}
 
@@ -41,10 +40,10 @@ functional and/or formal sovereignty."}
 
 \item{vdem_country_text_id}{Unique abbreviation for each country.}
 
-\item{year}{Year, from 1900-2016.}
+\item{year}{Year, from 1789-2018.}
 
 \item{extended_country_name}{The standard country according to the
-\href{http://privatewww.essex.ac.uk/~ksg/statelist.html}{Gleditsch and Ward system ofstates} (Gleditsch and
+\href{http://privatewww.essex.ac.uk/~ksg/statelist.html}{Gleditsch and Ward system of states} (Gleditsch and
 Ward 1999), or a standardized country name. Note that West Bank, and Gaza
 are two separate coding units in \code{vdem_country_name} but all map to
 "Palestine, State of" here. Column added by Xavier Marquez to the original
@@ -52,60 +51,78 @@ V-Dem dataset.}
 
 \item{GWn}{Gleditsch and Ward's numeric country code, from the Gleditsch
 and Ward list of independent states. This differs from the V-Dem COW code
-in a few instances. For details, see Gleditsch and Ward 1999. The list can
-be found at \url{http://privatewww.essex.ac.uk/~ksg/statelist.html}. Column
-added by Xavier Marquez to the original V-Dem dataset.}
-
-\item{historical_date}{According to the codebook, "This variable is
-included in the V-Dem Country Date dataset. The default date is 31st
-December, as in 2016-12-31, referring to the time span from 01-01 to 12-31
-in a respective year. Additionally, specific changes, such as the
-appointment of a Head of State, are coded on the specific date within a
-certain year. Thus, a code can change within a year, and will be reflected
-in the 12-31 date."}
-
-\item{codingstart}{"V-Dem country coding starts in 1900, or from when a
-country first was formally sovereign (according to international law). For
-detailed information, please see to VDem Country Coding Units."}
-
-\item{gapstart}{"Time periods when a country does not fulfill V-Dem's
-coding period criteria are not coded. The date that indicates the gap start
-is the last date coded before the gap. For more details about V-Dem country
-coding periods, please see to V-Dem Country Coding Units."}
-
-\item{gapend}{"The periods of when a country does not fulfill V-Dem's
-coding period criteria are not coded. The date that indicates the gap end
-is the first date coded after the gap. For more details about V-Dem country
-coding periods, please see to V-Dem Country Coding Units."}
-
-\item{codingend}{"V-Dem country coding ends in 2016, or from when a country
-formally stopped being sovereign (according to international law). For
-detailed information , please see VDem Country Coding Units."}
-
-\item{vdem_cown}{The Correlates of War numeric country code. Note that this
-differs from Gleditsch and Ward's numeric country code in a few cases.}
-
-\item{cown}{The Correlates of War numeric country code (from the 2016
-version of the COW state list). Note that this differs from Gleditsch and
-Ward's numeric country code in a few cases; it also differs from
-\code{vdem_cown} in a couple of cases: Germany 1949-1989, where \code{vdem_cown}
-incorrectly has 255 (it should be 260), Czech Republic 1918-1992 (coded as
-Czechoslovakia, 315 in \code{cown}, 316 in \code{vdem_cown}), South Korea 1900-1908
-(coded as Korea, 730, where \code{vdem_cown} has 732), and Yemen 1918-1989
-(coded as 678, where \code{vdem_cown} has 679). Column added by Xavier Marquez
-to the original V-Dem dataset.}
-
-\item{GWc}{Gleditsch and Ward's alphabetic country code, from the Gleditsch
-and Ward list of independent states. For details, see Gleditsch and Ward
-1999. The list can be found at
+in a few instances, and it does not exist in for some historical polities.
+For details, see Gleditsch and Ward 1999. The list can be found at
 \url{http://privatewww.essex.ac.uk/~ksg/statelist.html}. Column added by
 Xavier Marquez to the original V-Dem dataset.}
 
-\item{extended_region}{Region. Column added by Xavier Marquez to the original V-Dem
-dataset.}
+\item{historical_date}{"This variable is included in the V-Dem Country Date
+dataset. The default date is December 31st, as in 2018-12-31, referring to
+the time span from 01-01 to 12-31 in a respective year. Additionally,
+specific changes, such as the appointment of a Head of State, are coded on
+the specific date within a certain year. Thus, a code can change within a
+year, and will be reflected in the 12-31 date."}
 
-\item{extended_continent}{Continent. Column added by Xavier Marquez to the original
-V-Dem dataset.}
+\item{codingstart}{"V-Dem country coding starts in 1789, or from when a
+country first enjoyed at least some degree of functional and/or formal
+sovereignty. For detailed information, please see the V-Dem Country Coding
+Units document."}
+
+\item{codingstart_contemp}{This variable indicates the coding start for the
+countries coded by Contemporary V-Dem.}
+
+\item{codingstart_hist}{This variable indicates the coding start for the
+countries coded by Historical V-Dem.}
+
+\item{gapstart}{"Time periods when a country does not fulfill V-Dem’s
+coding period criteria are not coded. The date that indicates the gap start
+is the last date coded before the gap. For more details about V-Dem country
+coding periods, please see the V-Dem Country Coding Units document."}
+
+\item{gapend}{"The periods of when a country does not fulfill V-Dem’s
+coding period macriteria are not coded. The date that indicates the gap end
+is the first date coded after the gap. For more details about V-Dem country
+coding periods, please see the V-Dem Country Coding Units document."}
+
+\item{codingend}{"V-Dem country coding ends in 2018, or from when a country
+formally stopped enjoying at least some degree of functional and/or formal
+sovereignty. For detailed information, please see the V-Dem Country Coding
+Units document."}
+
+\item{codingend_contemp}{"This variable indicates when the coding ends for
+countries coded by the Contemporary V-Dem project."}
+
+\item{codingend_hist}{"This variable indicates when the coding ends for
+countries coded by the Historical V-Dem Project."}
+
+\item{project}{"This variable indicates which V-Dem project coded that
+country-year: Contemporary V-Dem (0), Historical V-Dem (1), or both (2)."}
+
+\item{historical}{"This variable indicates if the Historical V-Dem project
+coded a country at any time: No (0), Yes (1)."}
+
+\item{vdem_cown}{The Correlates of War numeric country code (2016). Note
+that this differs from Gleditsch and Ward's numeric country code in a few
+cases.}
+
+\item{cown}{The Correlates of War numeric country code (from the 2016
+version of the COW state list). Note that this differs from Gleditsch and
+Ward's numeric country code in a few cases. Column added by Xavier Marquez
+to the original V-Dem dataset.}
+
+\item{GWc}{Gleditsch and Ward's alphabetic country code, from the Gleditsch
+and Ward list of independent states. Missing for some historical polities
+and some states with contested sovereignty. For details, see Gleditsch and
+Ward 1999. The list can be found at
+\url{http://privatewww.essex.ac.uk/~ksg/statelist.html}. Column added by
+Xavier Marquez to the original V-Dem dataset.}
+
+\item{extended_region}{Region. Column added by Xavier Marquez to the
+original V-Dem dataset. You may wish to use the \code{e_region*} set of
+variables instead.}
+
+\item{extended_continent}{Continent. Column added by Xavier Marquez to the
+original V-Dem dataset.}
 
 \item{GW_startdate}{The entry date of the state into the international
 system (usually the date of independence, though there can be more than
@@ -132,20 +149,30 @@ to the original V-Dem dataset.}
 \item{in_GW_system}{Whether the state is "in system" (that is, is
 independent and sovereign), according to Gleditsch and Ward, for this
 particular date. Column added by Xavier Marquez to the original V-Dem
-dataset. You may instead wish to use one of the v2sv* columns provided in
-the original V-Dem dataset.}
+dataset. You may instead wish to use one of the `v2sv*`` columns provided
+in the original V-Dem dataset.}
 
 }
 }
 
 \references{
-Coppedge, Michael, John Gerring, Staffan I. Lindberg, Svend-Erik Skaaning,
-Jan Teorell, David Altman, Frida Andersson, Michael Bernhard, M. Steven Fish,
-Adam Glynn, Allen Hicken, Carl Henrik Knutsen, Kyle L. Marquardt, Kelly
-McMann, Valeriya Mechkova, Pamela Paxton, Daniel Pemstein, Laura Saxer,
-Brigitte Seim, Rachel Sigman and Jeffrey Staton. 2017. "V-Dem Codebook v7.1"
-Varieties of Democracy (V-Dem) Project. Available at
-\url{https://www.v-dem.net/en/data/data-version-7-1/}
+Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg,
+Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn,
+Allen Hicken, Anna Lührmann, Kyle L. Marquardt, Kelly McMann, Pamela Paxton,
+Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey
+Staton, Steven Wilson, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Nina
+Ilchenko, Joshua Krusell, Valeriya Mechkova, Juraj Medzihorsky, Josefine
+Pernes, Johannes von Römer, Natalia Stepanova, Aksel Sundström, Eitan
+Tzelgov, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2019. "V-Dem
+Country-Year/Country-Date Dataset v9" Varieties of Democracy (V-Dem)
+Project. Available at
+\url{https://www.v-dem.net/en/data/data-version-9/}
+
+Pemstein, Daniel, Kyle L. Marquardt, Eitan Tzelgov, Yi-ting Wang, Juraj
+Medzihorsky, Joshua Krusell, Farhad Miri, and Johannes von Römer. 2019. “The
+V-Dem Measurement Model: Latent Variable Analysis for Cross-National and
+Cross-Temporal Expert-Coded Data”. V-Dem Working Paper No. 21. 4th edition.
+University of Gothenburg: Varieties of Democracy Institute.
 
 Gleditsch, Kristian S. & Michael D. Ward. 1999. "Interstate System
 Membership: A Revised List of the Independent States since 1816."
