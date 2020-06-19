@@ -1,7 +1,7 @@
 #' Extracts parts of the V-Dem dataset by section number, name pattern, or label
 #' pattern
 #'
-#' Extracts variables in the V-Dem dataset (version 9), according to the
+#' Extracts variables in the V-Dem dataset (version 10), according to the
 #' section number in the codebook or a regular expression pattern matching the
 #' name or the label.
 #'
@@ -39,9 +39,9 @@
 #'
 #' @examples
 #' # Main democracy indexes
-#' extract_vdem(section_number = 1)
+#' extract_vdem(section_number = 2)
 #' # Mid-level indexes, no measures of uncertainty
-#' extract_vdem(section_number = 2, include_uncertainty = FALSE)
+#' extract_vdem(section_number = 3, include_uncertainty = FALSE)
 #' # All indexes about corruption
 #' extract_vdem(label_pattern = "corrupt")
 #' # All indexes about elections, include external indexes
@@ -119,7 +119,7 @@ extract_vdem <- function(section_number = NULL,
 #' Extracts parts of the V-Dem dataset by passing a filter expression to
 #' [vdem_codebook]
 #'
-#' Extracts variables in the V-Dem dataset (version 9), by using a filter
+#' Extracts variables in the V-Dem dataset (version 10), by using a filter
 #' expression that is used to extract variable names from the V-Dem coddebook
 #' ([vdem_codebook])
 #'
@@ -151,10 +151,10 @@ extract_vdem <- function(section_number = NULL,
 #' @export
 #'
 #' @examples
-#' # All in section 1 of the codebook except component indexes
-#' extract_vdem_filter(section == 1, !grepl("component index", label))
+#' # All in section 2 of the codebook except component indexes
+#' extract_vdem_filter(section == 2, !grepl("component index", label))
 #' # All variables inclued in release 2 of the dataset
-#' extract_vdem_filter(grepl("2(,|$)", data_release))
+#' extract_vdem_filter(grepl("2(,|$)|1-10", data_release))
 extract_vdem_filter <- function(...,
                          include_uncertainty = TRUE,
                          include_sd = FALSE,

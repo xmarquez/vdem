@@ -16,14 +16,14 @@ knitr::opts_chunk$set(
 
 # vdem
 
-This package provides access to the [Varieties of Democracy (V-Dem) dataset, version 9](https://www.v-dem.net/en/data/data-version-9/). It includes the dataset's codebook as a data frame, which allows one to easily search for variables by label or other descriptors. And it also includes a couple of convenience functions, `extract_vdem` and `extract_vdem_filter`, to extract subsets of the dataset meeting particular criteria. 
+This package provides access to the [Varieties of Democracy (V-Dem) dataset, version 10](https://www.v-dem.net/en/data/data-version-10/). It includes the dataset's codebook as a data frame, which allows one to easily search for variables by label or other descriptors. And it also includes a couple of convenience functions, `extract_vdem` and `extract_vdem_filter`, to extract subsets of the dataset meeting particular criteria. 
 
 ## Installation
 
 This package is only available on Github for now. Install as follows:
 
 ```{}
-devtools::install_github("xmarquez/vdem")
+remotes::install_github("xmarquez/vdem")
 
 ```
 
@@ -120,9 +120,9 @@ ggplot(data) +
   theme_bw() +
     labs(y = "Avg. level of democracy\n(according to V-Dem main indices)",
          color = "", x = "",
-         title = "Average level of democracy in the world, 1789-2018",
+         title = "Average level of democracy in the world, 1789-2019",
          subtitle = "Average over all countries in year for each index.\nEach index ranges from 0 = least democratic to 1 = most democratic.\nDotted lines indicate WWI, WWII, and the end of the Cold War.\nYears from 1789 to 1900 reflect a smaller sample of countries from the historical V-Dem\nproject.",
-         caption = "Data from V-Dem dataset, version 9") +
+         caption = "Data from V-Dem dataset, version 10") +
   geom_vline(xintercept = c(1914, 1918, 1939, 1945, 1989), linetype = 3) +
   coord_cartesian(xlim = c(1789, 2030))
 
@@ -163,9 +163,9 @@ ggplot(data) +
   theme_bw() +
     labs(y = "Avg. level of democracy\n(according to V-Dem main indices)",
          color = "", x = "",
-         title = "Average level of democracy in selected countries, 1789-2018",
+         title = "Average level of democracy in selected countries, 1789-2019",
          subtitle = "Each index ranges from 0 = least democratic to 1 = most democratic.\nDotted lines indicate WWI, WWII, and the end of the Cold War.",
-         caption = "Data from V-Dem dataset, version 9") +
+         caption = "Data from V-Dem dataset, version 10") +
   geom_vline(xintercept = c(1914, 1918, 1939, 1945, 1989), linetype = 3) +
   geom_hline(yintercept = 0.5, color = "red") +
   coord_cartesian(xlim = c(1789, 2030)) +

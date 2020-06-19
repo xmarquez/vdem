@@ -6,23 +6,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>V-Dem dataset (version 9) — VDem_plus • vdem</title>
+<title>V-Dem dataset (version 10) — VDem_plus • vdem</title>
+
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,14 +38,14 @@
 
 
 
-<meta property="og:title" content="V-Dem dataset (version 9) — VDem_plus" />
 
-<meta property="og:description" content="The V-Dem dataset (version 9), including external variables. This
+<meta property="og:title" content="V-Dem dataset (version 10) — VDem_plus" />
+<meta property="og:description" content="The V-Dem dataset (version 10), including external variables. This
 documentation only provides variable names and labels for the country-year
 identifiers included. The rest of the codebook is available at
-https://www.v-dem.net/en/data/data-version-9/,
+https://www.v-dem.net/en/data/data-version-10/,
 and in this package as vdem_codebook." />
-<meta name="twitter:card" content="summary" />
+
 
 
 
@@ -51,9 +59,10 @@ and in this package as vdem_codebook." />
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -67,7 +76,7 @@ and in this package as vdem_codebook." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vdem</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
 
@@ -75,7 +84,7 @@ and in this package as vdem_codebook." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -86,7 +95,6 @@ and in this package as vdem_codebook." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -96,32 +104,31 @@ and in this package as vdem_codebook." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>V-Dem dataset (version 9)</h1>
+    <h1>V-Dem dataset (version 10)</h1>
     
     <div class="hidden name"><code>VDem_plus.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>The V-Dem dataset (version 9), including external variables. This
+    <p>The V-Dem dataset (version 10), including external variables. This
 documentation only provides variable names and labels for the country-year
 identifiers included. The rest of the codebook is available at
-<a href='https://www.v-dem.net/en/data/data-version-9/'>https://www.v-dem.net/en/data/data-version-9/</a>,
+<a href='https://www.v-dem.net/en/data/data-version-10/'>https://www.v-dem.net/en/data/data-version-10/</a>,
 and in this package as <a href='vdem_codebook.html'>vdem_codebook</a>.</p>
-    
     </div>
 
     <pre class="usage"><span class='no'>VDem_plus</span></pre>
-        
+
+
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 26884 rows and 3900 columns.</p>
-    
+    <p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 27013 rows and 4120 columns.</p>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
     <p>Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I.
@@ -129,150 +136,171 @@ Lindberg, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam
 Glynn, Allen Hicken, Anna Lührmann, Kyle L. Marquardt, Kelly McMann, Pamela
 Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning,
 Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Valeriya
-Mechkov, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti,
-Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2019. "V-Dem Codebook v9"
+Mechkova, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti,
+Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020. "V-Dem Codebook v10"
 Varieties of Democracy (V-Dem) Project. Available at:
-<a href='https://www.v-dem.net/en/data/data-version-9/'>https://www.v-dem.net/en/data/data-version-9/</a></p>
-    
+<a href='https://www.v-dem.net/en/data/data-version-10/'>https://www.v-dem.net/en/data/data-version-10/</a></p>
     <h2 class="hasAnchor" id="identifiers"><a class="anchor" href="#identifiers"></a>Identifiers</h2>
 
     
-    <dl class='dl-horizontal'>
-    <dt>vdem_country_name</dt><dd><p>The original country name in the dataset. There
+
+
+<dl'>
+
+<dt>vdem_country_name</dt><dd><p>The original country name in the dataset. There
 are 178 distinct countries in version 9. According to the codebook, "a
 V-Dem country is a political unit enjoying at least some degree of
 functional and/or formal sovereignty."</p></dd>
-    <dt>vdem_country_id</dt><dd><p>Unique numerical country id for each country.</p></dd>
-    <dt>vdem_country_text_id</dt><dd><p>Unique abbreviation for each country.</p></dd>
-    <dt>year</dt><dd><p>Year, from 1789-2018.</p></dd>
-    <dt>extended_country_name</dt><dd><p>The standard country according to the
+
+<dt>vdem_country_id</dt><dd><p>Unique numerical country id for each country.</p></dd>
+
+<dt>vdem_country_text_id</dt><dd><p>Unique abbreviation for each country.</p></dd>
+
+<dt>year</dt><dd><p>Year, from 1789-2018.</p></dd>
+
+<dt>extended_country_name</dt><dd><p>The standard country according to the
 <a href='http://privatewww.essex.ac.uk/~ksg/statelist.html'>Gleditsch and Ward system of states</a> (Gleditsch and
 Ward 1999), or a standardized country name. Note that West Bank, and Gaza
 are two separate coding units in <code>vdem_country_name</code> but all map to
 "Palestine, State of" here. Column added by Xavier Marquez to the original
 V-Dem dataset.</p></dd>
-    <dt>GWn</dt><dd><p>Gleditsch and Ward's numeric country code, from the Gleditsch
+
+<dt>GWn</dt><dd><p>Gleditsch and Ward's numeric country code, from the Gleditsch
 and Ward list of independent states. This differs from the V-Dem COW code
 in a few instances, and it does not exist in for some historical polities.
 For details, see Gleditsch and Ward 1999. The list can be found at
 <a href='http://privatewww.essex.ac.uk/~ksg/statelist.html'>http://privatewww.essex.ac.uk/~ksg/statelist.html</a>. Column added by
 Xavier Marquez to the original V-Dem dataset.</p></dd>
-    <dt>historical_date</dt><dd><p>"This variable is included in the V-Dem Country Date
+
+<dt>historical_date</dt><dd><p>"This variable is included in the V-Dem Country Date
 dataset. The default date is December 31st, as in 2018-12-31, referring to
 the time span from 01-01 to 12-31 in a respective year. Additionally,
 specific changes, such as the appointment of a Head of State, are coded on
 the specific date within a certain year. Thus, a code can change within a
 year, and will be reflected in the 12-31 date."</p></dd>
-    <dt>codingstart</dt><dd><p>"V-Dem country coding starts in 1789, or from when a
+
+<dt>codingstart</dt><dd><p>"V-Dem country coding starts in 1789, or from when a
 country first enjoyed at least some degree of functional and/or formal
 sovereignty. For detailed information, please see the V-Dem Country Coding
 Units document."</p></dd>
-    <dt>codingstart_contemp</dt><dd><p>This variable indicates the coding start for the
+
+<dt>codingstart_contemp</dt><dd><p>This variable indicates the coding start for the
 countries coded by Contemporary V-Dem.</p></dd>
-    <dt>codingstart_hist</dt><dd><p>This variable indicates the coding start for the
+
+<dt>codingstart_hist</dt><dd><p>This variable indicates the coding start for the
 countries coded by Historical V-Dem.</p></dd>
-    <dt>gapstart</dt><dd><p>"Time periods when a country does not fulfill V-Dem’s
+
+<dt>gapstart</dt><dd><p>"Time periods when a country does not fulfill V-Dem’s
 coding period criteria are not coded. The date that indicates the gap start
 is the last date coded before the gap. For more details about V-Dem country
 coding periods, please see the V-Dem Country Coding Units document."</p></dd>
-    <dt>gapend</dt><dd><p>"The periods of when a country does not fulfill V-Dem’s
+
+<dt>gapend</dt><dd><p>"The periods of when a country does not fulfill V-Dem’s
 coding period macriteria are not coded. The date that indicates the gap end
 is the first date coded after the gap. For more details about V-Dem country
 coding periods, please see the V-Dem Country Coding Units document."</p></dd>
-    <dt>codingend</dt><dd><p>"V-Dem country coding ends in 2018, or from when a country
+
+<dt>codingend</dt><dd><p>"V-Dem country coding ends in 2018, or from when a country
 formally stopped enjoying at least some degree of functional and/or formal
 sovereignty. For detailed information, please see the V-Dem Country Coding
 Units document."</p></dd>
-    <dt>codingend_contemp</dt><dd><p>"This variable indicates when the coding ends for
+
+<dt>codingend_contemp</dt><dd><p>"This variable indicates when the coding ends for
 countries coded by the Contemporary V-Dem project."</p></dd>
-    <dt>codingend_hist</dt><dd><p>"This variable indicates when the coding ends for
+
+<dt>codingend_hist</dt><dd><p>"This variable indicates when the coding ends for
 countries coded by the Historical V-Dem Project."</p></dd>
-    <dt>project</dt><dd><p>"This variable indicates which V-Dem project coded that
+
+<dt>project</dt><dd><p>"This variable indicates which V-Dem project coded that
 country-year: Contemporary V-Dem (0), Historical V-Dem (1), or both (2)."</p></dd>
-    <dt>historical</dt><dd><p>"This variable indicates if the Historical V-Dem project
+
+<dt>historical</dt><dd><p>"This variable indicates if the Historical V-Dem project
 coded a country at any time: No (0), Yes (1)."</p></dd>
-    <dt>vdem_cown</dt><dd><p>The Correlates of War numeric country code (2016). Note
+
+<dt>vdem_cown</dt><dd><p>The Correlates of War numeric country code (2016). Note
 that this differs from Gleditsch and Ward's numeric country code in a few
 cases.</p></dd>
-    <dt>cown</dt><dd><p>The Correlates of War numeric country code (from the 2016
+
+<dt>cown</dt><dd><p>The Correlates of War numeric country code (from the 2016
 version of the COW state list). Note that this differs from Gleditsch and
 Ward's numeric country code in a few cases. Column added by Xavier Marquez
 to the original V-Dem dataset.</p></dd>
-    <dt>GWc</dt><dd><p>Gleditsch and Ward's alphabetic country code, from the Gleditsch
+
+<dt>GWc</dt><dd><p>Gleditsch and Ward's alphabetic country code, from the Gleditsch
 and Ward list of independent states. Missing for some historical polities
 and some states with contested sovereignty. For details, see Gleditsch and
 Ward 1999. The list can be found at
 <a href='http://privatewww.essex.ac.uk/~ksg/statelist.html'>http://privatewww.essex.ac.uk/~ksg/statelist.html</a>. Column added by
 Xavier Marquez to the original V-Dem dataset.</p></dd>
-    <dt>extended_region</dt><dd><p>Region. Column added by Xavier Marquez to the
+
+<dt>extended_region</dt><dd><p>Region. Column added by Xavier Marquez to the
 original V-Dem dataset. You may wish to use the <code>e_region*</code> set of
 variables instead.</p></dd>
-    <dt>extended_continent</dt><dd><p>Continent. Column added by Xavier Marquez to the
+
+<dt>extended_continent</dt><dd><p>Continent. Column added by Xavier Marquez to the
 original V-Dem dataset.</p></dd>
-    <dt>GW_startdate</dt><dd><p>The entry date of the state into the international
+
+<dt>GW_startdate</dt><dd><p>The entry date of the state into the international
 system (usually the date of independence, though there can be more than
 one), according to Gleditsch and Ward, or 1 January 1816, whichever is
 later. Column added by Xavier Marquez to the original V-Dem dataset.</p></dd>
-    <dt>GW_enddate</dt><dd><p>The exit date of the state from the international system
+
+<dt>GW_enddate</dt><dd><p>The exit date of the state from the international system
 (usually the date the state lost its independence, though there can be more
 than one), according to Gleditsch and Ward, or NA if the country is still
 in the international system as of the time the dataset was compiled. Column
 added by Xavier Marquez to the original V-Dem dataset.</p></dd>
-    <dt>microstate</dt><dd><p>Whether the state is a microstate, according to
+
+<dt>microstate</dt><dd><p>Whether the state is a microstate, according to
 Gleditsch. His tentative list of microstates is available at
 <a href='http://privatewww.essex.ac.uk/~ksg/statelist.html'>http://privatewww.essex.ac.uk/~ksg/statelist.html</a>. Column added by
 Xavier Marquez to the original V-Dem dataset.</p></dd>
-    <dt>lat</dt><dd><p>The rough latitude of the state. Column added by Xavier Marquez
+
+<dt>lat</dt><dd><p>The rough latitude of the state. Column added by Xavier Marquez
 to the original V-Dem dataset.</p></dd>
-    <dt>lon</dt><dd><p>The rough longitude of the state. Column added by Xavier Marquez
+
+<dt>lon</dt><dd><p>The rough longitude of the state. Column added by Xavier Marquez
 to the original V-Dem dataset.</p></dd>
-    <dt>in_GW_system</dt><dd><p>Whether the state is "in system" (that is, is
+
+<dt>in_GW_system</dt><dd><p>Whether the state is "in system" (that is, is
 independent and sovereign), according to Gleditsch and Ward, for this
 particular date. Column added by Xavier Marquez to the original V-Dem
 dataset. You may instead wish to use one of the `v2sv*`` columns provided
 in the original V-Dem dataset.</p></dd>
-    </dl>
-    
+
+
+</dl>
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg,
 Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn,
-Allen Hicken, Anna Lührmann, Kyle L. Marquardt, Kelly McMann, Pamela Paxton,
+Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela Paxton,
 Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey
-Staton, Steven Wilson, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Nina
-Ilchenko, Joshua Krusell, Valeriya Mechkova, Juraj Medzihorsky, Josefine
-Pernes, Johannes von Römer, Natalia Stepanova, Aksel Sundström, Eitan
-Tzelgov, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2019. "V-Dem
-Country-Year/Country-Date Dataset v9" Varieties of Democracy (V-Dem)
-Project. Available at
-<a href='https://www.v-dem.net/en/data/data-version-9/'>https://www.v-dem.net/en/data/data-version-9/</a></p>
+Staton, Steven Wilson, Agnes Cornell, Nazifa Alizada, Lisa Gastaldi, Haakon
+Gjerløw, Garry Hindle, Nina Ilchenko, Laura Maxwell, Valeriya Mechkova, Juraj
+Medzihorsky, Johannes von Römer, Aksel Sundström, Eitan Tzelgov, Yi-ting
+Wang, Tore Wig, and Daniel Ziblatt. 2020. "V-Dem Country-Year/Country-Date
+Dataset v10" Varieties of Democracy (V-Dem) Project. Available at
+<a href='https://www.v-dem.net/en/data/data-version-10/'>https://www.v-dem.net/en/data/data-version-10/</a></p>
 <p>Pemstein, Daniel, Kyle L. Marquardt, Eitan Tzelgov, Yi-ting Wang, Juraj
-Medzihorsky, Joshua Krusell, Farhad Miri, and Johannes von Römer. 2019. “The
+Medzihorsky, Joshua Krusell, Farhad Miri, and Johannes von Römer. 2020 “The
 V-Dem Measurement Model: Latent Variable Analysis for Cross-National and
-Cross-Temporal Expert-Coded Data”. V-Dem Working Paper No. 21. 4th edition.
+Cross-Temporal Expert-Coded Data”. V-Dem Working Paper No. 21. 5th edition.
 University of Gothenburg: Varieties of Democracy Institute.</p>
 <p>Gleditsch, Kristian S. &amp; Michael D. Ward. 1999. "Interstate System
 Membership: A Revised List of the Independent States since 1816."
 International Interactions 25: 393-413. The list can be found at
 <a href='http://privatewww.essex.ac.uk/~ksg/statelist.html'>http://privatewww.essex.ac.uk/~ksg/statelist.html</a></p>
-    
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      
-      <li><a href="#format">Format</a></li>
-
-      <li><a href="#source">Source</a></li>
-
-      <li><a href="#identifiers">Identifiers</a></li>
-
-      <li><a href="#references">References</a></li>
-          </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -280,13 +308,16 @@ International Interactions 25: 393-413. The list can be found at
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

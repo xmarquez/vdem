@@ -1,8 +1,8 @@
 #' V-Dem codebook
 #'
-#' The V-Dem codebook (version 9) as a [tibble] for easier use in R. The
+#' The V-Dem codebook (version 10) as a [tibble] for easier use in R. The
 #' original codebook is available at
-#' [https://www.v-dem.net/en/data/data-version-9/](https://www.v-dem.net/en/data/data-version-9/)
+#' [https://www.v-dem.net/en/data/data-version-10/](https://www.v-dem.net/en/data/data-version-10/)
 #'
 #' @section Variable Descriptions:
 #'
@@ -110,22 +110,24 @@
 #'
 #' @references Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I.
 #'   Lindberg, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam
-#'   Glynn, Allen Hicken, Anna Lührmann, Kyle L. Marquardt, Kelly McMann, Pamela
+#'   Glynn, Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela
 #'   Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning,
-#'   Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Valeriya
-#'   Mechkov, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti,
-#'   Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2019. "V-Dem Codebook v9"
+#'   Jeffrey Staton, Steven Wilson, Agnes Cornell, Nazifa Alizada, Lisa
+#'   Gastaldi, Haakon Gjerløw, Garry Hindle, Nina Ilchenko, Laura Maxwell,
+#'   Valeriya Mechkova, Juraj Medzihorsky, Johannes von Römer, Aksel Sundström,
+#'   Eitan Tzelgov, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020. "V-Dem
+#'   Codebook v10"
 #'   Varieties of Democracy (V-Dem) Project. Available at
-#'   [https://www.v-dem.net/en/data/data-version-9/](https://www.v-dem.net/en/data/data-version-9/)
+#'   [https://www.v-dem.net/en/data/data-version-10/](https://www.v-dem.net/en/data/data-version-10/)
 #'
 "vdem_codebook"
 
-#' V-Dem dataset (version 9)
+#' V-Dem dataset (version 10)
 #'
-#' The V-Dem dataset (version 9), including external variables. This
+#' The V-Dem dataset (version 10), including external variables. This
 #' documentation only provides variable names and labels for the country-year
 #' identifiers included. The rest of the codebook is available at
-#' [https://www.v-dem.net/en/data/data-version-9/](https://www.v-dem.net/en/data/data-version-9/),
+#' [https://www.v-dem.net/en/data/data-version-10/](https://www.v-dem.net/en/data/data-version-10/),
 #' and in this package as [vdem_codebook].
 #'
 #' @section Identifiers:
@@ -261,29 +263,29 @@
 #'   Glynn, Allen Hicken, Anna Lührmann, Kyle L. Marquardt, Kelly McMann, Pamela
 #'   Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning,
 #'   Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Valeriya
-#'   Mechkov, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti,
-#'   Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2019. "V-Dem Codebook v9"
+#'   Mechkova, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti,
+#'   Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020. "V-Dem Codebook v10"
 #'   Varieties of Democracy (V-Dem) Project. Available at:
-#'   [https://www.v-dem.net/en/data/data-version-9/](https://www.v-dem.net/en/data/data-version-9/)
+#'   [https://www.v-dem.net/en/data/data-version-10/](https://www.v-dem.net/en/data/data-version-10/)
+#'
 #'
 #' @references
 #'
 #' Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg,
 #' Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn,
-#' Allen Hicken, Anna Lührmann, Kyle L. Marquardt, Kelly McMann, Pamela Paxton,
+#' Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela Paxton,
 #' Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey
-#' Staton, Steven Wilson, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Nina
-#' Ilchenko, Joshua Krusell, Valeriya Mechkova, Juraj Medzihorsky, Josefine
-#' Pernes, Johannes von Römer, Natalia Stepanova, Aksel Sundström, Eitan
-#' Tzelgov, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2019. "V-Dem
-#' Country-Year/Country-Date Dataset v9" Varieties of Democracy (V-Dem)
-#' Project. Available at
-#' [https://www.v-dem.net/en/data/data-version-9/](https://www.v-dem.net/en/data/data-version-9/)
+#' Staton, Steven Wilson, Agnes Cornell, Nazifa Alizada, Lisa Gastaldi, Haakon
+#' Gjerløw, Garry Hindle, Nina Ilchenko, Laura Maxwell, Valeriya Mechkova, Juraj
+#' Medzihorsky, Johannes von Römer, Aksel Sundström, Eitan Tzelgov, Yi-ting
+#' Wang, Tore Wig, and Daniel Ziblatt. 2020. "V-Dem Country-Year/Country-Date
+#' Dataset v10" Varieties of Democracy (V-Dem) Project. Available at
+#' [https://www.v-dem.net/en/data/data-version-10/](https://www.v-dem.net/en/data/data-version-10/)
 #'
 #' Pemstein, Daniel, Kyle L. Marquardt, Eitan Tzelgov, Yi-ting Wang, Juraj
-#' Medzihorsky, Joshua Krusell, Farhad Miri, and Johannes von Römer. 2019. “The
+#' Medzihorsky, Joshua Krusell, Farhad Miri, and Johannes von Römer. 2020 “The
 #' V-Dem Measurement Model: Latent Variable Analysis for Cross-National and
-#' Cross-Temporal Expert-Coded Data”. V-Dem Working Paper No. 21. 4th edition.
+#' Cross-Temporal Expert-Coded Data”. V-Dem Working Paper No. 21. 5th edition.
 #' University of Gothenburg: Varieties of Democracy Institute.
 #'
 #' Gleditsch, Kristian S. & Michael D. Ward. 1999. "Interstate System

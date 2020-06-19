@@ -5,10 +5,17 @@
 \title{Extracts parts of the V-Dem dataset by section number, name pattern, or label
 pattern}
 \usage{
-extract_vdem(section_number = NULL, name_pattern = NULL,
-  label_pattern = NULL, include_uncertainty = TRUE,
-  include_sd = FALSE, include_osp = FALSE, include_ord = FALSE,
-  include_nr = FALSE, include_external = FALSE)
+extract_vdem(
+  section_number = NULL,
+  name_pattern = NULL,
+  label_pattern = NULL,
+  include_uncertainty = TRUE,
+  include_sd = FALSE,
+  include_osp = FALSE,
+  include_ord = FALSE,
+  include_nr = FALSE,
+  include_external = FALSE
+)
 }
 \arguments{
 \item{section_number}{A section number (or vector of section numbers) in the
@@ -50,15 +57,15 @@ A \link{tibble} with the V-Dem country identifiers, other state system
 identifiers, plus the desired variables.
 }
 \description{
-Extracts variables in the V-Dem dataset (version 9), according to the
+Extracts variables in the V-Dem dataset (version 10), according to the
 section number in the codebook or a regular expression pattern matching the
 name or the label.
 }
 \examples{
 # Main democracy indexes
-extract_vdem(section_number = 1)
+extract_vdem(section_number = 2)
 # Mid-level indexes, no measures of uncertainty
-extract_vdem(section_number = 2, include_uncertainty = FALSE)
+extract_vdem(section_number = 3, include_uncertainty = FALSE)
 # All indexes about corruption
 extract_vdem(label_pattern = "corrupt")
 # All indexes about elections, include external indexes

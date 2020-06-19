@@ -3,27 +3,29 @@
 \docType{data}
 \name{VDem_plus}
 \alias{VDem_plus}
-\title{V-Dem dataset (version 9)}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 26884 rows and 3900 columns.}
+\title{V-Dem dataset (version 10)}
+\format{
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 27013 rows and 4120 columns.
+}
 \source{
 Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I.
 Lindberg, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam
 Glynn, Allen Hicken, Anna Lührmann, Kyle L. Marquardt, Kelly McMann, Pamela
 Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning,
 Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Valeriya
-Mechkov, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti,
-Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2019. "V-Dem Codebook v9"
+Mechkova, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti,
+Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020. "V-Dem Codebook v10"
 Varieties of Democracy (V-Dem) Project. Available at:
-\url{https://www.v-dem.net/en/data/data-version-9/}
+\url{https://www.v-dem.net/en/data/data-version-10/}
 }
 \usage{
 VDem_plus
 }
 \description{
-The V-Dem dataset (version 9), including external variables. This
+The V-Dem dataset (version 10), including external variables. This
 documentation only provides variable names and labels for the country-year
 identifiers included. The rest of the codebook is available at
-\url{https://www.v-dem.net/en/data/data-version-9/},
+\url{https://www.v-dem.net/en/data/data-version-10/},
 and in this package as \link{vdem_codebook}.
 }
 \section{Identifiers}{
@@ -118,7 +120,7 @@ Ward 1999. The list can be found at
 Xavier Marquez to the original V-Dem dataset.}
 
 \item{extended_region}{Region. Column added by Xavier Marquez to the
-original V-Dem dataset. You may wish to use the \code{e_region*} set of
+original V-Dem dataset. You may wish to use the \verb{e_region*} set of
 variables instead.}
 
 \item{extended_continent}{Continent. Column added by Xavier Marquez to the
@@ -158,20 +160,19 @@ in the original V-Dem dataset.}
 \references{
 Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg,
 Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn,
-Allen Hicken, Anna Lührmann, Kyle L. Marquardt, Kelly McMann, Pamela Paxton,
+Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela Paxton,
 Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey
-Staton, Steven Wilson, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Nina
-Ilchenko, Joshua Krusell, Valeriya Mechkova, Juraj Medzihorsky, Josefine
-Pernes, Johannes von Römer, Natalia Stepanova, Aksel Sundström, Eitan
-Tzelgov, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2019. "V-Dem
-Country-Year/Country-Date Dataset v9" Varieties of Democracy (V-Dem)
-Project. Available at
-\url{https://www.v-dem.net/en/data/data-version-9/}
+Staton, Steven Wilson, Agnes Cornell, Nazifa Alizada, Lisa Gastaldi, Haakon
+Gjerløw, Garry Hindle, Nina Ilchenko, Laura Maxwell, Valeriya Mechkova, Juraj
+Medzihorsky, Johannes von Römer, Aksel Sundström, Eitan Tzelgov, Yi-ting
+Wang, Tore Wig, and Daniel Ziblatt. 2020. "V-Dem Country-Year/Country-Date
+Dataset v10" Varieties of Democracy (V-Dem) Project. Available at
+\url{https://www.v-dem.net/en/data/data-version-10/}
 
 Pemstein, Daniel, Kyle L. Marquardt, Eitan Tzelgov, Yi-ting Wang, Juraj
-Medzihorsky, Joshua Krusell, Farhad Miri, and Johannes von Römer. 2019. “The
+Medzihorsky, Joshua Krusell, Farhad Miri, and Johannes von Römer. 2020 “The
 V-Dem Measurement Model: Latent Variable Analysis for Cross-National and
-Cross-Temporal Expert-Coded Data”. V-Dem Working Paper No. 21. 4th edition.
+Cross-Temporal Expert-Coded Data”. V-Dem Working Paper No. 21. 5th edition.
 University of Gothenburg: Varieties of Democracy Institute.
 
 Gleditsch, Kristian S. & Michael D. Ward. 1999. "Interstate System

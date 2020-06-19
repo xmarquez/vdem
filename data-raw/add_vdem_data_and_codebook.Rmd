@@ -12,35 +12,45 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = TRUE,
                       warning = FALSE,
                       cache = TRUE,
-                      cache.rebuild = FALSE)
+                      cache.rebuild = TRUE)
 
 library(tidyverse)
-path <- "../../../Data/Country_Year_V-Dem_Full+others_R_v9/Country_Year_V-Dem_Full+others_R_v9/"
+path <- "./Country_Year_V-Dem_Full+others_R_v10/"
 ```
 
 ## Vdem data
 
-First we read the VDem data, version 9, plus the external variables, and run it through `country_year_coder`. There are some problems with the historical country names.
+First we read the VDem data, version 10, plus the external variables, and run it through `country_year_coder`. There are some problems with the historical country names.
 
 ```{r reading_data, results = 'asis'}
 
-VDem_plus <- read_rds(paste0(path, "V-Dem-CY-Full+Others-v9.rds")) %>%
+VDem_plus <- read_rds(paste0(path, "V-Dem-CY-Full+Others-v10.rds")) %>%
   as_tibble()
 
 VDem_plus <- VDem_plus %>%
-  mutate(country_name = if_else(country_id == 196, "Sao Tome and Principe", country_name)) %>%
   democracyData::country_year_coder(country_name, 
                                     year,
-                                    include_in_output = c("extended_country_name", "GWn", "cown", 
-                                                        "GW_startdate", "GW_enddate", "GWc", 
-                                                        "extended_region","extended_continent", 
-                                                        "microstate", "lat", "lon", "in_GW_system"),
-                                    match_type = "country")
+                                    include_in_output =
+                                      c("extended_country_name", 
+                                        "GWn", "cown",
+                                        "GW_startdate", 
+                                        "GW_enddate", 
+                                        "GWc", 
+                                        "extended_region",
+                                        "extended_continent",
+                                        "microstate", "lat", 
+                                        "lon", "in_GW_system"),
+                                    match_type = "country", verbose = TRUE)
+
+VDem_plus <- VDem_plus %>%
+  filter(!(country_name == "Serbia" & year %in% c(1804:1829) & GW_startdate == lubridate::ymd("2006-06-05")),
+         !(country_name == "Serbia" & year %in% c(1804:1829) & extended_country_name == "Yugoslavia"))
+
 ```
 
 Here's a description of all the variables.
 
-```{r, results = "asis"}
+```{r, results = "asis", eval = FALSE}
 library(skimr)
 
 skim(VDem_plus) %>%
@@ -82,7 +92,7 @@ VDem_plus %>%
   filter(n() > 1) %>%
   knitr::kable()
 
-devtools::use_data(VDem_plus, overwrite = TRUE)
+usethis::use_data(VDem_plus, overwrite = TRUE)
 
 ```
 
@@ -94,7 +104,7 @@ Then we read the codebook and process it:
 
 library(pdftools)
 
-vdem_codebook_raw <- pdf_text(paste0(path,"V-Dem Codebook v9.pdf"))
+vdem_codebook_raw <- pdf_text(paste0(path,"V-Dem Codebook v10.pdf"))
 
 
 ```
@@ -103,10 +113,10 @@ We extract the main numbers from the TOC.
 
 ```{r}
 
-toc <- vdem_codebook_raw[5:23]
+toc <- vdem_codebook_raw[5:24]
 
 headers_from_toc <-  toc %>%
-  str_extract_all(regex("[0-9]+(\\.)[0-9]+(\\.)?[0-9]*[ ]?.+(\\([A-Z\\*\\(\\)]{1,2}\\))( )?(\\([A-Z\\*]{1,2}\\))?( )?(\\([A-Z\\*]{1,2}\\))?[\\s\\r\\n]*\\([\\w\\*, \\r\\n/]{2,}\\)", multiline = TRUE)) %>%
+  str_extract_all(regex("[0-9\\.]+.+(\\([A-Z\\*\\(\\)]{1,2}\\))( )?(\\([A-Z\\*]{1,2}\\))?( )?(\\([A-Z\\*]{1,2}\\))?[\\s\\r\\n]*\\([\\w\\*, \\r\\n/]{2,}\\)", multiline = TRUE)) %>%
   unlist() %>%
   str_trim() %>%
   str_replace_all("\\r\\n","") %>%
@@ -117,8 +127,9 @@ headers_from_toc <-  toc %>%
 ```
 
 ```{r}
-number <- str_extract(headers_from_toc, "^[0-9]+(\\.)[0-9]+(\\.)?[0-9]*") 
+number <- str_extract(headers_from_toc, "^[0-9]+(\\.).+\\(([ve])") 
 
+number <- str_extract(number, "^[0-9\\.]+")
 # Tests
 
 # check_headers <- readxl::read_excel("vdem_headers.xlsx", col_names = FALSE)
@@ -143,7 +154,7 @@ headers_from_toc <- headers_from_toc[which(!is.na(type_var))]
 
 type_var <- na.omit(type_var)
 
-labels <- str_replace(headers_from_toc, "^[0-9]+(\\.)[0-9]+(\\.)?[0-9]*", "") %>% 
+labels <- str_replace(headers_from_toc, "^[0-9\\.]+", "") %>% 
   str_extract("[[:print:]-[\\(\\)] ]+(?=\\()") %>%
   str_trim
 
@@ -159,13 +170,13 @@ var_names <- str_extract(headers_from_toc,"\\([\\w\\*/, ]+\\)$") %>%
 
 ## Get rid of page prematter and page numbers
 
-vdem_codebook_raw_nopage <- vdem_codebook_raw[c(40:331)]
+vdem_codebook_raw_nopage <- vdem_codebook_raw[c(41:398)]
 
 vdem_codebook_raw_nopage <- vdem_codebook_raw_nopage %>% 
-  str_replace(paste0("\\b", as.character(1:length(vdem_codebook_raw_nopage) + 38), "\\r\\n$"), "")
+  str_replace(paste0("\\r\\nTOC[ ]+", as.character(1:length(vdem_codebook_raw_nopage) + 39), "\\r\\n$"), "")
 
 
-knitr::kable(vdem_codebook_raw_nopage[1], col.names = "Page 40")
+knitr::kable(vdem_codebook_raw_nopage[1], col.names = "Page 41")
 
 ```
 
@@ -175,9 +186,11 @@ We then collapse the codebook into a single string, and split it along variable 
 collapsed_codebook <- paste(vdem_codebook_raw_nopage, collapse = "\r\n")
 
 split_vdem <- str_split(collapsed_codebook, 
-                              regex(paste0("\\r\\n",number,"[ ]+", collapse = "|")), simplify = TRUE)[1,] 
+                              regex(paste0("\\r\\n",number,collapse = "|")), simplify = TRUE)[1,] 
 
 split_vdem <- split_vdem[-1]
+
+split_vdem <- str_squish(split_vdem)
 
 project_managers <- split_vdem %>% 
   str_replace_all("\\r\\n"," ") %>%
@@ -363,13 +376,21 @@ na.omit(data_release) %>%
 
 
 ```{r}
-vdem_codebook <- data_frame(number = number[1:668], name = var_names[1:668], label = labels[1:668], type = type_var[1:668],
-                            project_manager = project_managers, additional_versions = additional_versions, 
-                            available_versions = available_versions, question = questions, 
-                            clarification = clarifications, responses = responses, answer_type = answer_type, 
-                            scale =scale, ordering = ordering, aggregation = aggregation, 
-                            cross_coder = cross_coder, data_release = data_release, source = sources,
-                            cleaning = cleaning, citation = citation, years = years, note = notes)
+vdem_codebook <- tibble(number = number, 
+                            name = var_names, 
+                            label = labels, type = type_var,
+                            project_manager = project_managers, 
+                            additional_versions = additional_versions, 
+                            available_versions = available_versions, 
+                            question = questions, 
+                            clarification = clarifications, 
+                            responses = responses, answer_type = answer_type, 
+                            scale =scale, ordering = ordering, 
+                            aggregation = aggregation, 
+                            cross_coder = cross_coder, 
+                            data_release = data_release, source = sources,
+                            cleaning = cleaning, 
+                            citation = citation, years = years, note = notes)
 
 ```
 
@@ -403,10 +424,10 @@ vdem_codebook <- vdem_codebook %>%
            as.integer()) %>%
   select(section, everything())
   
-skim(vdem_codebook) %>%
-  kable()
+skimr::skim(vdem_codebook) %>%
+  knitr::kable()
 
-devtools::use_data(vdem_codebook, overwrite = TRUE)
+usethis::use_data(vdem_codebook, overwrite = TRUE)
 
 ```
 

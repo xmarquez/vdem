@@ -4,14 +4,16 @@
 \name{vdem_codebook}
 \alias{vdem_codebook}
 \title{V-Dem codebook}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 668 rows and 22 columns.}
+\format{
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 745 rows and 22 columns.
+}
 \usage{
 vdem_codebook
 }
 \description{
-The V-Dem codebook (version 9) as a \link{tibble} for easier use in R. The
+The V-Dem codebook (version 10) as a \link{tibble} for easier use in R. The
 original codebook is available at
-\url{https://www.v-dem.net/en/data/data-version-9/}
+\url{https://www.v-dem.net/en/data/data-version-10/}
 }
 \section{Variable Descriptions}{
 
@@ -23,7 +25,7 @@ example, section 2 contains the main indexes of democracy, section 3 the
 mid-level indexes, etc.}
 
 \item{name}{The name of the variable. Does not include suffixes (e.g.,
-\code{_codehigh}, \code{_osp})}
+\verb{_codehigh}, \verb{_osp})}
 
 \item{label}{The label extracted from the codebook.}
 
@@ -123,12 +125,14 @@ about the variable.}
 \references{
 Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I.
 Lindberg, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam
-Glynn, Allen Hicken, Anna Lührmann, Kyle L. Marquardt, Kelly McMann, Pamela
+Glynn, Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela
 Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning,
-Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Valeriya
-Mechkov, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti,
-Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2019. "V-Dem Codebook v9"
+Jeffrey Staton, Steven Wilson, Agnes Cornell, Nazifa Alizada, Lisa
+Gastaldi, Haakon Gjerløw, Garry Hindle, Nina Ilchenko, Laura Maxwell,
+Valeriya Mechkova, Juraj Medzihorsky, Johannes von Römer, Aksel Sundström,
+Eitan Tzelgov, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020. "V-Dem
+Codebook v10"
 Varieties of Democracy (V-Dem) Project. Available at
-\url{https://www.v-dem.net/en/data/data-version-9/}
+\url{https://www.v-dem.net/en/data/data-version-10/}
 }
 \keyword{datasets}
