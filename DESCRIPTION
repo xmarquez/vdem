@@ -1,8 +1,8 @@
 Package: vdem
 Type: Package
-Title: Contains the Varieties of Democracy (V-Dem) Dataset v. 10
-Version: 0.1.4
-Description: Contains the Varieties of Democracy (V-Dem) Dataset v. 10 plus external variables, 
+Title: Contains the Varieties of Democracy (V-Dem) Dataset v. 11
+Version: 0.1.5
+Description: Contains the Varieties of Democracy (V-Dem) Dataset v. 11 plus external variables, 
   the codebook in data frame format, and some functions to ease the extraction of vdem data.
 Authors@R: person("Xavier", "Marquez", role=c("aut", "cre"),
   email = "marquez.x@gmail.com")
@@ -14,8 +14,9 @@ Imports:
     dplyr,
     tidyr,
     stringr,
-    rlang
-RoxygenNote: 7.1.0
+    rlang,
+    magrittr
+RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 LazyData: true
