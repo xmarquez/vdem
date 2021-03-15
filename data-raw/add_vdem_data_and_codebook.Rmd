@@ -1,7 +1,7 @@
 ---
 title: "Add VDem Data and Codebook"
 author: "Xavier Marquez"
-date: "24 August 2017"
+date: "`r format(lubridate::now(), '%d %B %Y')`"
 output: 
   html_document: 
     toc: yes
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       cache.rebuild = TRUE)
 
 library(tidyverse)
-path <- "./Country_Year_V-Dem_Full+others_R_v10/"
+path <- "./Country_Year_V-Dem_Full+others_R_v11/"
 ```
 
 ## Vdem data
@@ -24,7 +24,7 @@ First we read the VDem data, version 10, plus the external variables, and run it
 
 ```{r reading_data, results = 'asis'}
 
-VDem_plus <- read_rds(paste0(path, "V-Dem-CY-Full+Others-v10.rds")) %>%
+VDem_plus <- read_rds(paste0(path, "V-Dem-CY-Full+Others-v11.rds")) %>%
   as_tibble()
 
 VDem_plus <- VDem_plus %>%
@@ -54,7 +54,7 @@ Here's a description of all the variables.
 library(skimr)
 
 skim(VDem_plus) %>%
-  kable()
+  knitr::kable()
 ```
 
 And here are some tests of some typically problematic countries.
@@ -104,7 +104,7 @@ Then we read the codebook and process it:
 
 library(pdftools)
 
-vdem_codebook_raw <- pdf_text(paste0(path,"V-Dem Codebook v10.pdf"))
+vdem_codebook_raw <- pdf_text(paste0(path,"V-Dem Codebook v11.pdf"))
 
 
 ```
@@ -113,7 +113,7 @@ We extract the main numbers from the TOC.
 
 ```{r}
 
-toc <- vdem_codebook_raw[5:24]
+toc <- vdem_codebook_raw[5:25]
 
 headers_from_toc <-  toc %>%
   str_extract_all(regex("[0-9\\.]+.+(\\([A-Z\\*\\(\\)]{1,2}\\))( )?(\\([A-Z\\*]{1,2}\\))?( )?(\\([A-Z\\*]{1,2}\\))?[\\s\\r\\n]*\\([\\w\\*, \\r\\n/]{2,}\\)", multiline = TRUE)) %>%
@@ -132,12 +132,12 @@ number <- str_extract(headers_from_toc, "^[0-9]+(\\.).+\\(([ve])")
 number <- str_extract(number, "^[0-9\\.]+")
 # Tests
 
-# check_headers <- readxl::read_excel("vdem_headers.xlsx", col_names = FALSE)
+check_headers <- readxl::read_excel("vdem_headers.xlsx", col_names = FALSE)
 
-# check_number <- str_extract(check_headers$X__1, "^[0-9]+(\\.)[0-9]+(\\.)?[0-9]*") 
+check_number <- str_extract(check_headers$...1, "^[0-9]+(\\.)[0-9]+(\\.)?[0-9]*") 
 
 # check_number[!(check_number %in% number)]
-
+# 
 # number[!(number %in% check_number)]
 
 ```
@@ -145,7 +145,8 @@ number <- str_extract(number, "^[0-9\\.]+")
 And then we extract the variable names and labels, and remove the page numbers from the extracted pages. Here's an example (page 40), to check that page numbers have been removed:
 
 ```{r}
-type_var <- str_extract(headers_from_toc, "(\\([A-Z\\*]{1,2}\\))( )?(\\([A-Z\\*]{1,2}\\))?( )?(\\([A-Z\\*]{1,2}\\))?") %>%
+type_var <- str_extract(headers_from_toc, 
+                        "(\\([A-Z\\*]{1,2}\\))( )?(\\([A-Z\\*]{1,2}\\))?( )?(\\([A-Z\\*]{1,2}\\))?") %>%
   str_trim()
 
 # which(is.na(type_var))
@@ -170,14 +171,15 @@ var_names <- str_extract(headers_from_toc,"\\([\\w\\*/, ]+\\)$") %>%
 
 ## Get rid of page prematter and page numbers
 
-vdem_codebook_raw_nopage <- vdem_codebook_raw[c(41:398)]
+vdem_codebook_raw_nopage <- vdem_codebook_raw[c(42:418)]
 
 vdem_codebook_raw_nopage <- vdem_codebook_raw_nopage %>% 
-  str_replace(paste0("\\r\\nTOC[ ]+", as.character(1:length(vdem_codebook_raw_nopage) + 39), "\\r\\n$"), "")
+  str_replace(paste0("\\r\\nTOC[ ]+", as.character(1:length(vdem_codebook_raw_nopage) + 40), "\\r\\n$"), "")
 
 
 knitr::kable(vdem_codebook_raw_nopage[1], col.names = "Page 41")
 
+knitr::kable(vdem_codebook_raw_nopage[418-41], col.names = "Page 418")
 ```
 
 We then collapse the codebook into a single string, and split it along variable numbers.
@@ -185,12 +187,21 @@ We then collapse the codebook into a single string, and split it along variable 
 ```{r}
 collapsed_codebook <- paste(vdem_codebook_raw_nopage, collapse = "\r\n")
 
-split_vdem <- str_split(collapsed_codebook, 
-                              regex(paste0("\\r\\n",number,collapse = "|")), simplify = TRUE)[1,] 
+number_pattern <- str_replace_all(number, "\\.", "\\\\.")
+
+split_vdem <- str_split(collapsed_codebook,
+                              regex(paste0("\\r\\n",number_pattern,collapse = "|")),
+                        simplify = TRUE)[1,]
+
+# split_vdem <- str_split(collapsed_codebook,
+#                         regex(paste0(str_c(number, ".+", labels), collapse = "|"), 
+#                               ignore_case = TRUE), simplify = TRUE)[1,] 
 
 split_vdem <- split_vdem[-1]
 
 split_vdem <- str_squish(split_vdem)
+
+missed <- split_vdem[str_detect(split_vdem, regex(paste0(number_pattern, collapse = "|")))]
 
 project_managers <- split_vdem %>% 
   str_replace_all("\\r\\n"," ") %>%
