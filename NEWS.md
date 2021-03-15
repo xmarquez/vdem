@@ -1,3 +1,11 @@
+# vdem 0.1.5
+
+* Moved to version 11 of the V-Dem dataset.
+* Palette changes and minor fixes to Readme.Rmd
+* Fixed references to earlier versions in documentation
+* Fixed citation information
+* Rebuilt pkgdown site
+
 # vdem 0.1.4
 
 * Moved to version 10 of the V-Dem dataset.
