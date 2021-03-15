@@ -5,15 +5,15 @@
 \alias{vdem_codebook}
 \title{V-Dem codebook}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 745 rows and 22 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 764 rows and 22 columns.
 }
 \usage{
 vdem_codebook
 }
 \description{
-The V-Dem codebook (version 10) as a \link{tibble} for easier use in R. The
+The V-Dem codebook (version 11) as a \link{tibble} for easier use in R. The
 original codebook is available at
-\url{https://www.v-dem.net/en/data/data-version-10/}
+\url{https://www.v-dem.net/en/data/data-version-11/}
 }
 \section{Variable Descriptions}{
 
@@ -124,15 +124,13 @@ about the variable.}
 
 \references{
 Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I.
-Lindberg, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam
-Glynn, Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela
-Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning,
-Jeffrey Staton, Steven Wilson, Agnes Cornell, Nazifa Alizada, Lisa
-Gastaldi, Haakon Gjerløw, Garry Hindle, Nina Ilchenko, Laura Maxwell,
-Valeriya Mechkova, Juraj Medzihorsky, Johannes von Römer, Aksel Sundström,
-Eitan Tzelgov, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020. "V-Dem
-Codebook v10"
-Varieties of Democracy (V-Dem) Project. Available at
-\url{https://www.v-dem.net/en/data/data-version-10/}
+Lindberg, Jan Teorell, David Altman, Michael Bernhard, Agnes Cornell, M.
+Steven Fish, Lisa Gastaldi, Haakon Gjerløw, Adam Glynn, Allen Hicken, Anna
+Lührmann, Seraphine F. Maerz, Kyle L. Marquardt, Kelly McMann, Valeriya
+Mechkova, Pamela Paxton, Daniel Pemstein, Johannes von Römer, Brigitte
+Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey Staton, Aksel Sundtr¨om,
+Eitan Tzelgov,Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt.
+2021. "V-Dem Codebook v11" Varieties of Democracy (V-Dem) Project. Available at
+\url{https://www.v-dem.net/en/data/data-version-11/}
 }
 \keyword{datasets}

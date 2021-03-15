@@ -57,7 +57,7 @@ A \link{tibble} with the V-Dem country identifiers, other state system
 identifiers, plus the desired variables.
 }
 \description{
-Extracts variables in the V-Dem dataset (version 10), according to the
+Extracts variables in the V-Dem dataset (version 11), according to the
 section number in the codebook or a regular expression pattern matching the
 name or the label.
 }

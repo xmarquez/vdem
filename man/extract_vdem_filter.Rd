@@ -47,7 +47,7 @@ A \link{tibble} with the V-Dem country identifiers, other state system
 identifiers, plus the desired variables.
 }
 \description{
-Extracts variables in the V-Dem dataset (version 10), by using a filter
+Extracts variables in the V-Dem dataset (version 11), by using a filter
 expression that is used to extract variable names from the V-Dem coddebook
 (\link{vdem_codebook})
 }
@@ -55,5 +55,5 @@ expression that is used to extract variable names from the V-Dem coddebook
 # All in section 2 of the codebook except component indexes
 extract_vdem_filter(section == 2, !grepl("component index", label))
 # All variables inclued in release 2 of the dataset
-extract_vdem_filter(grepl("2(,|$)|1-10", data_release))
+extract_vdem_filter(grepl("2(,|$)|1-11", data_release))
 }

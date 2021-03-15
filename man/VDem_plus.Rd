@@ -3,29 +3,30 @@
 \docType{data}
 \name{VDem_plus}
 \alias{VDem_plus}
-\title{V-Dem dataset (version 10)}
+\title{V-Dem dataset (version 11)}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 27013 rows and 4120 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 27192 rows and 4188 columns.
 }
 \source{
 Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I.
-Lindberg, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam
-Glynn, Allen Hicken, Anna Lührmann, Kyle L. Marquardt, Kelly McMann, Pamela
-Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning,
-Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Valeriya
-Mechkova, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti,
-Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020. "V-Dem Codebook v10"
-Varieties of Democracy (V-Dem) Project. Available at:
-\url{https://www.v-dem.net/en/data/data-version-10/}
+Lindberg, Jan Teorell, David Altman, Michael Bernhard, Agnes Cornell, M.
+Steven Fish, Lisa Gastaldi, Haakon Gjerløw, Adam Glynn, Allen Hicken, Anna
+Lührmann, Seraphine F. Maerz, Kyle L. Marquardt, Kelly McMann, Valeriya
+Mechkova, Pamela Paxton, Daniel Pemstein, Johannes von Römer, Brigitte
+Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey Staton, Aksel Sundtr¨om,
+Eitan Tzelgov,Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt.
+2021. "V-Dem Codebook v11" Varieties of Democracy (V-Dem) Project.
+Available at
+\url{https://www.v-dem.net/en/data/data-version-11/}
 }
 \usage{
 VDem_plus
 }
 \description{
-The V-Dem dataset (version 10), including external variables. This
+The V-Dem dataset (version 11), including external variables. This
 documentation only provides variable names and labels for the country-year
 identifiers included. The rest of the codebook is available at
-\url{https://www.v-dem.net/en/data/data-version-10/},
+\url{https://www.v-dem.net/en/data/data-version-11/},
 and in this package as \link{vdem_codebook}.
 }
 \section{Identifiers}{
@@ -34,7 +35,7 @@ and in this package as \link{vdem_codebook}.
 \describe{
 
 \item{vdem_country_name}{The original country name in the dataset. There
-are 178 distinct countries in version 9. According to the codebook, "a
+are 202 distinct countries in version 11. According to the codebook, "a
 V-Dem country is a political unit enjoying at least some degree of
 functional and/or formal sovereignty."}
 
@@ -42,7 +43,7 @@ functional and/or formal sovereignty."}
 
 \item{vdem_country_text_id}{Unique abbreviation for each country.}
 
-\item{year}{Year, from 1789-2018.}
+\item{year}{Year, from 1789-2020.}
 
 \item{extended_country_name}{The standard country according to the
 \href{http://privatewww.essex.ac.uk/~ksg/statelist.html}{Gleditsch and Ward system of states} (Gleditsch and
@@ -59,7 +60,7 @@ For details, see Gleditsch and Ward 1999. The list can be found at
 Xavier Marquez to the original V-Dem dataset.}
 
 \item{historical_date}{"This variable is included in the V-Dem Country Date
-dataset. The default date is December 31st, as in 2018-12-31, referring to
+dataset. The default date is December 31st, as in 2020-12-31, referring to
 the time span from 01-01 to 12-31 in a respective year. Additionally,
 specific changes, such as the appointment of a Head of State, are coded on
 the specific date within a certain year. Thus, a code can change within a
@@ -159,20 +160,20 @@ in the original V-Dem dataset.}
 
 \references{
 Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg,
-Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn,
-Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela Paxton,
-Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey
-Staton, Steven Wilson, Agnes Cornell, Nazifa Alizada, Lisa Gastaldi, Haakon
-Gjerløw, Garry Hindle, Nina Ilchenko, Laura Maxwell, Valeriya Mechkova, Juraj
-Medzihorsky, Johannes von Römer, Aksel Sundström, Eitan Tzelgov, Yi-ting
-Wang, Tore Wig, and Daniel Ziblatt. 2020. "V-Dem Country-Year/Country-Date
-Dataset v10" Varieties of Democracy (V-Dem) Project. Available at
-\url{https://www.v-dem.net/en/data/data-version-10/}
+Jan Teorell, Nazifa Alizada, David Altman, Michael Bernhard, Agnes Cornell,
+M. Steven Fish, Lisa Gastaldi, Haakon Gjerløw, Adam Glynn, Allen Hicken,
+Garry Hindle, Nina Ilchenko, Joshua Krusell, Anna Luhrmann, Seraphine F.
+Maerz, Kyle L. Marquardt, Kelly McMann, Valeriya Mechkova, Juraj Medzihorsky,
+Pamela Paxton, Daniel Pemstein, Joseﬁne Pernes, Johannes von Römer, Brigitte
+Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey Staton, Aksel Sundström,
+Ei-tan Tzelgov, Yi-ting Wang, Tore Wig, Steven Wilson and Daniel Ziblatt.
+2021. "V-Dem Country-Year Dataset v11" Varieties of Democracy
+Project. https://doi.org/10.23696/vdems21
 
 Pemstein, Daniel, Kyle L. Marquardt, Eitan Tzelgov, Yi-ting Wang, Juraj
-Medzihorsky, Joshua Krusell, Farhad Miri, and Johannes von Römer. 2020 “The
+Medzihorsky, Joshua Krusell, Farhad Miri, and Johannes von Römer. 2020 "The
 V-Dem Measurement Model: Latent Variable Analysis for Cross-National and
-Cross-Temporal Expert-Coded Data”. V-Dem Working Paper No. 21. 5th edition.
+Cross-Temporal Expert-Coded Data". V-Dem Working Paper No. 21. 5th edition.
 University of Gothenburg: Varieties of Democracy Institute.
 
 Gleditsch, Kristian S. & Michael D. Ward. 1999. "Interstate System
