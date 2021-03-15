@@ -6,3 +6,4 @@
 ^README-.*\.png$
 ^\.travis\.yml$
 ^docs$
+^\.github$
