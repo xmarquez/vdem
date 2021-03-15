@@ -1,10 +1,13 @@
 ---
-output: github_document
+output: gfm
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-[![Travis-CI Build Status](https://travis-ci.org/xmarquez/vdem.svg?branch=master)](https://travis-ci.org/xmarquez/vdem)
+<!-- badges: start -->
+  [![R-CMD-check](https://github.com/xmarquez/vdem/workflows/R-CMD-check/badge.svg)](https://github.com/xmarquez/vdem/actions)
+  [![Travis-CI Build Status](https://travis-ci.org/xmarquez/vdem.svg?branch=master)](https://travis-ci.org/xmarquez/vdem)
+  <!-- badges: end -->
+  
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
@@ -16,7 +19,7 @@ knitr::opts_chunk$set(
 
 # vdem
 
-This package provides access to the [Varieties of Democracy (V-Dem) dataset, version 10](https://www.v-dem.net/en/data/data-version-10/). It includes the dataset's codebook as a data frame, which allows one to easily search for variables by label or other descriptors. And it also includes a couple of convenience functions, `extract_vdem` and `extract_vdem_filter`, to extract subsets of the dataset meeting particular criteria. 
+This package provides access to the [Varieties of Democracy (V-Dem) dataset, version 11](https://www.v-dem.net/en/data/data-version-11/). It includes the dataset's codebook as a data frame, which allows one to easily search for variables by label or other descriptors. And it also includes a couple of convenience functions, `extract_vdem` and `extract_vdem_filter`, to extract subsets of the dataset meeting particular criteria. 
 
 ## Installation
 
@@ -115,16 +118,17 @@ ggplot(data) +
   geom_ribbon(aes(x = year, ymin = pct_025, ymax = pct_975, group = label), 
               fill = "grey", alpha = 0.2) +
   geom_text_repel(data = data %>% 
-              filter(year == 2018),
+              filter(year == 2020),
             aes(x = year, y = mean_index, label = label, color = label), show.legend = FALSE) +
   theme_bw() +
     labs(y = "Avg. level of democracy\n(according to V-Dem main indices)",
          color = "", x = "",
-         title = "Average level of democracy in the world, 1789-2019",
+         title = "Average level of democracy in the world, 1789-2020",
          subtitle = "Average over all countries in year for each index.\nEach index ranges from 0 = least democratic to 1 = most democratic.\nDotted lines indicate WWI, WWII, and the end of the Cold War.\nYears from 1789 to 1900 reflect a smaller sample of countries from the historical V-Dem\nproject.",
-         caption = "Data from V-Dem dataset, version 10") +
+         caption = "Data from V-Dem dataset, version 11") +
   geom_vline(xintercept = c(1914, 1918, 1939, 1945, 1989), linetype = 3) +
-  coord_cartesian(xlim = c(1789, 2030))
+  coord_cartesian(xlim = c(1789, 2030)) +
+  scale_color_viridis_d()
 
 ```
 
@@ -150,7 +154,7 @@ data <- extract_vdem_filter(section == 2, !grepl("component index", label),
   filter(!is.na(index), 
          vdem_country_name %in% c("Venezuela", 
                                   "United States of America", 
-                                  "Turkey", "Russia"))
+                                  "Turkey", "Russia", "India"))
 
  
 ggplot(data) +
@@ -158,18 +162,19 @@ ggplot(data) +
   geom_ribbon(aes(x = year, ymin = codelow_value, ymax = codehigh_value, group = label), 
               fill = "grey", alpha = 0.2) +
   geom_text_repel(data = data %>% 
-              filter(year == 2018),
+              filter(year == 2020),
             aes(x = year, y = index_value, label = label, color = label), show.legend = FALSE) +
   theme_bw() +
     labs(y = "Avg. level of democracy\n(according to V-Dem main indices)",
          color = "", x = "",
-         title = "Average level of democracy in selected countries, 1789-2019",
+         title = "Average level of democracy in selected countries, 1789-2020",
          subtitle = "Each index ranges from 0 = least democratic to 1 = most democratic.\nDotted lines indicate WWI, WWII, and the end of the Cold War.",
-         caption = "Data from V-Dem dataset, version 10") +
+         caption = "Data from V-Dem dataset, version 11") +
   geom_vline(xintercept = c(1914, 1918, 1939, 1945, 1989), linetype = 3) +
   geom_hline(yintercept = 0.5, color = "red") +
   coord_cartesian(xlim = c(1789, 2030)) +
-  facet_wrap(~vdem_country_name, ncol = 1)
+  facet_wrap(~vdem_country_name, ncol = 1) +
+  scale_color_viridis_d()
 ```
 
 
