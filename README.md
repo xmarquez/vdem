@@ -3,8 +3,6 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/xmarquez/vdem/workflows/R-CMD-check/badge.svg)](https://github.com/xmarquez/vdem/actions)
-[![Travis-CI Build
-Status](https://travis-ci.org/xmarquez/vdem.svg?branch=master)](https://travis-ci.org/xmarquez/vdem)
 <!-- badges: end -->
 
 # vdem
