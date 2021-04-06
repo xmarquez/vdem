@@ -15,16 +15,16 @@ knitr::opts_chunk$set(echo = FALSE,
                       cache.rebuild = TRUE)
 
 library(tidyverse)
-path <- "./Country_Year_V-Dem_Full+others_R_v11/"
+path <- "./Country_Year_V-Dem_Full+others_R_v11.1/"
 ```
 
 ## Vdem data
 
-First we read the VDem data, version 10, plus the external variables, and run it through `country_year_coder`. There are some problems with the historical country names.
+First we read the VDem data, version 11.1, plus the external variables, and run it through `country_year_coder`. There are some problems with the historical country names.
 
 ```{r reading_data, results = 'asis'}
 
-VDem_plus <- read_rds(paste0(path, "V-Dem-CY-Full+Others-v11.rds")) %>%
+VDem_plus <- read_rds(paste0(path, "V-Dem-CY-Full+Others-v11.1.rds")) %>%
   as_tibble()
 
 VDem_plus <- VDem_plus %>%
@@ -104,7 +104,7 @@ Then we read the codebook and process it:
 
 library(pdftools)
 
-vdem_codebook_raw <- pdf_text(paste0(path,"V-Dem Codebook v11.pdf"))
+vdem_codebook_raw <- pdf_text(paste0(path,"V-Dem Codebook v11.1.pdf"))
 
 
 ```

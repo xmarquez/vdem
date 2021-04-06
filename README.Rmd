@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 # vdem
 
-This package provides access to the [Varieties of Democracy (V-Dem) dataset, version 11](https://www.v-dem.net/en/data/data-version-11/). It includes the dataset's codebook as a data frame, which allows one to easily search for variables by label or other descriptors. And it also includes a couple of convenience functions, `extract_vdem` and `extract_vdem_filter`, to extract subsets of the dataset meeting particular criteria. 
+This package provides access to the [Varieties of Democracy (V-Dem) dataset, version 11.1](https://www.v-dem.net/en/data/data/v-dem-dataset-v111/). It includes the dataset's codebook as a data frame, which allows one to easily search for variables by label or other descriptors. And it also includes a couple of convenience functions, `extract_vdem` and `extract_vdem_filter`, to extract subsets of the dataset meeting particular criteria. 
 
 ## Installation
 
@@ -124,7 +124,7 @@ ggplot(data) +
          color = "", x = "",
          title = "Average level of democracy in the world, 1789-2020",
          subtitle = "Average over all countries in year for each index.\nEach index ranges from 0 = least democratic to 1 = most democratic.\nDotted lines indicate WWI, WWII, and the end of the Cold War.\nYears from 1789 to 1900 reflect a smaller sample of countries from the historical V-Dem\nproject.",
-         caption = "Data from V-Dem dataset, version 11") +
+         caption = "Data from V-Dem dataset, version 11.1") +
   geom_vline(xintercept = c(1914, 1918, 1939, 1945, 1989), linetype = 3) +
   coord_cartesian(xlim = c(1789, 2030)) +
   scale_color_viridis_d()
@@ -168,7 +168,7 @@ ggplot(data) +
          color = "", x = "",
          title = "Average level of democracy in selected countries, 1789-2020",
          subtitle = "Each index ranges from 0 = least democratic to 1 = most democratic.\nDotted lines indicate WWI, WWII, and the end of the Cold War.",
-         caption = "Data from V-Dem dataset, version 11") +
+         caption = "Data from V-Dem dataset, version 11.1") +
   geom_vline(xintercept = c(1914, 1918, 1939, 1945, 1989), linetype = 3) +
   geom_hline(yintercept = 0.5, color = "red") +
   coord_cartesian(xlim = c(1789, 2030)) +

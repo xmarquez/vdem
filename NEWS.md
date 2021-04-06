@@ -1,3 +1,7 @@
+# vdem 0.1.6
+
+* Moved to version 11.1 of the V-Dem dataset.
+
 # vdem 0.1.5
 
 * Moved to version 11 of the V-Dem dataset.

@@ -5,7 +5,7 @@
 \alias{vdem_codebook}
 \title{V-Dem codebook}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 764 rows and 22 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 761 rows and 22 columns.
 }
 \usage{
 vdem_codebook

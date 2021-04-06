@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contains the Varieties of Democracy (V-Dem) Dataset v. 11 • vdem</title>
+<title>Contains the Varieties of Democracy (V-Dem) Dataset v. 11.1 • vdem</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Contains the Varieties of Democracy (V-Dem) Dataset v. 11">
-<meta property="og:description" content="Contains the Varieties of Democracy (V-Dem) Dataset v. 11 plus external variables, 
+<script src="pkgdown.js"></script><meta property="og:title" content="Contains the Varieties of Democracy (V-Dem) Dataset v. 11.1">
+<meta property="og:description" content="Contains the Varieties of Democracy (V-Dem) Dataset v. 11.1 plus external variables, 
   the codebook in data frame format, and some functions to ease the extraction of vdem data.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">vdem</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6</span>
       </span>
     </div>
 
@@ -68,7 +68,7 @@
 <div id="vdem" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#vdem" class="anchor"></a>vdem</h1></div>
-<p>This package provides access to the <a href="https://www.v-dem.net/en/data/data-version-11/">Varieties of Democracy (V-Dem) dataset, version 11</a>. It includes the dataset’s codebook as a data frame, which allows one to easily search for variables by label or other descriptors. And it also includes a couple of convenience functions, <code>extract_vdem</code> and <code>extract_vdem_filter</code>, to extract subsets of the dataset meeting particular criteria.</p>
+<p>This package provides access to the <a href="https://www.v-dem.net/en/data/data/v-dem-dataset-v111/">Varieties of Democracy (V-Dem) dataset, version 11.1</a>. It includes the dataset’s codebook as a data frame, which allows one to easily search for variables by label or other descriptors. And it also includes a couple of convenience functions, <code>extract_vdem</code> and <code>extract_vdem_filter</code>, to extract subsets of the dataset meeting particular criteria.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -91,18 +91,18 @@
 
 <span class="va">main_indices</span>
 <span class="co">#&gt; # A tibble: 27,192 x 105</span>
-<span class="co">#&gt;    vdem_country_na~ vdem_country_te~ vdem_country_id  year extended_countr~</span>
-<span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;                      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           </span>
-<span class="co">#&gt;  1 Mexico           MEX                            3  1789 Mexico          </span>
-<span class="co">#&gt;  2 Mexico           MEX                            3  1790 Mexico          </span>
-<span class="co">#&gt;  3 Mexico           MEX                            3  1791 Mexico          </span>
-<span class="co">#&gt;  4 Mexico           MEX                            3  1792 Mexico          </span>
-<span class="co">#&gt;  5 Mexico           MEX                            3  1793 Mexico          </span>
-<span class="co">#&gt;  6 Mexico           MEX                            3  1794 Mexico          </span>
-<span class="co">#&gt;  7 Mexico           MEX                            3  1795 Mexico          </span>
-<span class="co">#&gt;  8 Mexico           MEX                            3  1796 Mexico          </span>
-<span class="co">#&gt;  9 Mexico           MEX                            3  1797 Mexico          </span>
-<span class="co">#&gt; 10 Mexico           MEX                            3  1798 Mexico          </span>
+<span class="co">#&gt;    vdem_country_name vdem_country_text~ vdem_country_id  year extended_country_~</span>
+<span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;                        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;             </span>
+<span class="co">#&gt;  1 Mexico            MEX                              3  1789 Mexico            </span>
+<span class="co">#&gt;  2 Mexico            MEX                              3  1790 Mexico            </span>
+<span class="co">#&gt;  3 Mexico            MEX                              3  1791 Mexico            </span>
+<span class="co">#&gt;  4 Mexico            MEX                              3  1792 Mexico            </span>
+<span class="co">#&gt;  5 Mexico            MEX                              3  1793 Mexico            </span>
+<span class="co">#&gt;  6 Mexico            MEX                              3  1794 Mexico            </span>
+<span class="co">#&gt;  7 Mexico            MEX                              3  1795 Mexico            </span>
+<span class="co">#&gt;  8 Mexico            MEX                              3  1796 Mexico            </span>
+<span class="co">#&gt;  9 Mexico            MEX                              3  1797 Mexico            </span>
+<span class="co">#&gt; 10 Mexico            MEX                              3  1798 Mexico            </span>
 <span class="co">#&gt; # ... with 27,182 more rows, and 100 more variables: GWn &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   historical_date &lt;date&gt;, project &lt;dbl&gt;, historical &lt;dbl&gt;, histname &lt;chr&gt;,</span>
 <span class="co">#&gt; #   codingstart &lt;dbl&gt;, codingend &lt;dbl&gt;, codingstart_contemp &lt;dbl&gt;,</span>
@@ -149,18 +149,18 @@
 
 <span class="va">corruption_vars</span>
 <span class="co">#&gt; # A tibble: 27,192 x 63</span>
-<span class="co">#&gt;    vdem_country_na~ vdem_country_te~ vdem_country_id  year extended_countr~</span>
-<span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;                      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           </span>
-<span class="co">#&gt;  1 Mexico           MEX                            3  1789 Mexico          </span>
-<span class="co">#&gt;  2 Mexico           MEX                            3  1790 Mexico          </span>
-<span class="co">#&gt;  3 Mexico           MEX                            3  1791 Mexico          </span>
-<span class="co">#&gt;  4 Mexico           MEX                            3  1792 Mexico          </span>
-<span class="co">#&gt;  5 Mexico           MEX                            3  1793 Mexico          </span>
-<span class="co">#&gt;  6 Mexico           MEX                            3  1794 Mexico          </span>
-<span class="co">#&gt;  7 Mexico           MEX                            3  1795 Mexico          </span>
-<span class="co">#&gt;  8 Mexico           MEX                            3  1796 Mexico          </span>
-<span class="co">#&gt;  9 Mexico           MEX                            3  1797 Mexico          </span>
-<span class="co">#&gt; 10 Mexico           MEX                            3  1798 Mexico          </span>
+<span class="co">#&gt;    vdem_country_name vdem_country_text~ vdem_country_id  year extended_country_~</span>
+<span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;                        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;             </span>
+<span class="co">#&gt;  1 Mexico            MEX                              3  1789 Mexico            </span>
+<span class="co">#&gt;  2 Mexico            MEX                              3  1790 Mexico            </span>
+<span class="co">#&gt;  3 Mexico            MEX                              3  1791 Mexico            </span>
+<span class="co">#&gt;  4 Mexico            MEX                              3  1792 Mexico            </span>
+<span class="co">#&gt;  5 Mexico            MEX                              3  1793 Mexico            </span>
+<span class="co">#&gt;  6 Mexico            MEX                              3  1794 Mexico            </span>
+<span class="co">#&gt;  7 Mexico            MEX                              3  1795 Mexico            </span>
+<span class="co">#&gt;  8 Mexico            MEX                              3  1796 Mexico            </span>
+<span class="co">#&gt;  9 Mexico            MEX                              3  1797 Mexico            </span>
+<span class="co">#&gt; 10 Mexico            MEX                              3  1798 Mexico            </span>
 <span class="co">#&gt; # ... with 27,182 more rows, and 58 more variables: GWn &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   historical_date &lt;date&gt;, project &lt;dbl&gt;, historical &lt;dbl&gt;, histname &lt;chr&gt;,</span>
 <span class="co">#&gt; #   codingstart &lt;dbl&gt;, codingend &lt;dbl&gt;, codingstart_contemp &lt;dbl&gt;,</span>
@@ -190,18 +190,18 @@
 
 <span class="va">civil_society</span>
 <span class="co">#&gt; # A tibble: 27,192 x 158</span>
-<span class="co">#&gt;    vdem_country_na~ vdem_country_te~ vdem_country_id  year extended_countr~</span>
-<span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;                      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           </span>
-<span class="co">#&gt;  1 Mexico           MEX                            3  1789 Mexico          </span>
-<span class="co">#&gt;  2 Mexico           MEX                            3  1790 Mexico          </span>
-<span class="co">#&gt;  3 Mexico           MEX                            3  1791 Mexico          </span>
-<span class="co">#&gt;  4 Mexico           MEX                            3  1792 Mexico          </span>
-<span class="co">#&gt;  5 Mexico           MEX                            3  1793 Mexico          </span>
-<span class="co">#&gt;  6 Mexico           MEX                            3  1794 Mexico          </span>
-<span class="co">#&gt;  7 Mexico           MEX                            3  1795 Mexico          </span>
-<span class="co">#&gt;  8 Mexico           MEX                            3  1796 Mexico          </span>
-<span class="co">#&gt;  9 Mexico           MEX                            3  1797 Mexico          </span>
-<span class="co">#&gt; 10 Mexico           MEX                            3  1798 Mexico          </span>
+<span class="co">#&gt;    vdem_country_name vdem_country_text~ vdem_country_id  year extended_country_~</span>
+<span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;                        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;             </span>
+<span class="co">#&gt;  1 Mexico            MEX                              3  1789 Mexico            </span>
+<span class="co">#&gt;  2 Mexico            MEX                              3  1790 Mexico            </span>
+<span class="co">#&gt;  3 Mexico            MEX                              3  1791 Mexico            </span>
+<span class="co">#&gt;  4 Mexico            MEX                              3  1792 Mexico            </span>
+<span class="co">#&gt;  5 Mexico            MEX                              3  1793 Mexico            </span>
+<span class="co">#&gt;  6 Mexico            MEX                              3  1794 Mexico            </span>
+<span class="co">#&gt;  7 Mexico            MEX                              3  1795 Mexico            </span>
+<span class="co">#&gt;  8 Mexico            MEX                              3  1796 Mexico            </span>
+<span class="co">#&gt;  9 Mexico            MEX                              3  1797 Mexico            </span>
+<span class="co">#&gt; 10 Mexico            MEX                              3  1798 Mexico            </span>
 <span class="co">#&gt; # ... with 27,182 more rows, and 153 more variables: GWn &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   historical_date &lt;date&gt;, project &lt;dbl&gt;, historical &lt;dbl&gt;, histname &lt;chr&gt;,</span>
 <span class="co">#&gt; #   codingstart &lt;dbl&gt;, codingend &lt;dbl&gt;, codingstart_contemp &lt;dbl&gt;,</span>
@@ -239,20 +239,20 @@
 <p>If you need more control over the variables extracted, or need to learn more about them, you can use the codebook:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vdem_codebook</span>
-<span class="co">#&gt; # A tibble: 764 x 22</span>
-<span class="co">#&gt;    section number name  label type  project_manager additional_vers~</span>
-<span class="co">#&gt;      &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;           &lt;chr&gt;           </span>
-<span class="co">#&gt;  1       2 2.1.1  v2x_~ Elec~ (D)   Jan Teorell     *_codelow, *_co~</span>
-<span class="co">#&gt;  2       2 2.1.2  v2x_~ Libe~ (D)   Jan Teorell     *_codelow, *_co~</span>
-<span class="co">#&gt;  3       2 2.1.3  v2x_~ Libe~ (D)   Jan Teorell     *_codelow, *_co~</span>
-<span class="co">#&gt;  4       2 2.1.4  v2x_~ Part~ (D)   Jan Teorell     *_codelow, *_co~</span>
-<span class="co">#&gt;  5       2 2.1.5  v2x_~ Deli~ (D)   Jan Teorell     *_codelow, *_co~</span>
-<span class="co">#&gt;  6       2 2.1.6  v2x_~ Egal~ (D)   Rachel Sigman,~ *_codelow, *_co~</span>
-<span class="co">#&gt;  7       2 2.2.1  v2x_~ Addi~ (D)   Jan Teorell     *_codelow, *_co~</span>
-<span class="co">#&gt;  8       2 2.2.2  v2x_~ Mult~ (D)   Jan Teorell     *_codelow, *_co~</span>
-<span class="co">#&gt;  9       2 2.2.3  v2x_~ Free~ (D)   Svend-Erik Ska~ *_codelow, *_co~</span>
-<span class="co">#&gt; 10       2 2.2.4  v2x_~ Free~ (D)   Allen Hicken, ~ *_codelow, *_co~</span>
-<span class="co">#&gt; # ... with 754 more rows, and 15 more variables: available_versions &lt;chr&gt;,</span>
+<span class="co">#&gt; # A tibble: 761 x 22</span>
+<span class="co">#&gt;    section number name    label       type  project_manager    additional_versi~</span>
+<span class="co">#&gt;      &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;            </span>
+<span class="co">#&gt;  1       2 2.1.1  v2x_po~ Electoral ~ (D)   Jan Teorell        *_codelow, *_cod~</span>
+<span class="co">#&gt;  2       2 2.1.2  v2x_li~ Liberal de~ (D)   Jan Teorell        *_codelow, *_cod~</span>
+<span class="co">#&gt;  3       2 2.1.3  v2x_pa~ Participat~ (D)   Jan Teorell        *_codelow, *_cod~</span>
+<span class="co">#&gt;  4       2 2.1.4  v2x_de~ Deliberati~ (D)   Jan Teorell        *_codelow, *_cod~</span>
+<span class="co">#&gt;  5       2 2.1.5  v2x_eg~ Egalitaria~ (D)   Rachel Sigman, St~ *_codelow, *_cod~</span>
+<span class="co">#&gt;  6       2 2.2.1  v2x_api Additive p~ (D)   Jan Teorell        *_codelow, *_cod~</span>
+<span class="co">#&gt;  7       2 2.2.2  v2x_mpi Multiplica~ (D)   Jan Teorell        *_codelow, *_cod~</span>
+<span class="co">#&gt;  8       2 2.2.3  v2x_fr~ Freedom of~ (D)   Svend-Erik Skaani~ *_codelow, *_cod~</span>
+<span class="co">#&gt;  9       2 2.2.4  v2x_fr~ Freedom of~ (D)   Allen Hicken, Mic~ *_codelow, *_cod~</span>
+<span class="co">#&gt; 10       2 2.2.5  v2x_su~ Share of p~ (D)   Svend-Erik Skaani~ &lt;NA&gt;             </span>
+<span class="co">#&gt; # ... with 751 more rows, and 15 more variables: available_versions &lt;chr&gt;,</span>
 <span class="co">#&gt; #   question &lt;chr&gt;, clarification &lt;chr&gt;, responses &lt;chr&gt;, answer_type &lt;chr&gt;,</span>
 <span class="co">#&gt; #   scale &lt;chr&gt;, ordering &lt;chr&gt;, aggregation &lt;chr&gt;, cross_coder &lt;chr&gt;,</span>
 <span class="co">#&gt; #   data_release &lt;chr&gt;, source &lt;chr&gt;, cleaning &lt;chr&gt;, citation &lt;chr&gt;,</span>
@@ -261,18 +261,18 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/extract_vdem_filter.html">extract_vdem_filter</a></span><span class="op">(</span><span class="va">section</span> <span class="op">==</span> <span class="fl">2</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"component index"</span>, <span class="va">label</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 27,192 x 93</span>
-<span class="co">#&gt;    vdem_country_na~ vdem_country_te~ vdem_country_id  year extended_countr~</span>
-<span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;                      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           </span>
-<span class="co">#&gt;  1 Mexico           MEX                            3  1789 Mexico          </span>
-<span class="co">#&gt;  2 Mexico           MEX                            3  1790 Mexico          </span>
-<span class="co">#&gt;  3 Mexico           MEX                            3  1791 Mexico          </span>
-<span class="co">#&gt;  4 Mexico           MEX                            3  1792 Mexico          </span>
-<span class="co">#&gt;  5 Mexico           MEX                            3  1793 Mexico          </span>
-<span class="co">#&gt;  6 Mexico           MEX                            3  1794 Mexico          </span>
-<span class="co">#&gt;  7 Mexico           MEX                            3  1795 Mexico          </span>
-<span class="co">#&gt;  8 Mexico           MEX                            3  1796 Mexico          </span>
-<span class="co">#&gt;  9 Mexico           MEX                            3  1797 Mexico          </span>
-<span class="co">#&gt; 10 Mexico           MEX                            3  1798 Mexico          </span>
+<span class="co">#&gt;    vdem_country_name vdem_country_text~ vdem_country_id  year extended_country_~</span>
+<span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;                        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;             </span>
+<span class="co">#&gt;  1 Mexico            MEX                              3  1789 Mexico            </span>
+<span class="co">#&gt;  2 Mexico            MEX                              3  1790 Mexico            </span>
+<span class="co">#&gt;  3 Mexico            MEX                              3  1791 Mexico            </span>
+<span class="co">#&gt;  4 Mexico            MEX                              3  1792 Mexico            </span>
+<span class="co">#&gt;  5 Mexico            MEX                              3  1793 Mexico            </span>
+<span class="co">#&gt;  6 Mexico            MEX                              3  1794 Mexico            </span>
+<span class="co">#&gt;  7 Mexico            MEX                              3  1795 Mexico            </span>
+<span class="co">#&gt;  8 Mexico            MEX                              3  1796 Mexico            </span>
+<span class="co">#&gt;  9 Mexico            MEX                              3  1797 Mexico            </span>
+<span class="co">#&gt; 10 Mexico            MEX                              3  1798 Mexico            </span>
 <span class="co">#&gt; # ... with 27,182 more rows, and 88 more variables: GWn &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   historical_date &lt;date&gt;, project &lt;dbl&gt;, historical &lt;dbl&gt;, histname &lt;chr&gt;,</span>
 <span class="co">#&gt; #   codingstart &lt;dbl&gt;, codingend &lt;dbl&gt;, codingstart_contemp &lt;dbl&gt;,</span>
@@ -311,9 +311,12 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="co">#&gt; -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</span>
 <span class="co">#&gt; v ggplot2 3.3.3     v purrr   0.3.4</span>
-<span class="co">#&gt; v tibble  3.0.5     v dplyr   1.0.2</span>
-<span class="co">#&gt; v tidyr   1.1.2     v stringr 1.4.0</span>
+<span class="co">#&gt; v tibble  3.1.0     v dplyr   1.0.5</span>
+<span class="co">#&gt; v tidyr   1.1.3     v stringr 1.4.0</span>
 <span class="co">#&gt; v readr   1.4.0     v forcats 0.5.0</span>
+<span class="co">#&gt; Warning: package 'tibble' was built under R version 4.0.4</span>
+<span class="co">#&gt; Warning: package 'tidyr' was built under R version 4.0.4</span>
+<span class="co">#&gt; Warning: package 'dplyr' was built under R version 4.0.4</span>
 <span class="co">#&gt; -- Conflicts ------------------------------------------ tidyverse_conflicts() --</span>
 <span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
 <span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
@@ -340,7 +343,7 @@
             label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">label</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("vdem_country_name", "vdem_country_id", "year")</span>
 <span class="co">#&gt; Joining, by = "index"</span>
-<span class="co">#&gt; `summarise()` regrouping output by 'year' (override with `.groups` argument)</span>
+<span class="co">#&gt; `summarise()` has grouped output by 'year'. You can override using the `.groups` argument.</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/slowkow/ggrepel">ggrepel</a></span><span class="op">)</span>  
 <span class="fu">ggplot</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">+</span>
@@ -355,7 +358,7 @@
          color <span class="op">=</span> <span class="st">""</span>, x <span class="op">=</span> <span class="st">""</span>,
          title <span class="op">=</span> <span class="st">"Average level of democracy in the world, 1789-2020"</span>,
          subtitle <span class="op">=</span> <span class="st">"Average over all countries in year for each index.\nEach index ranges from 0 = least democratic to 1 = most democratic.\nDotted lines indicate WWI, WWII, and the end of the Cold War.\nYears from 1789 to 1900 reflect a smaller sample of countries from the historical V-Dem\nproject."</span>,
-         caption <span class="op">=</span> <span class="st">"Data from V-Dem dataset, version 11"</span><span class="op">)</span> <span class="op">+</span>
+         caption <span class="op">=</span> <span class="st">"Data from V-Dem dataset, version 11.1"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1914</span>, <span class="fl">1918</span>, <span class="fl">1939</span>, <span class="fl">1945</span>, <span class="fl">1989</span><span class="op">)</span>, linetype <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">coord_cartesian</span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1789</span>, <span class="fl">2030</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">scale_color_viridis_d</span><span class="op">(</span><span class="op">)</span>
@@ -400,7 +403,7 @@
          color <span class="op">=</span> <span class="st">""</span>, x <span class="op">=</span> <span class="st">""</span>,
          title <span class="op">=</span> <span class="st">"Average level of democracy in selected countries, 1789-2020"</span>,
          subtitle <span class="op">=</span> <span class="st">"Each index ranges from 0 = least democratic to 1 = most democratic.\nDotted lines indicate WWI, WWII, and the end of the Cold War."</span>,
-         caption <span class="op">=</span> <span class="st">"Data from V-Dem dataset, version 11"</span><span class="op">)</span> <span class="op">+</span>
+         caption <span class="op">=</span> <span class="st">"Data from V-Dem dataset, version 11.1"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1914</span>, <span class="fl">1918</span>, <span class="fl">1939</span>, <span class="fl">1945</span>, <span class="fl">1989</span><span class="op">)</span>, linetype <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.5</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">coord_cartesian</span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1789</span>, <span class="fl">2030</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
